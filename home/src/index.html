@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>快来学车</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="favicon" content="">
+    <link rel="stylesheet" href="css/javascript.fullPage.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style>
+        /* Reset CSS
+         * --------------------------------------- */
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+        form,fieldset,input,textarea,p,blockquote,th,td {
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration:none;
+        }
+        table {
+            border-spacing: 0;
+        }
+        fieldset,img {
+            border: 0;
+        }
+        address,caption,cite,code,dfn,em,strong,th,var {
+            font-weight: normal;
+            font-style: normal;
+        }
+        strong{
+            font-weight: bold;
+        }
+        ol,ul {
+            list-style: none;
+            margin:0;
+            padding:0;
+        }
+        caption,th {
+            text-align: left;
+
+        }
+        h1,h2,h3,h4,h5,h6 {
+            font-weight: normal;
+            font-size: 100%;
+            margin:0;
+            padding:0;
+            color:#444;
+        }
+        q:before,q:after {
+            content:'';
+        }
+        abbr,acronym { border: 0;
+        }
+
+
+        /* Custom CSS
+         * --------------------------------------- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC","Hiragino Sans GB",Simsun,sans-serif;
+            color: #F2F2F2;
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+        h1{
+            font-size: 6em;
+        }
+        p{
+            font-size: 2em;
+        }
+        .content{
+            position: relative;
+            top: 40%;
+            transform: translateY(-50%);
+            text-align: center;
+            cursor: default;
+        }
+
+        /* Section 1
+         * --------------------------------------- */
+        #section0{
+            background-color: #FF3666;
+            background: url('img/hero.jpg');
+            width: 100%;
+            background-size: 100%;
+        }
+        #section0 h1{
+            color: rgba(255,255,255,0.8);
+            font-size: 45px;
+            display: inline-block;
+            background: rgba(0,0,0,0.8);
+            border-radius: 20px;
+            padding: 20px
+        }
+        #section0 p{
+            color: #333;
+            opacity: 0.4;
+        }
+
+
+        /* Section 2
+         * --------------------------------------- */
+        #section1{
+            background-color: #6FCAEF;
+        }
+        #section1 h1{
+            color: #fff;
+        }
+        #section1 p{
+            opacity: 0.8;
+        }
+
+
+        /* Section 3
+         * --------------------------------------- */
+        #section2{
+            background-color: #2C3E50;
+        }
+        #section2 h1{
+            color: #F2F2F2;
+        }
+        #section2 p{
+            opacity: 0.6;
+        }
+
+        #logo {
+            left: 10%;
+            position: relative;
+            height: 44px;
+            display: inline-block;
+            line-height: 44px;
+        }
+
+        #logo span {
+            float: right;
+            margin-left: 15px;
+            line-height: 44px;
+            font-size: 25px;
+        }
+
+        #btns {
+            top: 0px;
+            position: absolute;
+            right: 10%;
+        }
+
+        #btns ul {
+            display: inline;
+        }
+
+        #btns ul li {
+            float: left;
+        }
+
+        a.btn {
+            margin: 0px 5px;
+            width: 90px;
+            line-height: 26px;
+            text-align: center;
+            border: 1px solid white;
+            border-radius: 10px;
+            padding: 5px;
+            display: block;
+            color: #F7F1F3;
+            font-size: 15px;
+            z-index: 10001;
+        }
+        a.btn:hover {
+            cursor: pointer;
+        }
+
+        nav.header {
+            height: 44px;
+            line-height: 44px;
+            position: absolute;
+            top: 44px;
+            width: 100%;
+            z-index: 101;
+        }
+        #scene-down {
+            width: 53px;
+            height: 30px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            margin-left: -26px;
+            text-indent: -999px;
+            background: url(https://combo.b.qq.com/account/hrtx/images/active/new-year-2015/icon-down.png) no-repeat;
+            overflow: hidden;
+            animation:sp_down 0.75s linear 0.5s infinite alternate;
+            -moz-animation:sp_down 0.75s linear 0.5s infinite alternate;
+            -webkit-animation:sp_down 0.75s linear 0.5s infinite alternate;
+            -o-animation:sp_down 0.75s linear 0.5s infinite alternate;
+        }
+        @keyframes sp_down {
+            0%   {bottom: 40px;}
+            50%  {bottom: 33px; opacity: 0.8;}
+            100% {bottom: 20px; opacity: 0.5;}
+        }
+        #s1_title {
+            position: relative;
+            top: -50px;
+            opacity: 0;
+        }
+        #s1_title.active {
+            top: 0px;
+            opacity: 1;
+            transition: all 1s;
+        }
+        #qrcode {
+            position: relative;
+            top: -50px;
+            opacity: 0;
+        }
+        #qrcode.active {
+            top: 0px;
+            opacity: 1;
+            transition: all 1s;
+        }
+
+
+        .download-button {
+            float: left;
+            text-align: center;
+            display: block;
+            opacity: .8;
+            width: 200px;
+            border-radius: 40px;
+            background: rgba(0,0,0,.8);
+            height: 80px;
+            margin: 0 20px;
+        }
+        .download-button:hover {
+            cursor: pointer;
+            background: rgba(0,0,0,1);
+        }
+        #download-btns {
+            text-align: center;
+            margin: 40px auto;
+            width: 480px;
+            opacity: 0;
+        }
+        #download-btns-last {
+            text-align: center;
+            margin: 40px auto;
+            width: 480px;
+            opacity: 0;
+        }
+        #download-btns.active {
+            opacity: 1;
+            transition: opacity 1s 1s;
+        }
+        #download-btns-last.active {
+            opacity: 1;
+            transition: opacity 1s 1s;
+        }
+
+        #mask {
+            background: rgba(0,0,0,0.8);
+            z-index: -1;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 1s;
+        }
+        #mask.active {
+            z-index: 100;
+            opacity: 1;
+            transition: all 1s;
+        }
+        #qrcode-mask {
+            position: fixed;
+            z-index: -1;
+            top: 50%;
+            margin-top: -125px;
+            width: 250px;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: all 1s;
+        }
+        #qrcode-mask.active {
+            z-index: 100;
+            opacity: 1;
+            transition: all 1s;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="header">
+        <div id="logo">
+            <img id="logo" src="http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png" alt="logo">
+            <span>LOGO</span>
+        </div>
+        <div id="btns">
+            <ul>
+                <li><a class="btn">关于我们</a></li>
+                <li><a class="btn">教练版</a></li>
+                <li><a onmouseenter="document.getElementById('mask').className = 'active';document.getElementById('qrcode-mask').className = 'active';" onmouseleave="document.getElementById('mask').className = '';document.getElementById('qrcode-mask').className = '';" class="btn">扫码下载</a></li>
+                <li><a class="btn">微信公众号</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="mask">
+    </div>
+    <img id="qrcode-mask" src="http://zhaime.qiniudn.com/uploads/index/appqrcode2.png">
+
+    <div id="fullpage">
+        <div class="section " id="section0">
+            <div class="content">
+                <h1 id="s1_title">学车，从这里开始...</h1>
+                <div id="download-btns">
+                    <a id="download-button-iOS" class="download-button">
+                        <div>
+                            <div style="float: left; position: relative; left: 35px; top: 15px; font-size: 14px; ">立即下载<br><span style="font-size: 30px">iOS</span></div>
+                            <div style="float: left; position: relative; left: 53px; top: 8px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="51.81" height="62.5" viewBox="0 0 30.75 37.093"><defs><style>.cls-1 {fill: #fff;fill-rule: evenodd;}</style></defs><path d="M21.887,36.936 C19.963,36.936 17.987,35.517 15.862,35.517 C13.431,35.517 11.406,37.089 9.685,37.089 C7.306,37.089 5.179,35.011 3.458,31.818 C1.078,27.458 0.014,22.439 0.014,19.196 C0.014,13.062 5.230,8.348 10.495,8.348 C13.026,8.348 13.989,10.324 16.318,10.324 C19.255,10.324 21.025,8.246 23.152,8.246 C26.190,8.246 28.165,10.071 29.633,11.896 L29.532,11.947 C27.303,13.518 26.089,15.951 26.089,18.740 C26.089,22.186 27.710,24.568 30.697,26.191 L30.697,26.444 C30.697,26.595 30.748,26.748 30.748,26.951 C30.748,30.955 26.494,36.936 21.887,36.936 ZM16.212,9.667 L16.212,9.464 C16.112,8.908 16.060,8.401 16.060,7.995 C16.060,3.687 19.199,0.948 22.693,-0.014 L22.744,0.189 C22.794,0.695 22.845,1.152 22.845,1.507 C22.845,6.019 19.655,8.603 16.212,9.667 Z" class="cls-1"/></svg></div>
+                        </div>
+                    </a>
+                    <a id="download-button-Android" class="download-button">
+                        <div>
+                            <div style="float: left; position: relative; left: 25px; top: 15px; font-size: 14px; ">立即下载<br><span style="font-size: 23px; line-height: 30px;">Android</span></div>
+                            <div style="float: left; position: relative; left: 43px; top: 8px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="51.81" height="62.5" viewBox="0 0 32 37"><defs><style>.cls-1 {fill: #fff;fill-rule: evenodd;}</style></defs><path d="M30.000,25.000 C28.745,25.000 28.000,24.263 28.000,23.000 L28.000,14.000 C28.000,12.736 28.745,12.000 30.000,12.000 C31.254,12.000 32.002,12.567 32.002,13.831 L32.002,22.807 C32.002,24.070 31.254,25.000 30.000,25.000 ZM24.000,30.000 L22.000,30.000 L22.000,35.000 C22.000,36.263 21.255,36.989 20.000,37.000 C18.754,37.010 18.003,36.281 17.959,34.963 C17.811,34.776 18.000,30.000 18.000,30.000 L14.000,30.000 L14.000,35.000 C14.000,36.263 13.234,37.013 11.979,37.013 C10.724,37.013 10.000,36.263 10.000,35.000 L10.000,30.000 L8.000,30.000 C7.022,30.000 6.000,28.971 6.000,28.000 L6.000,12.000 L26.000,12.000 L26.000,28.000 C26.000,28.971 24.978,30.000 24.000,30.000 ZM11.182,3.212 L9.313,0.524 C9.204,0.366 9.232,0.155 9.376,0.057 C9.521,-0.043 9.728,0.007 9.840,0.166 L12.000,3.000 C13.277,2.500 14.477,2.179 15.974,2.179 C17.470,2.179 18.723,2.500 20.000,3.000 L22.109,0.166 C22.220,0.007 22.427,-0.043 22.572,0.057 C22.716,0.155 22.744,0.366 22.634,0.524 L20.765,3.212 C23.735,4.580 25.735,6.965 26.000,10.000 L6.000,10.000 C6.265,6.965 8.212,4.580 11.182,3.212 ZM20.000,7.000 C20.623,7.000 21.000,6.551 21.000,6.000 C21.000,5.448 20.623,5.000 20.000,5.000 C19.378,5.000 19.000,5.448 19.000,6.000 C19.000,6.551 19.378,7.000 20.000,7.000 ZM12.000,7.000 C12.623,7.000 13.000,6.551 13.000,6.000 C13.000,5.448 12.623,5.000 12.000,5.000 C11.378,5.000 10.997,5.456 10.997,6.008 C10.997,6.559 11.378,7.000 12.000,7.000 ZM20.967,-0.611 L20.973,-0.608 C20.971,-0.607 20.970,-0.606 20.968,-0.606 L20.967,-0.611 ZM2.000,25.000 C0.746,25.000 -0.002,24.088 -0.002,22.826 L-0.002,13.889 C-0.002,12.626 0.746,12.000 2.000,12.000 C3.255,12.000 4.000,12.736 4.000,14.000 L4.000,23.000 C4.000,24.263 3.255,25.000 2.000,25.000 Z" class="cls-1"/></svg></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <a href="#secondPage" id="scene-down" title="下一屏">下一屏</a>
+        </div>
+        <div class="section" id="section1">
+            <div class="slide" id="slide1">
+                <div class="content">
+                    <div style="display: inline-block; background-image: url(http://zhaime.qiniudn.com/uploads/index/section2bg2.png); background-size: 512px auto; background-position: -75px -70px; vertical-align: middle; width: 400px; height: 400px; position: relative;">
+                        <img id="s2_shadow" src="http://zhaime.qiniudn.com/uploads/index/section2shadow2.png">
+                        <img id="s2_phone" src="http://zhaime.qiniudn.com/uploads/index/section2phone2.png">
+                        <style type="text/css">
+                            #s2_shadow {
+                                opacity: 0; top: -90px; left: -30px; width: 512px; position: absolute;
+                            }
+                            #s2_phone {
+                                opacity: 0; top: -80px; left: -30px; width: 512px; position: absolute;
+                            }
+                            #s2_boom {
+                                opacity: 0; left: -110px; top: -75px; width: 512px; position: absolute;
+                            }
+                            #s2_shadow.active {
+                                opacity: 1;
+                                transition: all 1s 0.25s;
+                            }
+                            #s2_phone.active {
+                                opacity: 1;
+                                transition: all 1s;
+                            }
+                            #s2_boom.active {
+                                animation-name: bounceIn;
+                                animation-duration: 450ms;
+                                animation-delay: 1s;
+                                animation-timing-function: linear;
+                                animation-fill-mode: forwards;
+                            }
+                            @keyframes bounceIn{
+                            0%{
+                                opacity: 0;
+                                transform: scale(0.3) translate3d(0,0,0);
+                            }
+                            50%{
+                                opacity: 0.9;
+                                transform: scale(1.1);
+                            }
+                            80%{
+                                opacity: 1;
+                                transform: scale(0.89);
+                            }
+                            100%{
+                                opacity: 1;
+                                transform: scale(1) translate3d(0,0,0);
+                            }
+                            }
+                        </style>
+                        <img id="s2_boom" src="http://zhaime.qiniudn.com/uploads/index/section2boom2.png">
+                    </div>
+                </div>
+            </div>
+            <div class="slide" id="slide2">
+                <div class="content">
+                    <h1>我的教练我做主</h1>
+                    <p>在线预约免费试练，</p>
+                    <p>自主选择教练。</p>
+                </div>
+            </div>
+            <div class="slide" id="slide3">
+                <div class="content">
+                    <p>最低6200元！</p>
+                    <p>可以分期付款。</p>
+                </div>
+            </div>
+            <div class="slide" id="slide4">
+                <div class="content">
+                    <p>在线支付</p>
+                    <p>平台担保交易</p>
+                    <p>扣除10%尾款，学完后支付给教练。</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section2">
+            <div class="content">
+                <img id="qrcode" src="http://zhaime.qiniudn.com/uploads/index/appqrcode2.png">
+                <div id="download-btns-last">
+                    <a class="download-button">
+                        <div>
+                            <div style="float: left; position: relative; left: 35px; top: 15px; font-size: 14px; ">立即下载<br><span style="font-size: 30px">iOS</span></div>
+                            <div style="float: left; position: relative; left: 53px; top: 8px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="51.81" height="62.5" viewBox="0 0 30.75 37.093"><defs><style>.cls-1 {fill: #fff;fill-rule: evenodd;}</style></defs><path d="M21.887,36.936 C19.963,36.936 17.987,35.517 15.862,35.517 C13.431,35.517 11.406,37.089 9.685,37.089 C7.306,37.089 5.179,35.011 3.458,31.818 C1.078,27.458 0.014,22.439 0.014,19.196 C0.014,13.062 5.230,8.348 10.495,8.348 C13.026,8.348 13.989,10.324 16.318,10.324 C19.255,10.324 21.025,8.246 23.152,8.246 C26.190,8.246 28.165,10.071 29.633,11.896 L29.532,11.947 C27.303,13.518 26.089,15.951 26.089,18.740 C26.089,22.186 27.710,24.568 30.697,26.191 L30.697,26.444 C30.697,26.595 30.748,26.748 30.748,26.951 C30.748,30.955 26.494,36.936 21.887,36.936 ZM16.212,9.667 L16.212,9.464 C16.112,8.908 16.060,8.401 16.060,7.995 C16.060,3.687 19.199,0.948 22.693,-0.014 L22.744,0.189 C22.794,0.695 22.845,1.152 22.845,1.507 C22.845,6.019 19.655,8.603 16.212,9.667 Z" class="cls-1"/></svg></div>
+                        </div>
+                    </a>
+                    <a class="download-button">
+                        <div>
+                            <div style="float: left; position: relative; left: 25px; top: 15px; font-size: 14px; ">立即下载<br><span style="font-size: 23px; line-height: 30px;">Android</span></div>
+                            <div style="float: left; position: relative; left: 43px; top: 8px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="51.81" height="62.5" viewBox="0 0 32 37"><defs><style>.cls-1 {fill: #fff;fill-rule: evenodd;}</style></defs><path d="M30.000,25.000 C28.745,25.000 28.000,24.263 28.000,23.000 L28.000,14.000 C28.000,12.736 28.745,12.000 30.000,12.000 C31.254,12.000 32.002,12.567 32.002,13.831 L32.002,22.807 C32.002,24.070 31.254,25.000 30.000,25.000 ZM24.000,30.000 L22.000,30.000 L22.000,35.000 C22.000,36.263 21.255,36.989 20.000,37.000 C18.754,37.010 18.003,36.281 17.959,34.963 C17.811,34.776 18.000,30.000 18.000,30.000 L14.000,30.000 L14.000,35.000 C14.000,36.263 13.234,37.013 11.979,37.013 C10.724,37.013 10.000,36.263 10.000,35.000 L10.000,30.000 L8.000,30.000 C7.022,30.000 6.000,28.971 6.000,28.000 L6.000,12.000 L26.000,12.000 L26.000,28.000 C26.000,28.971 24.978,30.000 24.000,30.000 ZM11.182,3.212 L9.313,0.524 C9.204,0.366 9.232,0.155 9.376,0.057 C9.521,-0.043 9.728,0.007 9.840,0.166 L12.000,3.000 C13.277,2.500 14.477,2.179 15.974,2.179 C17.470,2.179 18.723,2.500 20.000,3.000 L22.109,0.166 C22.220,0.007 22.427,-0.043 22.572,0.057 C22.716,0.155 22.744,0.366 22.634,0.524 L20.765,3.212 C23.735,4.580 25.735,6.965 26.000,10.000 L6.000,10.000 C6.265,6.965 8.212,4.580 11.182,3.212 ZM20.000,7.000 C20.623,7.000 21.000,6.551 21.000,6.000 C21.000,5.448 20.623,5.000 20.000,5.000 C19.378,5.000 19.000,5.448 19.000,6.000 C19.000,6.551 19.378,7.000 20.000,7.000 ZM12.000,7.000 C12.623,7.000 13.000,6.551 13.000,6.000 C13.000,5.448 12.623,5.000 12.000,5.000 C11.378,5.000 10.997,5.456 10.997,6.008 C10.997,6.559 11.378,7.000 12.000,7.000 ZM20.967,-0.611 L20.973,-0.608 C20.971,-0.607 20.970,-0.606 20.968,-0.606 L20.967,-0.611 ZM2.000,25.000 C0.746,25.000 -0.002,24.088 -0.002,22.826 L-0.002,13.889 C-0.002,12.626 0.746,12.000 2.000,12.000 C3.255,12.000 4.000,12.736 4.000,14.000 L4.000,23.000 C4.000,24.263 3.255,25.000 2.000,25.000 Z" class="cls-1"/></svg></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/javascript.fullPage.min.js"></script>
+    <script type="text/javascript">
+    fullpage.initialize('#fullpage', {
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+        menu: '#menu',
+        css3: true,
+        navigation: true,
+        navigationPosition: 'right',
+        navigationTooltips: ['First page', 'Second page', 'Third and last page'],
+
+        'afterLoad': function(anchorLink, index){
+            if(index == 1) {
+                document.getElementById('s1_title').className = "active";
+                document.getElementById('download-btns').className = "active";
+            }
+            if(index == 2) {
+                document.getElementById('s2_boom').className = "active";
+                document.getElementById('s2_phone').className = "active";
+                document.getElementById('s2_shadow').className = "active";
+            }
+            if(index == 3) {
+                document.getElementById('qrcode').className = "active";
+                document.getElementById('download-btns-last').className = "active";
+            }
+        },
+
+        'onLeave': function(index, nextIndex, direction){
+            if(index == 1) {
+                document.getElementById('s1_title').className = "";
+                document.getElementById('download-btns').className = "";
+            }
+            if(index == 2) {
+                document.getElementById('s2_boom').className = "";
+                document.getElementById('s2_phone').className = "";
+                document.getElementById('s2_shadow').className = "";
+            }
+            if (index == 3 && direction == 'down'){
+            }
+            else if(index == 3 && direction == 'up'){
+            }
+            if (index == 3){
+                document.getElementById('qrcode').className = "";
+                document.getElementById('download-btns-last').className = "";
+            }
+
+        }
+
+    });
+</script>
+</html>

@@ -1,0 +1,67 @@
+<ion-view show-tabs view-title="发现">
+  <ion-content class="padding">
+    <ion-refresher pulling-text="" on-refresh="doRefresh()" style="z-index: 888;"></ion-refresher>
+    <div id="dash-filter" class="row">
+      <div class="col" ng-click="show_place()">学车地点 <i class="ion-chevron-down"></i></div>
+      <div class="col" ng-click="show_price()">价格区间 <i class="ion-chevron-down"></i></div>
+      <div class="col last" ng-click="show_level()">驾照级别 <i class="ion-chevron-down"></i></div>
+    </div>
+    <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <div class="box one"></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box two"></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box three"></div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="img/adam.jpg">
+        <h2>张三</h2>
+        <p>2015年11月2日入驻</p>
+        <span class="cog-auth">认证</span> <i class="ion-social-yen">6888</i> | <i class="ion-android-pin">上海市闵行区</i>
+        <br>
+        <i class="icon ion-thumbsup">38</i> | <i class="icon ion-chatbox">22</i> |
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star-half"></i>
+        <i class="ion-android-star-outline"></i>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="img/adam.jpg">
+        <h2>张三</h2>
+        <p>2015年11月2日入驻</p>
+        <span class="cog-auth">认证</span> <i class="ion-social-yen">6888</i> | <i class="ion-android-pin">上海市闵行区</i>
+        <br>
+        <i class="icon ion-thumbsup">38</i> | <i class="icon ion-chatbox">22</i> |
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star-half"></i>
+        <i class="ion-android-star-outline"></i>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="img/adam.jpg">
+        <h2>张三</h2>
+        <p>2015年11月2日入驻</p>
+        <span class="cog-auth">认证</span> <i class="ion-social-yen">6888</i> | <i class="ion-android-pin">上海市闵行区</i>
+        <br>
+        <i class="icon ion-thumbsup">38</i> | <i class="icon ion-chatbox">22</i> |
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star"></i>
+        <i class="ion-android-star-half"></i>
+        <i class="ion-android-star-outline"></i>
+      </div>
+    </div>
+    <ion-infinite-scroll icon="ion-loading-c" ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

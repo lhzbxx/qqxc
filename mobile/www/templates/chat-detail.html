@@ -1,0 +1,62 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view hide-tabs view-title="{{chat.name}}">
+  <ion-content class="padding">
+  <div id="dash-filter" class="row">
+    <div class="col" ng-click="show_place()">电话号 <i class="ion-iphone"></i></div>
+    <div class="col" ng-click="show_price()">微信号 <i class="ion-paper-airplane"></i></div>
+    <div class="col last" ng-click="show_level()">快速签约 <i class="ion-android-hand"></i></div>
+  </div>
+    <div class="chat-block other">
+      <img ng-src="{{chat.face}}">
+      <div class="content" ng-bind="chat.lastText"></div>
+    </div>
+    <div class="wx-show">
+      XXX的微信号：8623333333<i class="ion-ios-copy-outline"></i>
+    </div>
+    <div class="chat-block me">
+      <img ng-src="{{chat.face}}">
+      <div class="content" ng-bind="chat.lastText"></div>
+    </div>
+    <div class="phone-show">
+      XXX的手机号：13323333333<i class="ion-ios-telephone-outline"></i>
+    </div>
+    <div class="chat-block other">
+      <img ng-src="{{chat.face}}">
+      <div class="content" ng-bind="chat.lastText"></div>
+    </div>
+    <div class="chat-block other">
+      <img ng-src="{{chat.face}}">
+      <div class="content">
+        我想要和您交换手机号，是否同意？
+        <div class="question">
+          <div class="agree">同意</div>
+          <div class="disagree">拒绝</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-block me">
+      <img ng-src="{{chat.face}}">
+      <div class="content">123222222222222,2222222222,22222222222</div>
+    </div>
+    <div class="chat-block other">
+      <img ng-src="{{chat.face}}">
+      <div class="content" ng-bind="chat.lastText"></div>
+    </div>
+    <div class="chat-block me">
+      <img ng-src="{{chat.face}}">
+      <div class="content" ng-bind="chat.lastText"></div>
+    </div>
+    <br><br>
+  </ion-content>
+  <div class="input">
+    <input type="text">
+    <span class="send">发送</span>
+  </div>
+</ion-view>
+
