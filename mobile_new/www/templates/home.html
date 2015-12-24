@@ -1,0 +1,35 @@
+<ion-pane>
+  <ion-header-bar class="bar-positive" style="">
+    <button class="button button-icon icon ion-location"></button>
+    <h1 class="title">快来学车</h1>
+    <button class="button button-icon icon ion-person"></button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row">
+      <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+          <div class="box one"></div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box two"></div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box three"></div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+    <div class="row">
+      <div class="col col-50">做试题</div>
+      <div class="col col-50">学车流程</div>
+    </div>
+    <div class="row">
+      <div class="col col-50">学车进度</div>
+      <div class="col col-50">邀请有礼</div>
+    </div>
+    <a href="#/coach-detail">跳转到教练详情</a>
+    <a href="#/register-info">跳转到报名信息</a>
+  </ion-content>
+  <div class="bar bar-footer bar-light">
+    <div class="title"><i class="ion-chatbubble-working"></i> 联系客服/提建议</div>
+  </div>
+</ion-pane>
