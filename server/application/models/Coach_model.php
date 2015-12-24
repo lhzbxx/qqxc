@@ -39,11 +39,20 @@ class Coach_model extends CI_Model
     }
     public function update_coach()
     {
-
+        $this->name = $this->input->post('name');
+        $this->seniority = $this->input->post('seniority');
+        $this->db->insert('entries', $this);
     }
     public function select_coach()
     {
-        $query = $this->
+        $query = $this->db->get('entries', 10);
+        $query = $this->result();
+    }
+
+    public function list_coach()
+    {
+        $query = $this->db->get('entries', 10);
+        $query = $this->result();
     }
 
 }
