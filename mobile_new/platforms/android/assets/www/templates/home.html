@@ -55,7 +55,7 @@
 
       <ion-view view-title="快来学车">
       <ion-content style="top: 44px; background-color: #eee;">
-        <div class="row">
+        <div class="row" style="height: 150px; background-color: grey; margin-bottom: 10px;">
           <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
             <ion-slide>
               <div class="box one"></div>
@@ -69,16 +69,16 @@
           </ion-slide-box>
         </div>
         <div class="row" style="font-size: 25px; line-height: 75px; height: 75px; text-align: center; color: black; margin: 0px; padding: 0px; margin-bottom: 10px;">
-          <div class="col col-50" style="border-bottom-right-radius: 75px; background-color: white; margin-left: -10px; margin-right: 10px; padding: 0px; border-top-right-radius: 75px;">学车流程</div>
-          <div class="col col-50" style="border-bottom-left-radius: 75px; background-color: white; margin-right: -10px; margin-left: 10px; padding: 0px; border-top-left-radius: 75px;">邀请有礼</div>
+          <a href="#/learn-process" class="col col-50" style="border-bottom-right-radius: 75px; background-color: white; margin-left: -10px; margin-right: 10px; padding: 0px; border-top-right-radius: 75px;">学车流程</a>
+          <a href="#/learn-process" class="col col-50" style="border-bottom-left-radius: 75px; background-color: white; margin-right: -10px; margin-left: 10px; padding: 0px; border-top-left-radius: 75px;">邀请有礼</a>
         </div>
         <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
           <a class="col col-50" style="border-right: 1px solid #eee; border-bottom: 1px solid #eee;" href="#/coach-list">找教练</a>
           <div class="col col-50" style="border-bottom: 1px solid #eee;">做试题</div>
         </div>
         <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
-          <div class="col col-50" style="border-right: 1px solid #eee;">我的进度</div>
-          <div class="col col-50" style="">建议反馈</div>
+          <a href="#/learn-record" class="col col-50" style="border-right: 1px solid #eee;">我的进度</a>
+          <a href="#/feedback" class="col col-50" style="">建议反馈</a>
         </div>
         <div class="bar bar-footer bar-positive">
           <div class="title"> <i class="ion-chatbubble-working"></i>

@@ -46,6 +46,18 @@ angular.module('starter', ['ionic'])
   .state('coach-list', {
     url: '/coach-list',
     templateUrl: 'templates/coach-list.html'
+  })
+  .state('learn-process', {
+    url: '/learn-process',
+    templateUrl: 'templates/learn-process.html'
+  })
+  .state('learn-record', {
+    url: '/learn-record',
+    templateUrl: 'templates/learn-record.html'
+  })
+  .state('feedback', {
+    url: '/feedback',
+    templateUrl: 'templates/feedback.html'
   });
 
   // if none of the above states are matched, use this as the fallback
