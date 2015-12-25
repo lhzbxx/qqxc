@@ -1,0 +1,114 @@
+<!-- <ion-pane>
+<ion-header-bar class="bar-positive" style="">
+  <button class="button button-icon icon ion-location"></button>
+  <h1 class="title">快来学车</h1>
+  <button class="button button-icon icon ion-person" menu-toggle="left"></button>
+</ion-header-bar>
+<ion-content>
+  <div class="row">
+    <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <div class="box one"></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box two"></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box three"></div>
+      </ion-slide>
+    </ion-slide-box>
+  </div>
+  <div class="row">
+    <div class="col col-50">做试题</div>
+    <div class="col col-50">学车流程</div>
+  </div>
+  <div class="row">
+    <div class="col col-50">学车进度</div>
+    <div class="col col-50">邀请有礼</div>
+  </div>
+  <a href="#/coach-detail">跳转到教练详情</a>
+  <a href="#/register-info">跳转到报名信息</a>
+</ion-content>
+<div class="bar bar-footer bar-light">
+  <div class="title"> <i class="ion-chatbubble-working"></i>
+    联系客服/提建议
+  </div>
+</div>
+-->
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button></ion-nav-back-button>
+
+      <ion-header-bar class="bar-positive" style="">
+        <button class="button button-icon icon ion-location"></button>
+        <button class="button button-icon icon ion-person" menu-toggle="left"></button>
+      </ion-header-bar>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-location"></button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-person" menu-toggle="right"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent">
+
+      <ion-view view-title="快来学车">
+      <ion-content style="top: 44px; background-color: #eee;">
+        <div class="row">
+          <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+              <div class="box one"></div>
+            </ion-slide>
+            <ion-slide>
+              <div class="box two"></div>
+            </ion-slide>
+            <ion-slide>
+              <div class="box three"></div>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+        <div class="row" style="font-size: 25px; line-height: 75px; height: 75px; text-align: center; color: black; margin: 0px; padding: 0px; margin-bottom: 10px;">
+          <div class="col col-50" style="border-bottom-right-radius: 75px; background-color: white; margin-left: -10px; margin-right: 10px; padding: 0px; border-top-right-radius: 75px;">学车流程</div>
+          <div class="col col-50" style="border-bottom-left-radius: 75px; background-color: white; margin-right: -10px; margin-left: 10px; padding: 0px; border-top-left-radius: 75px;">邀请有礼</div>
+        </div>
+        <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
+          <a class="col col-50" style="border-right: 1px solid #eee; border-bottom: 1px solid #eee;" href="#/coach-list">找教练</a>
+          <div class="col col-50" style="border-bottom: 1px solid #eee;">做试题</div>
+        </div>
+        <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
+          <div class="col col-50" style="border-right: 1px solid #eee;">我的进度</div>
+          <div class="col col-50" style="">建议反馈</div>
+        </div>
+        <div class="bar bar-footer bar-positive">
+          <div class="title"> <i class="ion-chatbubble-working"></i>
+            报名咨询
+          </div>
+        </div>
+      </ion-content>
+      </ion-view>
+    </ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right">
+    <!--       <ion-header-bar class="bar-stable">
+    <h1 class="title">Left</h1>
+  </ion-header-bar>
+  -->
+  <ion-content>
+    <ion-list>
+      <ion-item menu-close ng-click="login()">登录/注册</ion-item>
+      <ion-item menu-close href="#/app/search">我的钱包</ion-item>
+      <ion-item menu-close href="#/acoach-detail">我的教练</ion-item>
+      <ion-item menu-close href="#/app/playlists">我的进度</ion-item>
+      <ion-item menu-close href="#/app/playlists">消息通知</ion-item>
+      <ion-item menu-close href="#/app/playlists">意见反馈</ion-item>
+      <ion-item menu-close href="#/app/playlists">培训协议</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-side-menu>
+</ion-side-menus>
+
+<!-- </ion-pane>
+-->
