@@ -42,9 +42,19 @@ angular.module('starter', ['ionic'])
   .state('register-info', {
     url: '/register-info',
     templateUrl: 'templates/register-info.html'
+  })
+  .state('coach-list', {
+    url: '/coach-list',
+    templateUrl: 'templates/coach-list.html'
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
 
 })
+
+function HomeController($scope, $ionicSideMenuDelegate) {
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+}
