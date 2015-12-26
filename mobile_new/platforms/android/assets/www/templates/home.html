@@ -43,49 +43,48 @@
       <ion-header-bar class="bar-positive" style="">
         <button class="button button-icon icon ion-location"></button>
         <button class="button button-icon icon ion-person" menu-toggle="left"></button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon icon ion-location" ng-click="getPos()"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+          <button class="button button-icon icon ion-person" menu-toggle="right"></button>
+        </ion-nav-buttons>
       </ion-header-bar>
-      <ion-nav-buttons side="left">
-        <button class="button button-icon icon ion-location"></button>
-      </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-person" menu-toggle="right"></button>
-      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent">
-
       <ion-view view-title="快来学车">
-      <ion-content style="top: 44px; background-color: #eee;">
-        <div class="row" style="height: 150px; background-color: grey; margin-bottom: 10px;">
-          <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
-            <ion-slide>
-              <div class="box one"></div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box two"></div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box three"></div>
-            </ion-slide>
-          </ion-slide-box>
-        </div>
-        <div class="row" style="font-size: 25px; line-height: 75px; height: 75px; text-align: center; color: black; margin: 0px; padding: 0px; margin-bottom: 10px;">
-          <a href="#/learn-process" class="col col-50" style="border-bottom-right-radius: 75px; background-color: white; margin-left: -10px; margin-right: 10px; padding: 0px; border-top-right-radius: 75px;">学车流程</a>
-          <a href="#/learn-process" class="col col-50" style="border-bottom-left-radius: 75px; background-color: white; margin-right: -10px; margin-left: 10px; padding: 0px; border-top-left-radius: 75px;">邀请有礼</a>
-        </div>
-        <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
-          <a class="col col-50" style="border-right: 1px solid #eee; border-bottom: 1px solid #eee;" href="#/coach-list">找教练</a>
-          <div class="col col-50" style="border-bottom: 1px solid #eee;">做试题</div>
-        </div>
-        <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
-          <a href="#/learn-record" class="col col-50" style="border-right: 1px solid #eee;">我的进度</a>
-          <a href="#/feedback" class="col col-50" style="">建议反馈</a>
-        </div>
-        <div class="bar bar-footer bar-positive">
-          <div class="title"> <i class="ion-chatbubble-working"></i>
-            报名咨询
+        <ion-content style="top: 44px; background-color: #eee;">
+          <div class="row" style="height: 150px; background-color: grey; margin-bottom: 10px;">
+            <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
+              <ion-slide>
+                <div class="box one"></div>
+              </ion-slide>
+              <ion-slide>
+                <div class="box two"></div>
+              </ion-slide>
+              <ion-slide>
+                <div class="box three"></div>
+              </ion-slide>
+            </ion-slide-box>
           </div>
-        </div>
-      </ion-content>
+          <div class="row" style="font-size: 25px; line-height: 75px; height: 75px; text-align: center; color: black; margin: 0px; padding: 0px; margin-bottom: 10px;">
+            <a href="#/learn-process" class="col col-50" style="border-bottom-right-radius: 75px; background-color: white; margin-left: -10px; margin-right: 10px; padding: 0px; border-top-right-radius: 75px;">学车流程</a>
+            <a href="#/invite" class="col col-50" style="border-bottom-left-radius: 75px; background-color: white; margin-right: -10px; margin-left: 10px; padding: 0px; border-top-left-radius: 75px;">邀请有礼</a>
+          </div>
+          <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
+            <a class="col col-50" style="border-right: 1px solid #eee; border-bottom: 1px solid #eee;" href="#/coach-list">找教练</a>
+            <div ng-click="show()" class="col col-50" style="border-bottom: 1px solid #eee;">做试题</div>
+          </div>
+          <div class="row" style="font-size: 25px; line-height: 75px; text-align: center; color: black; background-color: white; margin: 0px; padding: 0px;">
+            <a href="#/learn-record" class="col col-50" style="border-right: 1px solid #eee;">我的进度</a>
+            <a href="#/feedback" class="col col-50" style="">建议反馈</a>
+          </div>
+          <div class="bar bar-footer bar-positive" ng-click="test()">
+            <div class="title"> <i class="ion-chatbubble-working"></i>
+              报名咨询
+            </div>
+          </div>
+        </ion-content>
       </ion-view>
     </ion-nav-view>
 
@@ -98,12 +97,17 @@
   -->
   <ion-content>
     <ion-list>
+      <a class="item item-avatar" href="#">
+        <img src="img/ionic.png">
+        <h2>13651608916</h2>
+        <p>学员</p>
+      </a>
       <ion-item menu-close ng-click="login()">登录/注册</ion-item>
       <ion-item menu-close href="#/app/search">我的钱包</ion-item>
-      <ion-item menu-close href="#/acoach-detail">我的教练</ion-item>
-      <ion-item menu-close href="#/app/playlists">我的进度</ion-item>
-      <ion-item menu-close href="#/app/playlists">消息通知</ion-item>
-      <ion-item menu-close href="#/app/playlists">意见反馈</ion-item>
+      <ion-item menu-close href="#/coach-detail">我的教练</ion-item>
+      <ion-item menu-close href="#/learn-record">我的进度</ion-item>
+      <ion-item menu-close href="#/app/playlists">消息通知<span class="badge badge-assertive">3</span></ion-item>
+      <ion-item menu-close href="#/feedback">意见反馈</ion-item>
       <ion-item menu-close href="#/app/playlists">培训协议</ion-item>
     </ion-list>
   </ion-content>

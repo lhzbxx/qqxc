@@ -1,6 +1,6 @@
 <ion-pane>
   <ion-header-bar class="bar-positive" style="">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click="$ionicHistory.goBack();"></button>
+    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/#/coach-list')"></button>
     <h1 class="title">教练详情</h1>
     <button class="button button-icon icon ion-ios-telephone"></button>
   </ion-header-bar>
@@ -108,7 +108,7 @@
         <button class="button button-block button-positive">立即报名</button>
       </div>
       <div class="col col-50">
-        <button class="button button-block button-outline button-positive">在线沟通</button>
+        <button class="button button-block button-outline button-positive" ng-click="back('/contact')">在线沟通</button>
       </div>
     </div>
   </ion-content>

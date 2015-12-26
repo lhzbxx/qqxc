@@ -1,14 +1,14 @@
-<ion-pane style="background-color: #eee;">
+<ion-view style="background-color: #eee;">
   <ion-header-bar class="bar-positive">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click=""></button>
+    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>
     <h1 class="title">学车进度</h1>
   </ion-header-bar>
   <ion-content>
     <style type="text/css">
-      ul {
+      ul#process-list {
         margin-top: 20px;
       }
-      li {
+      li.process-list {
         padding: 9px 20px 7px 50px;
         position: relative;
       }
@@ -16,7 +16,7 @@
         background-color: white; border-radius: 5px; padding: 15px; margin: 0px;
         border: 1px solid #ddd;
       }
-      em {
+      em.pl-tag {
         background-color: white;
         border: 1px solid #71C4BC;
         border-radius: 50%;
@@ -29,7 +29,7 @@
         width: 15px;
         z-index: 2;
       }
-      i {
+      i.pl-triangle {
         border: 1px solid #71C4BC;
         display: block;
         left: 30px;
@@ -40,7 +40,7 @@
         top: 23px;
         z-index: 2;
       }
-      i:before {
+      i.pl-triangle:before {
         content: '';
         border: 1px solid #71C4BC;
         display: block;
@@ -55,7 +55,7 @@
       em.checked {
         background-color: #71C4BC;
       }
-      em:before {
+      em.pl-tag:before {
         content: '';
         display: block;
         height: 24px;
@@ -66,10 +66,10 @@
         background-color: #ccc;
         z-index: -1;
       }
-      li:first-child>em:before {
+      li:first-child>em.pl-tag:before {
         background-color: #eee;
       }
-      em:after {
+      em.pl-tag:after {
         content: '';
         display: block;
         height: 80px;
@@ -79,7 +79,7 @@
         background-color: #ccc;
         top: 14px;
       }
-      li:last-child>em:after {
+      li:last-child>em.pl-tag:after {
         background-color: #eee;
       }
       p.state {
@@ -91,43 +91,43 @@
       }
     </style>
     <div>
-      <ul>
-        <li>
-          <em class="checked"></em>
+      <ul id="process-list">
+        <li class="process-list">
+          <em class="pl-tag checked"></em>
           <div class="description">
-            <i></i>
+            <i class="pl-triangle"></i>
             <p class="state">完成于 2015/12/25 23:00</p>
             <p class="msg">提交学车报名并完成支付</p>
           </div>
         </li>
-        <li>
-          <em class="checked"></em>
+        <li class="process-list">
+          <em class="pl-tag checked"></em>
           <div class="description">
-            <i></i>
+            <i class="pl-triangle"></i>
             <p class="state">完成于 2015/12/25 23:00</p>
             <p class="msg">通过学车体检</p>
           </div>
         </li>
-        <li>
-          <em></em>
+        <li class="process-list">
+          <em class="pl-tag"></em>
           <div class="description">
-            <i></i>
+            <i class="pl-triangle"></i>
             <p class="state">未完成</p>
             <p class="msg">提预约并通过理论结业考试</p>
           </div>
         </li>
-        <li>
-          <em></em>
+        <li class="process-list">
+          <em class="pl-tag"></em>
           <div class="description">
-            <i></i>
+            <i class="pl-triangle"></i>
             <p class="state">未完成</p>
             <p class="msg">预约并通过理论科目一考试</p>
           </div>
         </li>
-        <li>
-          <em></em>
+        <li class="process-list">
+          <em class="pl-tag"></em>
           <div class="description">
-            <i></i>
+            <i class="pl-triangle"></i>
             <p class="state">未完成</p>
             <p class="msg">预约并通过模拟一考试</p>
           </div>
@@ -135,4 +135,4 @@
       </ul>
     </div>
   </ion-content>
-</ion-pane>
+</ion-view>
