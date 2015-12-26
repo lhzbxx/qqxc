@@ -23,8 +23,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.run(['$ionicPlatform', '$ionicPopup', '$rootScope', '$location',
-  function($ionicPlatform, $ionicPopup, $rootScope, $location) {
+.run(['$ionicPlatform', '$ionicPopup', '$rootScope', '$location', '$ionicHistory',
+  function($ionicPlatform, $ionicPopup, $rootScope, $location, $ionicHistory) {
     $ionicPlatform.registerBackButtonAction(function(e) {
       e.preventDefault();
 
@@ -46,17 +46,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // Is there a page to go back to?
       if ($location.path() == '/') {
         showConfirm();
-      } else if ($rootScope.$viewHistory.backView) {
-        // console.log('currentView:', $rootScope.$viewHistory.currentView);
-        // Go back in history
-        // $rootScope.$viewHistory.backView.go();
-        $location.path('/');
       } else {
-        // This is the last page: Show confirmation popup
-        showConfirm();
+        $ionicHistory.goBack();
       }
-      return false;
-    }, 101);
+
+      //  else if ($rootScope.$viewHistory.backView) {
+      //   // console.log('currentView:', $rootScope.$viewHistory.currentView);
+      //   // Go back in history
+      //   // $rootScope.$viewHistory.backView.go();
+      //   window.location.href = '/';
+      // } else {
+      //   // This is the last page: Show confirmation popup
+      //   showConfirm();
+      // }
+      // return false;
+    }, 100);
   }
 ])
 
@@ -144,6 +148,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     .state('contact', {
       url: '/contact',
       templateUrl: 'templates/contact.html',
+      controller: 'Messages'
+    })
+    .state('purse', {
+      url: '/purse',
+      templateUrl: 'templates/purse.html',
+      controller: 'Messages'
+    })
+    .state('enroll', {
+      url: '/enroll',
+      templateUrl: 'templates/enroll.html',
+      controller: 'Messages'
+    })
+    .state('protocol', {
+      url: '/protocol',
+      templateUrl: 'templates/protocol.html',
+      controller: 'Messages'
+    })
+    .state('notify', {
+      url: '/notify',
+      templateUrl: 'templates/notify.html',
       controller: 'Messages'
     })
     .state('invite', {

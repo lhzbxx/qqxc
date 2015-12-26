@@ -37,22 +37,21 @@
 -->
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button></ion-nav-back-button>
-
-      <ion-header-bar class="bar-positive" style="">
-        <button class="button button-icon icon ion-location"></button>
-        <button class="button button-icon icon ion-person" menu-toggle="left"></button>
-        <ion-nav-buttons side="left">
-          <button class="button button-icon icon ion-location" ng-click="getPos()"></button>
-        </ion-nav-buttons>
-        <ion-nav-buttons side="right">
-          <button class="button button-icon icon ion-person" menu-toggle="right"></button>
-        </ion-nav-buttons>
-      </ion-header-bar>
-    </ion-nav-bar>
     <ion-nav-view name="menuContent">
-      <ion-view view-title="快来学车">
+      <ion-view title="快来学车">
+        <ion-nav-bar align-title="center" class="bar-positive">
+          <ion-header-bar class="bar-positive" style="">
+            <ion-nav-buttons side="left">
+              <button class="button button-icon icon ion-location" ng-click="getPos()"></button>
+            </ion-nav-buttons>
+            <ion-nav-title>
+              <h1 class="title">快来学车</h1>
+            </ion-nav-title>
+            <ion-nav-buttons side="right">
+              <button class="button button-icon icon ion-person" menu-toggle="right"></button>
+            </ion-nav-buttons>
+          </ion-header-bar>
+        </ion-nav-bar>
         <ion-content style="top: 44px; background-color: #eee;">
           <div class="row" style="height: 150px; background-color: grey; margin-bottom: 10px;">
             <ion-slide-box id='dash-slider' on-slide-changed="slideHasChanged($index)">
@@ -91,27 +90,45 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="right">
-    <!--       <ion-header-bar class="bar-stable">
-    <h1 class="title">Left</h1>
-  </ion-header-bar>
-  -->
-  <ion-content>
-    <ion-list>
-      <a class="item item-avatar" href="#">
-        <img src="img/ionic.png">
-        <h2>13651608916</h2>
-        <p>学员</p>
-      </a>
-      <ion-item menu-close ng-click="login()">登录/注册</ion-item>
-      <ion-item menu-close href="#/app/search">我的钱包</ion-item>
-      <ion-item menu-close href="#/coach-detail">我的教练</ion-item>
-      <ion-item menu-close href="#/learn-record">我的进度</ion-item>
-      <ion-item menu-close href="#/app/playlists">消息通知<span class="badge badge-assertive">3</span></ion-item>
-      <ion-item menu-close href="#/feedback">意见反馈</ion-item>
-      <ion-item menu-close href="#/app/playlists">培训协议</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-side-menu>
+    <ion-content>
+      <ion-list>
+        <a class="item item-avatar" href="#">
+          <img src="img/ionic.png">
+          <h2>13651608916</h2>
+          <p>学员</p>
+        </a>
+        <ion-item class="item-icon-left" menu-close ng-click="login()">
+          <i class="icon ion-person"></i>
+          登录/注册
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/purse">
+          <i class="icon ion-cash"></i>
+          我的钱包
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/coach-detail">
+          <i class="icon ion-university"></i>
+          我的教练
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/learn-record">
+          <i class="icon ion-connection-bars"></i>
+          我的进度
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/notify">
+          <i class="icon ion-person"></i>
+          消息通知
+          <span class="badge badge-assertive">3</span>
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/feedback">
+          <i class="icon ion-ios-list-outline"></i>
+          意见反馈
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/protocol">
+          <i class="icon ion-android-clipboard"></i>
+          培训协议
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
 </ion-side-menus>
 
 <!-- </ion-pane>

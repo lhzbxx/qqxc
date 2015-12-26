@@ -2,14 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation) {
     $scope.test = function() {
-        console.log('test' + $rootScope.$viewHistory.currentView);
-        $cordovaToast
-            .show('Here is a message' + $rootScope.$viewHistory.currentView, 'short', 'bottom')
-            .then(function(success) {
-                // success
-            }, function(error) {
-                // error
-            });
+        $location.path('/enroll');
     };
     var login = false;
     $scope.login = function() {
