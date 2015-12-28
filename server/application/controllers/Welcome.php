@@ -33,7 +33,6 @@ class Welcome extends REST_Controller {
 
 	public function index_post()
 	{
-//		$this->response($this->db->get('books')->result());
-		$this->response('wakakakakak');
+		$this->response('Congratulations!');
 	}
 }

@@ -6,7 +6,7 @@
  * Date: 2015/12/24
  * Time: 9:28
  */
-class Coach_controller extends CI_Controller
+class Coach extends CI_Controller
 {
     public function coach()
     {

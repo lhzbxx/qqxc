@@ -4,6 +4,16 @@ angular.module('starter.controllers', [])
     $scope.test = function() {
         $location.path('/enroll');
     };
+    $http({
+        method: 'POST',
+        url: 'http://59.78.46.141/index.php/api/user/login',
+        data: { 'phone' : '13651608916' }
+    }).then(function successCallback(response) {
+        alert(response.status);
+        alert(response.data);
+    }, function errorCallback(response) {
+        alert(response.status);
+    });
     var login = false;
     $scope.login = function() {
         function showConfirm() {
