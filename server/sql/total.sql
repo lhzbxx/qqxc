@@ -20,3 +20,12 @@ CREATE TABLE user_info (
     openid varchar(32) unique not null,
     expire timestamp not null
 );
+
+drop table feedback;
+
+CREATE TABLE feedback (
+	id int primary key auto_increment,
+    phone varchar(32),
+    content text,
+    create_time timestamp not null
+);

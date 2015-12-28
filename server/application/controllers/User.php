@@ -133,9 +133,9 @@ class User extends REST_Controller {
 		$cur_time = date_timestamp_get(new DateTime());
 		if (abs($param['create_time'] - $cur_time) > 60*15)
 		{
-			$response['code']       = '301';
-			$response['message']    = 'Expire request.';
 			// todo: start expire validation.
+			// $response['code']       = '301';
+			// $response['message']    = 'Expire request.';
 			// $this->response($response);
 		}
 
@@ -156,19 +156,21 @@ class User extends REST_Controller {
 
 		$this->load->model('User_model');
 
-		if (!$this->User_model->valid_phone($param['phone']))
+		if ($this->User_model->valid_phone($param['phone']))
 		{
 			$response['code']       = '202';
 			$response['message']    = 'Not registered yet.';
 			$this->response($response);
 		}
 
-		if (!$this->User_model->login($param['phone'], $param['passwd']))
+		if (!$this->User_model->check($param['phone'], $param['passwd']))
 		{
 			$response['code']       = '203';
 			$response['message']    = 'Wrong password.';
 			$this->response($response);
 		}
+
+		$response['data'] = $this->User_model->update_openid($param['phone']);
 
 		$this->response($response);
 	}

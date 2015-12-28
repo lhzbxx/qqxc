@@ -1,7 +1,5 @@
 use qqxc;
 
-drop table user_info;
-
 CREATE TABLE user_info (
 	id int primary key auto_increment,
     nickname varchar(32) not null,

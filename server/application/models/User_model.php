@@ -50,12 +50,36 @@ class User_model extends CI_Model
             return true;
     }
 
-    public function login($openid)
+    public function valid_openid($openid)
     {
         $query = $this->db->get_where('user_info',
             array('openid' => $openid),
             1);
         if ($query['expire'] > date_timestamp_get(new DateTime()))
+            return true;
+        else
+            return false;
+    }
+
+    public function update_openid($phone)
+    {
+        $openid = substr(md5($phone), 0, 8).$this->random_str(5);
+        $data = array(
+            'openid'    => $openid,
+            'expire'    => date_timestamp_get(new DateTime()) + 60*60*24*365,
+        );
+        $this->db->replace('user_info', $data);
+        return $openid;
+    }
+
+    public function check($phone, $passwd)
+    {
+        $query = $this->db->get_where('user',
+            array('phone' => $phone),
+            1);
+        $result = $query->row();
+        $salt = $result->salt;
+        if (ctype_upper(md5($passwd.$salt)) == ctype_upper($result->passwd))
             return true;
         else
             return false;

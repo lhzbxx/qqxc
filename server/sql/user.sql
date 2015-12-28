@@ -1,7 +1,5 @@
 use qqxc;
 
-drop table user;
-
 CREATE TABLE user (
 	id int primary key auto_increment,
 	phone varchar(20) not null unique,
