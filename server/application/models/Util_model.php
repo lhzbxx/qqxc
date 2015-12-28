@@ -1,6 +1,4 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-require(APPPATH.'/libraries/CI_Controller.php');
 
 /**
  * Created by PhpStorm.
@@ -9,7 +7,7 @@ require(APPPATH.'/libraries/CI_Controller.php');
  * Time: 16:41
  */
 
-class Util extends CI_Controller
+class Util_model extends CI_Model
 {
     function __construct()
     {
@@ -17,14 +15,23 @@ class Util extends CI_Controller
         $this->load->library('session');
     }
 
-    public function apply_captcha($name = '',$expire = 900) {
+    public function apply_captcha($name = '', $expire = 900) {
         $name = 'captcha'.$name;
         if (isset($_SESSION[$name]))
             return false;
-        $_SESSION[$name] = (string) rand(1000, 9999);
+        // $_SESSION[$name] = (string) rand(1000, 9999);
+        $_SESSION[$name] = '4319';
         // todo: send sms to user;
         $this->session->mark_as_temp($name, $expire);
         return true;
+    }
+
+    public function check_captcha($name = '') {
+        $name = 'captcha'.$name;
+        if (isset($_SESSION[$name]))
+            return $_SESSION[$name];
+        else
+            return null;
     }
 
 }

@@ -20,7 +20,7 @@ class User_model extends CI_Model
 
     public function register($phone, $passwd)
     {
-        $salt = random_string();
+        $salt = $this->random_str(8);
         $passwd = md5((string) $passwd.$salt);
         $data = array(
             'phone'         => $phone,
@@ -29,12 +29,43 @@ class User_model extends CI_Model
         );
         $this->db->insert('user', $data);
         $data = array(
-            'nickname'      => $phone,
-            'passwd'        => $passwd,
-            'openid'        => md5($phone).random_string(),
+            'phone'        => $phone,
+            'nickname'      => '学员'.(substr(md5($phone), 0, 8)),
+            'openid'        => substr(md5($phone), 0, 8).$this->random_str(5),
+            'expire'        => date_timestamp_get(new DateTime()) + 60*60*24*365,
             'register_time' => date_timestamp_get(new DateTime()),
         );
         $this->db->insert('user_info', $data);
         return $data['openid'];
+    }
+
+    public function valid_phone($phone)
+    {
+        $query = $this->db->get_where('user',
+            array('phone' => $phone),
+            1);
+        if (count($query->result()))
+            return false;
+        else
+            return true;
+    }
+
+    public function login($openid)
+    {
+        $query = $this->db->get_where('user_info',
+            array('openid' => $openid),
+            1);
+        if ($query['expire'] > date_timestamp_get(new DateTime()))
+            return true;
+        else
+            return false;
+    }
+
+    function random_str($length = 6)
+    {
+        $str = '';
+        for ($i = 0; $i < $length; $i++)
+            $str .= chr(mt_rand(33, 126));
+        return $str;
     }
 }
