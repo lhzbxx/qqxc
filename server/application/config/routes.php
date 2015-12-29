@@ -60,10 +60,11 @@ $route['api/user/captcha']['post']  = 'user/captcha';
 $route['api/feedback/send']['post'] = 'feedback/send';
 $route['api/feedback/get_list']['post'] = 'feedback/list';
 
-$route['api/coach/add']['post']             = 'coach/add_coach';
-$route['api/coach/edit']['post']            = 'coach/edit_coach';
-$route['api/coach/change_status']['post']   = 'coach/change_status';
-$route['api/coach/get_list']['post']        = 'coach/list_coach';
-$route['api/coach/get_comment_list']['post']= 'coach/list_comment';
+$route['api/coach/add_coach']['post']        = 'coach/add_coach';
+$route['api/coach/edit_coach']['post']       = 'coach/edit_coach';
+$route['api/coach/change_status']['post']    = 'coach/change_status';
+$route['api/coach/add_comment']['post']      = 'coach/add_comment';
+$route['api/coach/get_coach_list']['post']   = 'coach/list_coach';
+$route['api/coach/get_comment_list']['post'] = 'coach/list_comment';
 
 $route['api/test'] = 'welcome/index';

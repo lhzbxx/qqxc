@@ -16,7 +16,7 @@ class User extends REST_Controller {
 		foreach ($param as $k => $v) {
 			$str .= "$k=$v";
 		}
-		if (ctype_upper(md5($str)) != ctype_upper($verifi))
+		if (mb_strtoupper(md5($str)) != mb_strtoupper($verifi))
 			return false;
 		else
 			return true;

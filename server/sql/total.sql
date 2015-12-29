@@ -64,3 +64,14 @@ CREATE TABLE coach_comment (
     star int not null default 5,
     create_time int(32) not null
 );
+
+drop table coach_user;
+
+CREATE TABLE coach_user (
+	id int primary key auto_increment,
+    user_id int not null,
+    coach_id int not null,
+    deal_type tinyint default 0,
+    process tinyint default 0,
+    create_time int(32) not null
+);

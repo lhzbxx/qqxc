@@ -51,6 +51,11 @@ class Coach_model extends CI_Model
         return $data;
     }
 
+    public function get_coordinate($address)
+    {
+        // todo: get coordinate with address using baidu web api.
+    }
+
     public function add_coach($phone, $name, $seniority, $car_type, $school, $avatar, $sub2pass, $sub2total
         , $sub3pass, $sub3total, $service, $address, $latitude, $longitude, $star_total, $star_num)
     {
@@ -73,13 +78,17 @@ class Coach_model extends CI_Model
             'star_num'      => $star_num,
             'register_time' => date_timestamp_get(new DateTime())
         );
+
+        // todo: auto add lat&lng with specific address.
+
         $this->db->insert('coach', $data);
     }
 
-    public function edit_coach($phone, $name, $seniority, $car_type, $school, $avatar, $sub2pass, $sub2total
+    public function edit_coach($id, $phone, $name, $seniority, $car_type, $school, $avatar, $sub2pass, $sub2total
         , $sub3pass, $sub3total, $service, $address, $latitude, $longitude, $star_total, $star_num)
     {
         $data = array(
+            'id'         => $id,
             'phone'      => $phone,
             'name'       => $name,
             'seniority'  => $seniority,
@@ -97,6 +106,9 @@ class Coach_model extends CI_Model
             'star_total' => $star_total,
             'star_num'   => $star_num,
         );
+
+        // todo: auto add lat&lng with specific address.
+
         $this->db->update('coach', $data);
     }
 
@@ -104,6 +116,17 @@ class Coach_model extends CI_Model
     {
         $query = $this->db->get_where('coach',
             array('phone' => $phone),
+            1);
+        if (count($query->result()))
+            return false;
+        else
+            return true;
+    }
+
+    public function valid_id($id)
+    {
+        $query = $this->db->get_where('coach',
+            array('id' => $id),
             1);
         if (count($query->result()))
             return false;
