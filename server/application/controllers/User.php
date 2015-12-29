@@ -54,20 +54,20 @@ class User extends REST_Controller {
 			$this->response($response);
 		}
 
+		if (!preg_match('/^1(?:3[0-9]|5[012356789]|8[0256789]|7[0678])(?P<separato>-?)\d{4}(?P=separato)\d{4}$/'
+			, $param['phone']))
+		{
+			$response['code']       = '201';
+			$response['message']    = 'Invalid phone number.';
+			$this->response($response);
+		}
+
 		$this->load->model('User_model');
 
 		if (!$this->User_model->valid_phone($param['phone']))
 		{
 			$response['code']       = '205';
 			$response['message']    = 'Registered phone number.';
-			$this->response($response);
-		}
-
-		if (!preg_match('/^1(?:3[0-9]|5[012356789]|8[0256789]|7[0678])(?P<separato>-?)\d{4}(?P=separato)\d{4}$/'
-			, $param['phone']))
-        {
-			$response['code']       = '201';
-			$response['message']    = 'Invalid phone number.';
 			$this->response($response);
 		}
 
