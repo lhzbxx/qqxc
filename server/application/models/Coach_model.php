@@ -45,9 +45,24 @@ class Coach_model extends CI_Model
         $this->db->insert('coach_comment', $data);
     }
 
-    public function list_10($page)
+    public function list_coach($page)
     {
         $data =  $this->db->get('coach', 20, 20 * $page)->result();
+        return $data;
+    }
+    public function list_comment($coach_id, $page)
+    {
+        $data =  $this->db->get_where('comment', array(
+            'coach_id' => $coach_id,
+        ), 10, 10 * $page)->result();
+        return $data;
+    }
+
+    public function get_coach_detail($coach_id)
+    {
+        $data =  $this->db->get_where('coach', array(
+            'coach_id' => $coach_id,
+        ),1)->result();
         return $data;
     }
 

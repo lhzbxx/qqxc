@@ -64,6 +64,7 @@ $route['api/coach/add_coach']['post']        = 'coach/add_coach';
 $route['api/coach/edit_coach']['post']       = 'coach/edit_coach';
 $route['api/coach/change_status']['post']    = 'coach/change_status';
 $route['api/coach/add_comment']['post']      = 'coach/add_comment';
+$route['api/coach/get_coach_detail']['post'] = 'coach/coach_detail';
 $route['api/coach/get_coach_list']['post']   = 'coach/list_coach';
 $route['api/coach/get_comment_list']['post'] = 'coach/list_comment';
 

@@ -27,9 +27,10 @@ class User_model extends CI_Model
             'passwd'        => $passwd,
             'salt'          => $salt,
         );
-        $this->db->insert('user', $data);
+        $user_id = $this->db->insert_id('user', $data);
         $data = array(
-            'phone'        => $phone,
+            'phone'         => $phone,
+            'user_id'       => $user_id,
             'nickname'      => '学员'.(substr(md5($phone), 0, 8)),
             'openid'        => substr(md5($phone), 0, 8).$this->random_str(5),
             'expire'        => date_timestamp_get(new DateTime()) + 60*60*24*365,
@@ -55,10 +56,20 @@ class User_model extends CI_Model
         $query = $this->db->get_where('user_info',
             array('openid' => $openid),
             1);
-        if ($query['expire'] > date_timestamp_get(new DateTime()))
+        $result = $query->row();
+        if ($result->expire > date_timestamp_get(new DateTime()))
             return true;
         else
             return false;
+    }
+
+    public function get_user_id($openid)
+    {
+        $query = $this->db->get_where('user_info',
+            array('openid' => $openid),
+            1);
+        $result = $query->row();
+        return $result->user_id;
     }
 
     public function update_openid($phone)
