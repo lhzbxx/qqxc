@@ -15,7 +15,7 @@ class Feedback_model extends CI_Model
         $this->load->database();
     }
 
-    public function feedback($content, $phone = '')
+    public function send($content, $phone = '')
     {
         $data = array(
             'content'       => $content,
@@ -23,6 +23,11 @@ class Feedback_model extends CI_Model
             'create_time'   => date_timestamp_get(new DateTime())
         );
         $this->db->insert('feedback', $data);
+    }
+
+    public function list_20($page = 0)
+    {
+        return $this->db->get('feedback', 20, 20 * $page)->result();
     }
 
 }

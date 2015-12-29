@@ -8,7 +8,7 @@ require(APPPATH.'/libraries/REST_Controller.php');
  * Date: 2015/12/29
  * Time: 6:16
  */
-class feedback extends REST_Controller
+class Feedback extends REST_Controller
 {
 
     function __construct()
@@ -16,7 +16,7 @@ class feedback extends REST_Controller
         parent::__construct();
     }
 
-    function feedback_post()
+    public function send_post()
     {
         $param = array(
             'phone'         => (string) $this->post('phone'),
@@ -39,7 +39,30 @@ class feedback extends REST_Controller
 
         $this->load->model('Feedback_model');
 
-        $this->Feedback_model->feedback($param['content'], $param['phone']);
+        $this->Feedback_model->send($param['content'], $param['phone']);
+
+        $this->response($response);
+    }
+
+    public function list_post()
+    {
+        $param = array(
+            'openid'    => (string) $this->post('openid'),
+            'page'      => (int) $this->post('page')
+        );
+
+        $response = array(
+            'code'      => '100',
+            'message'   => 'OK',
+            'data'      => array()
+        );
+
+        if ($param['page'] == '')
+            $param['page'] = 0;
+
+        $this->load->model('Feedback_model');
+
+        $response['data'] = $this->Feedback_model->list_20($param['page']);
 
         $this->response($response);
     }

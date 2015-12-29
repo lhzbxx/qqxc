@@ -57,4 +57,7 @@ $route['api/user/login']['post']    = 'user/login';
 $route['api/user/register']['post'] = 'user/register';
 $route['api/user/captcha']['post']  = 'user/captcha';
 
+$route['api/feedback/send']['post'] = 'feedback/send';
+$route['api/feedback/get_list']['post'] = 'feedback/list';
+
 $route['api/test'] = 'welcome/index';

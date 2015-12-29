@@ -65,10 +65,11 @@ class User_model extends CI_Model
     {
         $openid = substr(md5($phone), 0, 8).$this->random_str(5);
         $data = array(
+            'phone'     => $phone,
             'openid'    => $openid,
             'expire'    => date_timestamp_get(new DateTime()) + 60*60*24*365,
         );
-        $this->db->replace('user_info', $data);
+        $this->db->update('user_info', $data);
         return $openid;
     }
 
