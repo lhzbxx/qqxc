@@ -18,6 +18,15 @@ class User_model extends CI_Model
         $this->load->database();
     }
 
+    /**
+     *
+     * 通过手机号和密码注册
+     *
+     * @param $phone
+     * @param $passwd
+     * @return mixed
+     * @author LuHao
+     */
     public function register($phone, $passwd)
     {
         $salt = $this->random_str(8);
@@ -40,6 +49,14 @@ class User_model extends CI_Model
         return $data['openid'];
     }
 
+    /**
+     *
+     * 验证用户的手机号
+     *
+     * @param $phone
+     * @return bool
+     * @author LuHao
+     */
     public function valid_phone($phone)
     {
         $query = $this->db->get_where('user',
@@ -51,6 +68,14 @@ class User_model extends CI_Model
             return true;
     }
 
+    /**
+     *
+     * 验证用户的openid
+     *
+     * @param $openid
+     * @return bool
+     * @author LuHao
+     */
     public function valid_openid($openid)
     {
         $query = $this->db->get_where('user_info',
@@ -63,6 +88,14 @@ class User_model extends CI_Model
             return false;
     }
 
+    /**
+     *
+     * 获取用户的user_id
+     *
+     * @param $openid
+     * @return mixed
+     * @author LuHao
+     */
     public function get_user_id($openid)
     {
         $query = $this->db->get_where('user_info',
@@ -72,6 +105,14 @@ class User_model extends CI_Model
         return $result->user_id;
     }
 
+    /**
+     *
+     * 更新用户的openid
+     *
+     * @param $phone
+     * @return string
+     * @author LuHao
+     */
     public function update_openid($phone)
     {
         $openid = substr(md5($phone), 0, 8).$this->random_str(5);
@@ -84,6 +125,52 @@ class User_model extends CI_Model
         return $openid;
     }
 
+    /**
+     *
+     * 修改用户的密码
+     *
+     * @param $phone
+     * @param $passwd
+     * @author LuHao
+     */
+    public function update_password($phone, $passwd)
+    {
+        $salt = $this->random_str(8);
+        $passwd = md5((string) $passwd.$salt);
+        $data = array(
+            'phone'     => $phone,
+            'salt'      => $salt,
+            'passwd'    => $passwd,
+        );
+        $this->db->update('user_info', $data);
+    }
+
+    /**
+     *
+     * 修改用户的昵称
+     *
+     * @param $phone
+     * @param $nickname
+     * @author LuHao
+     */
+    public function update_nickname($phone, $nickname)
+    {
+        $data = array(
+            'phone'     => $phone,
+            'nickname'  => $nickname,
+        );
+        $this->db->update('user_info', $data);
+    }
+
+    /**
+     *
+     * 验证手机号和密码是否正确
+     *
+     * @param $phone
+     * @param $passwd
+     * @return bool
+     * @author LuHao
+     */
     public function check($phone, $passwd)
     {
         $query = $this->db->get_where('user',
@@ -97,11 +184,81 @@ class User_model extends CI_Model
             return false;
     }
 
-    function random_str($length = 6)
+    /**
+     *
+     * 生成随机字符串
+     *
+     * @param int $length
+     * @return string
+     * @author LuHao
+     */
+    public function random_str($length = 6)
     {
         $str = '';
         for ($i = 0; $i < $length; $i++)
             $str .= chr(mt_rand(33, 126));
         return $str;
     }
+
+    /**
+     *
+     * 向用户添加通知
+     *
+     * @param $user_id
+     * @param $content
+     * @param $sender
+     * @author LuHao
+     */
+    public function add_notice($user_id, $content, $sender)
+    {
+        $data = array(
+            'user_id'       => $user_id,
+            'content'       => $content,
+            'sender'        => $sender,
+            'create_time'   => date_timestamp_get(new DateTime()),
+        );
+        $this->db->insert('user_info', $data);
+    }
+
+    /**
+     *
+     * 通知已读反馈
+     *
+     * @param $user_id
+     * @author LuHao
+     */
+    public function remove_notice($user_id)
+    {
+        $data = array(
+            'state'     => 0,
+        );
+        $this->db->update('user_notice', $data, array('user_id' => $user_id));
+    }
+
+    /**
+     *
+     * 拉取用户的所有未读通知
+     *
+     * @param $user_id
+     * @return mixed
+     * @author LuHao
+     */
+    public function pull_notice($user_id)
+    {
+        $result =  $this->db->get_where('user_notice', array('user_id' => $user_id, 'state' => 0));
+        return $result->result();
+    }
+
+    public function get_users_list($state)
+    {
+        $condition = array();
+        if ($state == -1)
+        {
+
+        }
+        $query = $this->db->get('mytable', array('state' => $state));
+
+        return $query;
+    }
+
 }
