@@ -88,3 +88,69 @@ CREATE TABLE user_notice (
     create_time int(32) not null
 );
 
+drop table user_cash;
+
+CREATE TABLE user_cash (
+	id int primary key auto_increment,
+    user_id int not null unique,
+    amount float not null default 0.00,
+    source varchar(20) not null,
+    create_time int(32) not null
+);
+
+drop table log;
+
+CREATE TABLE log (
+	id int primary key auto_increment,
+    name varchar(32) not null,
+    IP_addr varchar(32) not null,
+    action varchar(32) not null,
+    content varchar(32) not null,
+    remark text,
+    level tinyint not null default 0,
+    create_time int(32) not null
+);
+
+drop table admin;
+
+CREATE TABLE admin (
+	id int primary key auto_increment,
+	username varchar(20) not null unique,
+    passwd varchar(64) not null,
+    salt varchar(32) not null
+);
+
+drop table admin_info;
+
+CREATE TABLE admin_info (
+	id int primary key auto_increment,
+    admin_id int not null,
+    nickname varchar(32) not null,
+    avatar varchar(128) default '',
+    openid varchar(32) unique not null,
+    auth tinyint not null,
+    admin_state tinyint not null default 0,
+    register_time int(32) not null,
+    expire timestamp not null
+);
+
+drop table exercise;
+
+CREATE TABLE exercise (
+	id int primary key auto_increment,
+    serial_number int not null unique,
+    wrong_num int not null default 0,
+    right_num int not null default 5
+);
+
+drop table exercise_sync;
+
+CREATE TABLE exercise_sync (
+	id int primary key auto_increment,
+    user_id int not null unique,
+    wrong_collect text,
+    star_collect text,
+    exam_record text,
+    history text,
+    last_sync_time int(32) not null
+);

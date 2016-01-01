@@ -254,11 +254,71 @@ class User_model extends CI_Model
         $condition = array();
         if ($state == -1)
         {
-
+            $query = $this->db->get('user');
         }
-        $query = $this->db->get('mytable', array('state' => $state));
-
+        else
+        {
+            $query = $this->db->get('user', array('state' => $state));
+        }
         return $query;
+    }
+
+    /**
+     *
+     * 获取用户账号余额
+     *
+     * @param $user_id
+     * @return mixed
+     * @author LuHao
+     */
+    public function get_user_balance($user_id)
+    {
+        $this->db->select_sum('amount');
+        $query = $this->db->get_where('user_cash', array('user_id' => $user_id));
+        return $query->result()->amount;
+        // todo: invoke payment API.
+    }
+
+    /**
+     *
+     * 用户账号充值或返现
+     *
+     * @param $user_id
+     * @param $amount
+     * @param $payment
+     * @author LuHao
+     */
+    public function recharge($user_id, $amount, $source)
+    {
+        $data = array(
+            'user_id'       => $user_id,
+            'amount'        => $amount,
+            'source'        => $source,
+            'create_time'   => date_timestamp_get(new DateTime()),
+        );
+        $this->db->insert('user_cash', $data);
+        // todo: invoke payment API.
+    }
+
+    /**
+     *
+     * 用户账号提现或消费
+     *
+     * @param $user_id
+     * @param $amount
+     * @param $source
+     * @author LuHao
+     */
+    public function withdraw($user_id, $amount, $source)
+    {
+        $data = array(
+            'user_id'       => $user_id,
+            'amount'        => $amount,
+            'source'        => $source,
+            'create_time'   => date_timestamp_get(new DateTime()),
+        );
+        $this->db->insert('user_info', $data);
+        // todo: invoke payment API.
     }
 
 }
