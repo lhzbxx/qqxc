@@ -25,9 +25,10 @@ class Feedback_model extends CI_Model
         $this->db->insert('feedback', $data);
     }
 
-    public function list_20($page = 0)
+    public function list_feedback($page = 0)
     {
-        return $this->db->get('feedback', 20, 20 * $page)->result();
+        $num = $this->config->item('feedback_num_per_page');
+        return $this->db->get('feedback', $num, $num * $page)->result();
     }
 
 }

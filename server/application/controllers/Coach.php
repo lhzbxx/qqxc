@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH.'/libraries/REST_Controller.php');
 
-class Coach extends REST_Controller {
+class Coach extends REST_Controller
+{
 
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('base_tool');
     }
 
     public function valid($param, $verifi)
@@ -62,19 +64,24 @@ class Coach extends REST_Controller {
         );
 
         $cur_time = date_timestamp_get(new DateTime());
-        if (abs($param['create_time'] - $cur_time) > 60*15)
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
         {
-            // todo: start expire validation.
-            // $response['code']       = '301';
-            // $response['message']    = 'Expire request.';
-            // $this->response($response);
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
         }
 
-        if (!$this->valid($param, $verifi))
+        if (!valid($param, $verifi))
         {
             $response['code']       = '302';
             $response['message']    = 'Illegal request.';
-            // $response['data']       = $this->verify($param);
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
             $this->response($response);
         }
 
@@ -197,19 +204,24 @@ class Coach extends REST_Controller {
         );
 
         $cur_time = date_timestamp_get(new DateTime());
-        if (abs($param['create_time'] - $cur_time) > 60*15)
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
         {
-            // todo: start expire validation.
-            // $response['code']       = '301';
-            // $response['message']    = 'Expire request.';
-            // $this->response($response);
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
         }
 
-        if (!$this->valid($param, $verifi))
+        if (!valid($param, $verifi))
         {
             $response['code']       = '302';
             $response['message']    = 'Illegal request.';
-            $response['data']       = $this->verify($param);
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
             $this->response($response);
         }
 
@@ -238,7 +250,7 @@ class Coach extends REST_Controller {
     public function coach_detail_post()
     {
         $param = array(
-            'id'            => (string) $this->post('id')
+            'id' => (string) $this->post('id')
         );
 
         $response = array(
@@ -277,87 +289,9 @@ class Coach extends REST_Controller {
         if ($param['page'] == '')
             $param['page'] = 0;
 
-        $this->load->model('Feedback_model');
-
-        $response['data'] = $this->Feedback_model->list_20($param['page']);
-
-        $this->response($response);
-    }
-
-    public function add_comment_post()
-    {
-        $param = array(
-            'openid'        => (string) $this->post('openid'),
-            'coach_id'      => (int) $this->post('coach_id'),
-            'content'       => (string) $this->post('content'),
-            'star'          => (int) $this->post('star'),
-            'create_time'   => (string) $this->post('create_time'),
-        );
-
-        $response = array(
-            'code'      => '100',
-            'message'   => 'OK',
-            'data'      => array()
-        );
-
-        if (!preg_match('/^[12345]$/', $param['star']))
-        {
-            $response['code']       = '201';
-            $response['message']    = 'Illegal star given.';
-            $this->response($response);
-        }
-
         $this->load->model('Coach_model');
 
-        if ($this->Coach_model->valid_id($param['id']))
-        {
-            $response['code']       = '202';
-            $response['message']    = 'Illegal coach ID.';
-            $this->response($response);
-        }
-
-        $this->load->model('User_model');
-
-        if ($this->User_model->valid_openid($param['openid']))
-        {
-            $response['code']       = '203';
-            $response['message']    = 'Illegal user openID.';
-            $this->response($response);
-        }
-
-        $user_id = $this->User_model->get_user_id($param['openid']);
-
-        if ($this->Coach_model->valid_coach_user($param['id'], $user_id))
-        {
-            $response['code']       = '204';
-            $response['message']    = 'No auth to comment.';
-            $this->response($response);
-        }
-
-        $response['data'] = $this->Coach_model->add_comment($user_id, $param['id'], $param['content']);
-
-        $this->response($response);
-    }
-
-    public function list_comment_post()
-    {
-        $param = array(
-            'coach_id'  => (string) $this->post('coach_id'),
-            'page'      => (int) $this->post('page')
-        );
-
-        $response = array(
-            'code'      => '100',
-            'message'   => 'OK',
-            'data'      => array()
-        );
-
-        if ($param['page'] == '')
-            $param['page'] = 0;
-
-        $this->load->model('Coach_model');
-
-        $response['data'] = $this->Coach_model->list_comment($param['coach_id'], $param['page']);
+        $response['data'] = $this->Coach_model->list_coach($param['page']);
 
         $this->response($response);
     }

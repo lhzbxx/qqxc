@@ -7,19 +7,7 @@ class User extends REST_Controller {
 	function __construct()
 	{
 		parent::__construct();
-	}
-
-	public function valid($param, $verifi)
-	{
-		$str = '';
-		ksort($param);
-		foreach ($param as $k => $v) {
-			$str .= "$k=$v";
-		}
-		if (mb_strtoupper(md5($str)) != mb_strtoupper($verifi))
-			return false;
-		else
-			return true;
+		$this->load->helper('base_tool');
 	}
 
 	public function register_post()
@@ -38,21 +26,27 @@ class User extends REST_Controller {
 			'data'      => array()
 		);
 
-		$cur_time = date_timestamp_get(new DateTime());
-		if (abs($param['create_time'] - $cur_time) > 60*15)
-		{
-			// todo: start expire validation.
-			// $response['code']       = '301';
-			// $response['message']    = 'Expire request.';
-			// $this->response($response);
-		}
+        $cur_time = date_timestamp_get(new DateTime());
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
+        {
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
+        }
 
-		if (!$this->valid($param, $verifi))
-		{
-			$response['code']       = '302';
-			$response['message']    = 'Illegal request.';
-			$this->response($response);
-		}
+        if (!valid($param, $verifi))
+        {
+            $response['code']       = '302';
+            $response['message']    = 'Illegal request.';
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
+            $this->response($response);
+        }
 
 		if (!preg_match('/^1(?:3[0-9]|5[012356789]|8[0256789]|7[0678])(?P<separato>-?)\d{4}(?P=separato)\d{4}$/'
 			, $param['phone']))
@@ -96,7 +90,7 @@ class User extends REST_Controller {
 			$this->response($response);
 		}
 
-		$this->User_model->register($param['phone'], $param['passwd']);
+		$response['data'] = $this->User_model->register($param['phone'], $param['passwd']);
 
         $this->response($response);
     }
@@ -110,7 +104,6 @@ class User extends REST_Controller {
 			'data'      => array()
 		);
 		$this->load->model('Util_model');
-//		$this->response($this->Util_model->check_captcha($phone));
 		$this->Util_model->apply_captcha($phone);
 		$this->response($response);
 	}
@@ -130,21 +123,27 @@ class User extends REST_Controller {
 			'data'      => array()
 		);
 
-		$cur_time = date_timestamp_get(new DateTime());
-		if (abs($param['create_time'] - $cur_time) > 60*15)
-		{
-			// todo: start expire validation.
-			// $response['code']       = '301';
-			// $response['message']    = 'Expire request.';
-			// $this->response($response);
-		}
+        $cur_time = date_timestamp_get(new DateTime());
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
+        {
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
+        }
 
-		if (!$this->valid($param, $verifi))
-		{
-			$response['code']       = '302';
-			$response['message']    = 'Illegal request.';
-			$this->response($response);
-		}
+        if (!valid($param, $verifi))
+        {
+            $response['code']       = '302';
+            $response['message']    = 'Illegal request.';
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
+            $this->response($response);
+        }
 
 		if (!preg_match('/^1(?:3[0-9]|5[012356789]|8[0256789]|7[0678])(?P<separato>-?)\d{4}(?P=separato)\d{4}$/'
 			, $param['phone']))

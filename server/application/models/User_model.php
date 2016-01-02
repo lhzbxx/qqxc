@@ -36,7 +36,7 @@ class User_model extends CI_Model
             'passwd'        => $passwd,
             'salt'          => $salt,
         );
-        $user_id = $this->db->insert_id('user', $data);
+        $user_id = $this->db->insert('user', $data);
         $data = array(
             'phone'         => $phone,
             'user_id'       => $user_id,
@@ -81,28 +81,50 @@ class User_model extends CI_Model
         $query = $this->db->get_where('user_info',
             array('openid' => $openid),
             1);
-        $result = $query->row();
-        if ($result->expire > date_timestamp_get(new DateTime()))
-            return true;
+        $row = $query->row();
+        if (isset($row))
+        {
+            if ($row->expire > date_timestamp_get(new DateTime()))
+                return true;
+            else
+                return false;
+        }
         else
             return false;
     }
 
     /**
      *
-     * 获取用户的user_id
+     * 根据openid获取用户的user_id
      *
      * @param $openid
      * @return mixed
      * @author LuHao
      */
-    public function get_user_id($openid)
+    public function get_user_id_by_openid($openid)
     {
         $query = $this->db->get_where('user_info',
             array('openid' => $openid),
             1);
         $result = $query->row();
         return $result->user_id;
+    }
+
+    /**
+     *
+     * 根据phone获取用户的id
+     *
+     * @param $phone
+     * @return mixed
+     * @author LuHao
+     */
+    public function get_user_id_by_phone($phone)
+    {
+        $query = $this->db->get_where('user',
+            array('phone' => $phone),
+            1);
+        $result = $query->row();
+        return $result->id;
     }
 
     /**
@@ -115,7 +137,10 @@ class User_model extends CI_Model
      */
     public function update_openid($phone)
     {
-        $openid = substr(md5($phone), 0, 8).$this->random_str(5);
+        if ($this->config->item('fixed_openid'))
+            $openid = '526ce12fb(12GF3';
+        else
+            $openid = substr(md5($phone), 0, 8).$this->random_str(5);
         $data = array(
             'phone'     => $phone,
             'openid'    => $openid,
@@ -276,7 +301,21 @@ class User_model extends CI_Model
         $this->db->select_sum('amount');
         $query = $this->db->get_where('user_cash', array('user_id' => $user_id));
         return $query->result()->amount;
-        // todo: invoke payment API.
+    }
+
+    /**
+     *
+     * 返回用户的详细账单
+     *
+     * @param $user_id
+     * @param $page
+     * @return mixed
+     * @author LuHao
+     */
+    public function get_user_cash_list($user_id, $page)
+    {
+        $query = $this->db->get_where('user_cash', array('user_id' => $user_id), 10, $page * 10);
+        return $query->result();
     }
 
     /**
@@ -319,6 +358,23 @@ class User_model extends CI_Model
         );
         $this->db->insert('user_info', $data);
         // todo: invoke payment API.
+    }
+
+    /**
+     *
+     * 更新用户的学车信息
+     *
+     * @param $user_id
+     * @param $process
+     * @author LuHao
+     */
+    public function update_process($user_id, $process)
+    {
+        $data = array(
+            'user_id'   => $user_id,
+            'process'   => $process,
+        );
+        $this->db->update('user_info', $data);
     }
 
 }

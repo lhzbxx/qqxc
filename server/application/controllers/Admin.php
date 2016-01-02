@@ -7,6 +7,7 @@ class Admin extends REST_Controller {
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('base_tool');
     }
 
     /**
@@ -27,7 +28,7 @@ class Admin extends REST_Controller {
         $param = array(
             'openid'        => (string) $this->post('openid'),
             'user_state'    => (string) $this->post('user_state'),
-            '$content'      => (string) $this->post('$content'),
+            'content'       => (string) $this->post('content'),
             'create_time'   => date_timestamp_get(new DateTime()),
         );
 

@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH.'/libraries/REST_Controller.php');
 
-class User_notice extends REST_Controller {
+class User_notice extends REST_Controller
+{
 
     function __construct()
     {

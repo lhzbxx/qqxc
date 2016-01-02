@@ -8,6 +8,7 @@ CREATE TABLE user_info (
     register_time int(32) not null,
     avatar varchar(128) default '',
     openid varchar(32) unique not null,
+    process int not null default 0,
     user_state tinyint not null default 0,
-    expire timestamp not null
+    expire int(32) not null
 );

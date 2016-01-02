@@ -511,3 +511,38 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+ * 第三方 API key
+ */
+
+$config['baidu_map_web_api_ak'] = '';
+$config['qiniu_api_ak'] = '';
+
+/*
+ * 调试开关
+ */
+
+$DEBUG = True;
+
+if ($DEBUG)
+{
+    $config['time_expire_auth'] = False;
+    $config['hide_verify_code'] = True;
+    $config['fixed_captcha'] = True;
+    $config['fixed_openid'] = True;
+}
+else
+{
+    $config['time_expire_auth'] = True;
+    $config['hide_verify_code'] = False;
+    $config['fixed_captcha'] = False;
+    $config['fixed_openid'] = False;
+}
+
+/*
+ * 自定义数值
+ */
+
+$config['captcha_expire'] = 60 * 15;
+$config['feedback_num_per_page'] = 20;

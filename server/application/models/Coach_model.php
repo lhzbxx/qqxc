@@ -52,7 +52,7 @@ class Coach_model extends CI_Model
     }
     public function list_comment($coach_id, $page)
     {
-        $data =  $this->db->get_where('comment', array(
+        $data =  $this->db->get_where('coach_comment', array(
             'coach_id' => $coach_id,
         ), 10, 10 * $page)->result();
         return $data;
@@ -61,7 +61,7 @@ class Coach_model extends CI_Model
     public function get_coach_detail($coach_id)
     {
         $data =  $this->db->get_where('coach', array(
-            'coach_id' => $coach_id,
+            'id' => $coach_id,
         ),1)->result();
         return $data;
     }
@@ -132,7 +132,8 @@ class Coach_model extends CI_Model
         $query = $this->db->get_where('coach',
             array('phone' => $phone),
             1);
-        if (count($query->result()))
+        $row = $query->row();
+        if (isset($row))
             return false;
         else
             return true;
@@ -143,10 +144,11 @@ class Coach_model extends CI_Model
         $query = $this->db->get_where('coach',
             array('id' => $id),
             1);
-        if (count($query->result()))
-            return false;
-        else
+        $row = $query->row();
+        if (isset($row))
             return true;
+        else
+            return false;
     }
 
     public function change_status($id, $status)
@@ -163,6 +165,32 @@ class Coach_model extends CI_Model
         $distance = (2 * 6378.137 * asin(sqrt(pow(sin(pi() * ($long2 - $lat1) / 360), 2) +
                 cos(pi() * $lat2 / 180) * cos($lat1 * pi() / 180) * pow(sin(pi() * ($lat2 - $long1) / 360), 2))));
         return $distance;
+    }
+
+    public function valid_coach_user($coach_id, $user_id)
+    {
+        $query = $this->db->get_where('coach_user',
+            array(
+                'coach_id'  => $coach_id,
+                'user_id'   => $user_id
+            ),
+            1);
+        $row = $query->row();
+        if (isset($row))
+            return true;
+        else
+            return false;
+    }
+
+    public function add_coach_user($coach_id, $user_id, $deal_type = 0)
+    {
+        $data = array(
+            'coach_id'      => $coach_id,
+            'user_id'       => $user_id,
+            'deal_type'     => $deal_type,
+            'create_time'   => date_timestamp_get(new DateTime())
+        );
+        $this->db->insert('coach_user', $data);
     }
 
 }

@@ -14,6 +14,7 @@ class Feedback extends REST_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('base_tool');
     }
 
     public function send_post()
@@ -62,7 +63,7 @@ class Feedback extends REST_Controller
 
         $this->load->model('Feedback_model');
 
-        $response['data'] = $this->Feedback_model->list_20($param['page']);
+        $response['data'] = $this->Feedback_model->list_feedback($param['page']);
 
         $this->response($response);
     }

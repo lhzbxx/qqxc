@@ -18,8 +18,9 @@ CREATE TABLE user_info (
     phone varchar(32) not null unique,
     register_time int(32) not null,
     avatar varchar(128) default '',
+    process int not null default 0,
     openid varchar(32) unique not null,
-    expire timestamp not null
+    expire int(32) not null
 );
 
 drop table feedback;
@@ -153,4 +154,15 @@ CREATE TABLE exercise_sync (
     exam_record text,
     history text,
     last_sync_time int(32) not null
+);
+
+drop table coupon;
+
+CREATE TABLE coupon(
+	id int primary key auto_increment,
+    user_id1 int not null unique,
+    user_id2 int,
+    discount float not null,
+    state tinyint not null default 0,
+    create_time int(32) not null
 );
