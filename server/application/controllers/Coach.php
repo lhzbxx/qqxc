@@ -11,29 +11,6 @@ class Coach extends REST_Controller
         $this->load->helper('base_tool');
     }
 
-    public function valid($param, $verifi)
-    {
-        $str = '';
-        ksort($param);
-        foreach ($param as $k => $v) {
-            $str .= "$k=$v";
-        }
-        if (mb_strtoupper(md5($str)) == mb_strtoupper($verifi))
-            return true;
-        else
-            return false;
-    }
-
-    public function verify($param)
-    {
-        $str = '';
-        ksort($param);
-        foreach ($param as $k => $v) {
-            $str .= "$k=$v";
-        }
-        return md5($str);
-    }
-
     public function add_coach_post()
     {
         $param = array(

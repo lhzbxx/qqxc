@@ -69,4 +69,9 @@ $route['api/coach/get_coach_list']['post']   = 'coach/list_coach';
 $route['api/coach/add_comment']['post']      = 'coach_comment/add_comment';
 $route['api/coach/get_comment_list']['post'] = 'coach_comment/list_comment';
 
+$route['api/exercise/sync']['post']         = 'exercise/exercise_sync';
+$route['api/exercise/add_right']['post']    = 'exercise/add_right';
+$route['api/exercise/add_wrong']['post']    = 'exercise/add_wrong';
+$route['api/exercise/right_rate']['post']   = 'exercise/get_right_rate';
+
 $route['api/test'] = 'welcome/index';

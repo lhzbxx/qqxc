@@ -20,7 +20,7 @@ class Log_model extends CI_Model
         $this->load->database();
     }
 
-    public function add_log($IP_addr, $name, $action, $remark = '', $content)
+    public function add_log($IP_addr, $name, $action, $remark = '', $level, $content)
     {
         $data = array(
             'IP_addr'       => $IP_addr,

@@ -9,6 +9,12 @@
 class Admin_model extends CI_Model
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+
     /**
      *
      * 判断管理员是否满足权限
