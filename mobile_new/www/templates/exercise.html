@@ -1,0 +1,72 @@
+<ion-pane>
+  <ion-header-bar class="bar-positive" style="">
+    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>
+    <h1 class="title">答题模式|学习模式</h1>
+    <button class="button">夜间/日间</button>
+  </ion-header-bar>
+  <ion-content>
+    <div style="padding: 15px;">
+      <span style="border: 1px solid green; padding: 2px; color: green;">单选题</span>
+      这个标志是何含义?
+    </div>
+    <div style="margin: 0 15px;">
+      <img src="img/ionic.png">
+    </div>
+    <div style="margin: 0 15px;">
+      <ul id="exercise-choices">
+        <li>
+          <span class="exercise-choice"> A </span>
+          你猜猜看
+        </li>
+        <li>
+          <span class="exercise-choice"> B </span>
+          你猜猜看
+        </li>
+        <li>
+          <span class="exercise-choice"> C </span>
+          你猜猜看
+        </li>
+        <li>
+          <span class="exercise-choice"> D </span>
+          你猜猜看
+        </li>
+      </ul>
+    </div>
+    <span style="position: absolute; bottom: 50px; font-size: 13px; color: #9e9e9e; text-align: center; width: 100%">你已经做了多少题</span>
+    <progress value="50" max="100"></progress>
+    <div ng-show="show_all" ng-click="hide_all_exercise()" style="position: fixed; top: 0px; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
+    <style>
+      #exercise-choices li {
+        margin: 10px 0;
+      }
+      .exercise-choice {
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+        padding: 0 0 4px 4px;
+        display: inline-block;
+      }
+      progress {
+        position: absolute;
+        bottom: 30px;
+        height: 2px;
+        display: block;
+        background-color: #8e44ad;
+        width: 100%;
+        border-radius: 8px;
+        color: #ddd;
+      }
+      .all-exercises-active {
+        height: 80%;
+      }
+    </style>
+  </ion-content>
+  <div class="bar bar-footer" ng-class="{'all-exercises-active': show_all}" style="transition: height 0.5s;">
+    <button class="button button-clear"><i class="ion-ios-star-outline"></i>收藏</button>
+    <button class="button button-clear"><i class="ion-ios-star"></i>已收藏</button>
+    <div class="title"><i class="icon ion-ios-checkmark-outline"></i> 0 <i class="ion-ios-close-outline"></i> 1</div>
+    <button class="button button-clear" ng-click="show_all_exercise()">2/234</button>
+  </div>
+</ion-pane>
