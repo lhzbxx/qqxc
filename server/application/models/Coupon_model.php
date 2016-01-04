@@ -72,18 +72,20 @@ class Coupon_model extends CI_Model
      * @return bool
      * @author LuHao
      */
-    public function valid_coupon($coupon_id, $user_id)
+    public function valid_coupon($coupon_id)
     {
         $query = $this->db->get_where('coupon',
             array(
                 'id'        => $coupon_id,
-                'user_id2'  => $user_id,
                 'state'     => 0,
             ),
             1);
         $result = $query->row();
         if (isset($result))
-            return true;
+            if ($result->user_id2)
+                return false;
+            else
+                return true;
         else
             return false;
     }

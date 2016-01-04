@@ -282,6 +282,12 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder);
 
+    /**
+     * 修复时区问题
+     */
+    if (!ini_get('date.timezone'))
+        date_default_timezone_set('Asia/Shanghai');
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

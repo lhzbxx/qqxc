@@ -16,7 +16,7 @@ class Coupon extends REST_Controller
         parent::__construct();
     }
 
-    public function use_coupon()
+    public function receive_coupon()
     {
         $param = array(
             'openid'        => (string) $this->post('openid'),
@@ -34,19 +34,32 @@ class Coupon extends REST_Controller
         );
 
         $cur_time = date_timestamp_get(new DateTime());
-        if (abs($param['create_time'] - $cur_time) > 60*15)
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
         {
-            // todo: start expire validation.
-            // $response['code']       = '301';
-            // $response['message']    = 'Expire request.';
-            // $this->response($response);
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
         }
 
-        if (!$this->valid($param, $verifi))
+        if (!valid($param, $verifi))
         {
-            $response['code']       = '301';
+            $response['code']       = '302';
             $response['message']    = 'Illegal request.';
-            $response['data']       = $this->verify($param);
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
+            $this->response($response);
+        }
+
+        if (!preg_match('/^1(?:3[0-9]|5[012356789]|8[0256789]|7[0678])(?P<separato>-?)\d{4}(?P=separato)\d{4}$/'
+            , $param['phone']))
+        {
+            $response['code']       = '201';
+            $response['message']    = 'Invalid phone number.';
             $this->response($response);
         }
 
@@ -54,36 +67,37 @@ class Coupon extends REST_Controller
 
         if (!$this->User_model->valid_openid($param['openid']))
         {
-            $response['code']       = '201';
-            $response['message']    = 'Illegal openid.';
+            $response['code']       = '202';
+            $response['message']    = 'Invalid openid.';
             $this->response($response);
         }
-
-        $user_id = $this->User_model->get_user_id($param['openid']);
 
         $this->load->model('Coupon_model');
 
-        if (!$this->User_model->valid_coupon($param['openid']))
+        $coupon_id = $this->Coupon_model->get_coupon_id($param['phone'], $param['captcha']);
+        if (!$coupon_id)
         {
-            $response['code']       = '202';
-            $response['message']    = 'Unknown coupon.';
+            $response['code']       = '203';
+            $response['message']    = 'Invalid coupon.';
             $this->response($response);
         }
 
-        $coupon_id = $this->Coupon_model->get_coupon_id($param['phone'], $param['captcha']);
-
-        $valid_coupon = $this->Coupon_model->valid_coupon($coupon_id, $phone);
-
-        $valid = $this->valid_coupon($coupon_id, $phone);
-        if (!$valid)
-            return false;
-        $valid = $this->valid_user($user_id);
-        if (!$valid)
-
-        foreach ($rows->result() as $row)
+        if (!$this->Coupon_model->valid_coupon($coupon_id))
         {
-            $this->User_model->add_notice($row->user_id, $param['content'], 'system');
+            $response['code']       = '204';
+            $response['message']    = 'Used coupon.';
+            $this->response($response);
         }
+
+        $user_id = $this->User_model->get_user_id_by_openid($param['openid']);
+        if (!$this->Coupon_model->valid_user($user_id, 0))
+        {
+            $response['code']       = '205';
+            $response['message']    = 'No auth to receive.';
+            $this->response($response);
+        }
+
+        $this->Coupon_model->use_coupon($user_id, $coupon_id);
 
         $this->response($response);
     }
