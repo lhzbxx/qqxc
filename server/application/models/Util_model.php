@@ -28,7 +28,7 @@ class Util_model extends CI_Model
         $name = 'captcha'.$name;
         if (isset($_SESSION[$name]))
             return false;
-        if ($this->config->item['fixed_captcha'])
+        if ($this->config->item('fixed_captcha'))
             $_SESSION[$name] = '4319';
         else
             $_SESSION[$name] = (string) rand(1000, 9999);

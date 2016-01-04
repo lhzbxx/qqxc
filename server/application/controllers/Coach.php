@@ -273,4 +273,73 @@ class Coach extends REST_Controller
         $this->response($response);
     }
 
+    public function get_coach_phone()
+    {
+        $param = array(
+            'openid'        => (string) $this->post('openid'),
+            'coach_id'      => (int) $this->post('coach_id'),
+            'create_time'   => (string) $this->post('create_time')
+        );
+        $verifi = (string) $this->post('verifi');
+
+        $response = array(
+            'code'      => '100',
+            'message'   => 'OK',
+            'data'      => array()
+        );
+
+        $cur_time = date_timestamp_get(new DateTime());
+        if (abs($param['create_time'] - $cur_time) > $this->config->item('captcha_expire'))
+        {
+            if ($this->config->item('time_expire_auth'))
+            {
+                $response['code']       = '301';
+                $response['message']    = 'Expire request.';
+                $this->response($response);
+            }
+        }
+
+        if (!valid($param, $verifi))
+        {
+            $response['code']       = '302';
+            $response['message']    = 'Illegal request.';
+            if ($this->config->item('hide_verify_code'))
+            {
+                $response['data']   = verify($param);
+            }
+            $this->response($response);
+        }
+
+        $this->load->model('User_model');
+
+        if (!$this->User_model->valid_openid(param['openid']))
+        {
+            $response['code']       = '201';
+            $response['message']    = 'Invalid openid.';
+            $this->response($response);
+        }
+
+        $user_id = $this->User_model->get_user_id_by_openid(param['openid']);
+
+        $this->load->model('Coach_model');
+
+        if (!$this->Coach_model->valid_coach($param['coach_id']))
+        {
+            $response['code']       = '202';
+            $response['message']    = 'Unknown coach.';
+            $this->response($response);
+        }
+
+        if (!$this->Coach_model->valid_coach_user($param['coach_id'], $user_id))
+        {
+            $response['code']       = '203';
+            $response['message']    = 'No auth to get.';
+            $this->response($response);
+        }
+
+        $response['data'] = $this->Coach_model->get_coach_phone($param['coach_id']);
+
+        $this->response($response);
+    }
+
 }

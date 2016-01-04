@@ -193,4 +193,18 @@ class Coach_model extends CI_Model
         $this->db->insert('coach_user', $data);
     }
 
+    public function get_coach_phone($coach_id)
+    {
+        $query = $this->db->get_where('coach',
+            array(
+                'coach_id'  => $coach_id
+            ),
+            1);
+        $row = $query->row();
+        if (isset($row))
+            return $row->phone;
+        else
+            return false;
+    }
+
 }
