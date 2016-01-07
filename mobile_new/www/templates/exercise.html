@@ -32,8 +32,24 @@
         </li>
       </ul>
     </div>
+    <div class="row">
+      <span class="col-30"></span>
+      试题详解
+      <span class="col-30"></span>
+    </div>
+    <div>
+      考点
+    </div>
+    <div>
+      统计
+      <span>我的错误率</span>
+      共做过次,做错次,作对次.
+      <span>车友错误率</span>
+      <progress value="50" max="100"></progress>
+      据统计%的人做错过
+    </div>
     <span style="position: absolute; bottom: 50px; font-size: 13px; color: #9e9e9e; text-align: center; width: 100%">你已经做了多少题</span>
-    <progress value="50" max="100"></progress>
+    <progress id="exercise-process" value="50" max="100"></progress>
     <div ng-show="show_all" ng-click="hide_all_exercise()" style="position: fixed; top: 0px; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
     <style>
       #exercise-choices li {
@@ -48,7 +64,7 @@
         padding: 0 0 4px 4px;
         display: inline-block;
       }
-      progress {
+      progress#exercise-process {
         position: absolute;
         bottom: 30px;
         height: 2px;
@@ -61,12 +77,86 @@
       .all-exercises-active {
         height: 80%;
       }
+      .exercise-number {
+        font-size: 32px;
+        height: 55px;
+        width: 55px;
+        line-height: 55px;
+        display: block;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        background-color: #eee;
+        text-align: center;
+      }
+      .exercise-number.right {
+        border: 1px solid dodgerblue;
+        background-color: deepskyblue;
+      }
+      .exercise-number.wrong {
+        border: 1px solid indianred;
+        background-color: palevioletred;
+      }
+      .exercise-number.current {
+        background-color: #aaa;
+      }
     </style>
   </ion-content>
   <div class="bar bar-footer" ng-class="{'all-exercises-active': show_all}" style="transition: height 0.5s;">
     <button class="button button-clear"><i class="ion-ios-star-outline"></i>收藏</button>
     <button class="button button-clear"><i class="ion-ios-star"></i>已收藏</button>
     <div class="title"><i class="icon ion-ios-checkmark-outline"></i> 0 <i class="ion-ios-close-outline"></i> 1</div>
-    <button class="button button-clear" ng-click="show_all_exercise()">2/234</button>
+    <button class="button button-clear pull-right" ng-click="show_all_exercise()"><i class="ion-grid"></i> 2/234</button>
+    <div style="clear: both;"></div>
+    <ion-content>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number current">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number right">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number wrong">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+      <div class="row">
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+        <div class="col-20" style="padding: 10px;"><span class="exercise-number">1</span></div>
+      </div>
+    </ion-content>
   </div>
 </ion-pane>
