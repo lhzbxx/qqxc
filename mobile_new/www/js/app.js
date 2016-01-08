@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
 
         // Is there a page to go back to?
-        if ($location.path() == '/') {
+        if ($location.path() == '/app/home') {
           showConfirm();
         } else {
           $ionicHistory.goBack();
