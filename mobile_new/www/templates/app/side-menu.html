@@ -1,0 +1,93 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content class="post-size-14px">
+    <ion-nav-bar class="bar app-top-bar bar-positive" align-title="center">
+      <ion-nav-back-button>返回
+      </ion-nav-back-button>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-person" menu-toggle="right">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="main-content"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right" class="main-menu" expose-aside-when="large">
+    <ion-content>
+      <ion-list>
+        <a class="item item-avatar" href="#">
+          <img src="img/ionic.png">
+          <h2>昵称</h2>
+          <p>学员</p>
+        </a>
+        <ion-item class="item-icon-left" menu-close ng-click="login()">
+          <i class="icon ion-person"></i>
+          登录/注册
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/purse">
+          <i class="icon ion-cash"></i>
+          我的钱包
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/coach-detail">
+          <i class="icon ion-university"></i>
+          我的教练
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/learn-record">
+          <i class="icon ion-connection-bars"></i>
+          我的进度
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/notify">
+          <i class="icon ion-android-notifications"></i>
+          消息通知
+          <span class="badge badge-assertive">3</span>
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/feedback">
+          <i class="icon ion-ios-list-outline"></i>
+          意见反馈
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close href="#/protocol">
+          <i class="icon ion-android-clipboard"></i>
+          培训协议
+        </ion-item>
+      </ion-list>
+      <!--<ion-list>-->
+      <!--<ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile">-->
+      <!--<div class="user-image-container">-->
+      <!--<pre-img ratio="_1_1" helper-class="rounded-image">-->
+      <!--<img class="user-image" ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" spinner-on-load>-->
+      <!--</pre-img>-->
+      <!--</div>-->
+      <!--<h2 class="greeting">Hi Brynn</h2>-->
+      <!--<p class="message">Welcome back</p>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">-->
+      <!--<i class="icon ion-bookmark"></i>-->
+      <!--<h2 class="menu-text">Saved for later</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.feeds-categories">-->
+      <!--<i class="icon ion-radio-waves"></i>-->
+      <!--<h2 class="menu-text">Feeds</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.wordpress">-->
+      <!--<i class="icon ion-social-wordpress"></i>-->
+      <!--<h2 class="menu-text">Wordpress</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.layouts">-->
+      <!--<i class="icon ion-wand"></i>-->
+      <!--<h2 class="menu-text">Layouts</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.miscellaneous">-->
+      <!--<i class="icon ion-asterisk"></i>-->
+      <!--<h2 class="menu-text">Miscellaneous</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.forms">-->
+      <!--<i class="icon ion-document"></i>-->
+      <!--<h2 class="menu-text">Forms</h2>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.settings">-->
+      <!--<i class="icon ion-gear-a"></i>-->
+      <!--<h2 class="menu-text">Settings</h2>-->
+      <!--</ion-item>-->
+      <!--</ion-list>-->
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

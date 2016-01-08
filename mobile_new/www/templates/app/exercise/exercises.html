@@ -1,8 +1,7 @@
-<ion-pane>
-  <ion-header-bar class="bar-positive" style="">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>
-    <h1 class="title">做试题</h1>
-  </ion-header-bar>
+<ion-view class="exercises-view">
+  <ion-nav-title>
+    <span>做试题</span>
+  </ion-nav-title>
   <div class="tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs">
       <a class="tab-item active" href="#">
@@ -13,9 +12,9 @@
       </a>
     </div>
   </div>
-  <ion-content>
+  <ion-content padding="false" overflow-scroll="false" style="margin-top: 50px;">
     <div class="list card">
-      <a href="#/exercise/chapter" class="item item-icon-left">
+      <a ui-sref="app.chapter" class="item item-icon-left">
         <i class="icon ion-home"></i>
         章节练习
       </a>
@@ -37,4 +36,4 @@
       </a>
     </div>
   </ion-content>
-</ion-pane>
+</ion-view>

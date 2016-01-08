@@ -111,39 +111,89 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     // Each state's controller can be found in controllers.js
     $stateProvider
 
-      .state('index', {
-        url: '/',
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/app/side-menu.html'
       })
-      .state('coach-detail', {
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'main-content': {
+            templateUrl: "templates/app/home.html",
+            controller: 'HomeCtrl'
+          }
+        }
+      })
+      .state('app.learn-process', {
+        url: '/learn-process',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/learn/process.html'
+          }
+        }
+      })
+      .state('app.learn-record', {
+        url: '/learn-record',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/learn/record.html'
+          }
+        }
+      })
+      .state('app.invite', {
+        url: '/invite',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/invite.html'
+          }
+        }
+      })
+      .state('app.coach-list', {
+        url: '/coach-list',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/list.html'
+          }
+        }
+      })
+      .state('app.coach-detail', {
         url: '/coach-detail',
-        templateUrl: 'templates/coach-detail.html',
-        controller: 'HomeCtrl'
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/detail.html'
+          }
+        }
+      })
+      .state('app.feedback', {
+        url: '/feedback',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/feedback.html'
+          }
+        }
+      })
+      .state('app.exercise', {
+        url: '/exercise',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/exercise/exercises.html',
+            controller: 'ExerciseCtrl'
+          }
+        }
+      })
+      .state('app.chapter', {
+        url: '/chapter',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/exercise/exercise.html',
+            controller: 'ExerciseCtrl'
+          }
+        }
       })
       .state('register-info', {
         url: '/register-info',
         templateUrl: 'templates/register-info.html',
-        controller: 'HomeCtrl'
-      })
-      .state('coach-list', {
-        url: '/coach-list',
-        templateUrl: 'templates/coach-list.html',
-        controller: 'HomeCtrl'
-      })
-      .state('learn-process', {
-        url: '/learn-process',
-        templateUrl: 'templates/learn-process.html',
-        controller: 'HomeCtrl'
-      })
-      .state('learn-record', {
-        url: '/learn-record',
-        templateUrl: 'templates/learn-record.html',
-        controller: 'HomeCtrl'
-      })
-      .state('feedback', {
-        url: '/feedback',
-        templateUrl: 'templates/feedback.html',
         controller: 'HomeCtrl'
       })
       .state('contact', {
@@ -171,33 +221,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         templateUrl: 'templates/notify.html',
         controller: 'Messages'
       })
-      .state('invite', {
-        url: '/invite',
-        templateUrl: 'templates/invite.html',
-        controller: 'HomeCtrl'
-      })
-      .state('exercise', {
-        url: '/exercise',
-        templateUrl: 'templates/exercises.html',
-        controller: 'ExerciseCtrl'
-      })
-      .state('chapter', {
-        url: '/exercise/chapter',
-        templateUrl: 'templates/exercise.html',
-        controller: 'ExerciseCtrl'
-      })
-      .state('random', {
-        url: '/exercise/random',
-        templateUrl: 'templates/exercise.html',
-        controller: 'ExerciseCtrl'
-      })
-      .state('order', {
-        url: '/exercise/order',
-        templateUrl: 'templates/exercise.html',
-        controller: 'ExerciseCtrl'
-      });
+      //.state('chapter', {
+      //  url: '/exercise/chapter',
+      //  templateUrl: 'templates/exercise.html',
+      //  controller: 'ExerciseCtrl'
+      //})
+      //.state('random', {
+      //  url: '/exercise/random',
+      //  templateUrl: 'templates/exercise.html',
+      //  controller: 'ExerciseCtrl'
+      //})
+      //.state('order', {
+      //  url: '/exercise/order',
+      //  templateUrl: 'templates/exercise.html',
+      //  controller: 'ExerciseCtrl'
+      //});
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/app/home');
 
   })

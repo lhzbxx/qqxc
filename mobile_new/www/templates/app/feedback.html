@@ -1,9 +1,11 @@
-<ion-pane style="background-color: #eee;">
-  <ion-header-bar class="bar-positive" style="">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>
-    <h1 class="title">意见反馈</h1>
-  </ion-header-bar>
-  <ion-content>
+<ion-view class="feedback-view">
+  <ion-nav-title>
+    <span>意见反馈</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-telephone"></button>
+  </ion-nav-buttons>
+  <ion-content style="background-color: #eee;">
     <textarea name="comment" id="comment-textarea" ng-model="comment" style="height: 150px; width: 100%; margin-top: 10px; background-color: white; padding: 10px; font-size: 20px; line-height: 20px;" placeholder="请将您的宝贵意见告诉我们，我们将用于不断完善我们的服务。"></textarea>
     <div class="row">
       <div class="col">
@@ -11,4 +13,4 @@
       </div>
     </div>
   </ion-content>
-</ion-pane>
+</ion-view>
