@@ -1,9 +1,28 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['baiduMap'])
+  .controller('CoachAddressCtrl', function($scope) {
+    var longitude = 113.738487;
+    var latitude = 34.361282;
+    $scope.mapOptions = {
+      center: {
+        longitude: longitude,
+        latitude: latitude
+      },
+      zoom: 15,
+      navCtrl: true,
+      city: 'Xinzheng',
+      markers: [{
+        longitude: longitude,
+        latitude: latitude,
+        icon: 'http://img.coolwp.com/wp-content/uploads/2015/04/48-map-marker.png',
+        width: 48,
+        height: 48,
+        title: '在哪儿',
+        content: '新郑市梨河镇'
+      }]
+    };
+  })
 
   .controller('HomeCtrl', function ($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation) {
-    $scope.test = function () {
-      $location.path('/enroll');
-    };
     //$http({
     //    method: 'POST',
     //    url: 'http://59.78.46.141/index.php/api/user/login',
@@ -45,11 +64,10 @@ angular.module('starter.controllers', [])
           }]
         });
       }
-
       if (!login) {
         showConfirm();
       }
-    }
+    };
     $scope.show = function () {
       $ionicLoading.show({
         template: '<ion-spinner icon="bubbles" class="spinner-light">'
@@ -96,7 +114,7 @@ angular.module('starter.controllers', [])
               // error
             });
         });
-    }
+    };
   })
 
   .controller('DashCtrl', function ($scope, $ionicActionSheet, $ionicSlideBoxDelegate, $http) {

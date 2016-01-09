@@ -1,9 +1,11 @@
-<ion-pane style="background-color: #eee;">
-  <ion-header-bar class="bar-positive" style="">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>
-    <h1 class="title">报名咨询</h1>
-  </ion-header-bar>
-  <ion-content>
+<ion-view style="background-color: #eee;">
+  <ion-nav-title>
+    <span>报名咨询</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-telephone"></button>
+  </ion-nav-buttons>
+  <ion-content padding="false">
     <div class="list">
       <div class="item item-divider">公告</div>
       <a class="item item-icon-left item-icon-right" href="#"> <i class="icon ion-speakerphone"></i>
@@ -37,7 +39,7 @@
     <a href="#">《学员培训协议》</a>
   </p>
   -->
-  <style type="text/css">
+    <style type="text/css">
       .protocol-agreed {
         background-color: #aaa !important;
       }
@@ -47,11 +49,11 @@
         margin-right: 15px;
       }
     </style>
-  <div class="bar bar-footer bar-positive" ng-class="{'protocol-agreed': !isChecked, '': isChecked}">
-    <div class="title">
-      <i class="ion-chatbubble-working"></i>
-      提交报名
+    <div class="bar bar-footer bar-positive" ng-class="{'protocol-agreed': !isChecked, '': isChecked}">
+      <div class="title">
+        <i class="ion-chatbubble-working"></i>
+        提交报名
+      </div>
     </div>
-  </div>
-</ion-content>
-</ion-pane>
+  </ion-content>
+</ion-view>

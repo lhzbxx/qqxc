@@ -1,10 +1,12 @@
-<ion-pane>
-  <ion-header-bar class="bar-positive" style="">
-    <button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/#/coach-list')"></button>
-    <h1 class="title">我的钱包</h1>
-    <button class="button button-icon icon ion-clipboard">账单</button>
-  </ion-header-bar>
-  <ion-content>
+<ion-view class="protocol-view">
+  <ion-nav-title>
+    <span>我的钱包</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-clipboard"></button>
+    <button class="button button-icon button-clear ion-person" menu-toggle="right"></button>
+  </ion-nav-buttons>
+  <ion-content style="background-color: #eee;" padding="false" overflow-scroll="false">
     <div class="list">
       <div class="item item-divider">账户</div>
       <span class="item item-icon-left item-icon-right" href="#"> <i class="icon ion-card"></i>
@@ -28,4 +30,4 @@
       </a>
     </div>
   </ion-content>
-</ion-pane>
+</ion-view>

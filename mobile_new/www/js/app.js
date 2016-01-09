@@ -114,7 +114,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/app/side-menu.html'
+        templateUrl: 'templates/app/side-menu.html',
+        controller: 'HomeCtrl'
       })
       .state('app.home', {
         url: '/home',
@@ -145,7 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/invite',
         views: {
           'main-content': {
-            templateUrl: 'templates/app/invite.html'
+            templateUrl: 'templates/app/invite/invite.html'
           }
         }
       })
@@ -162,6 +163,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         views: {
           'main-content': {
             templateUrl: 'templates/app/coach/detail.html'
+          }
+        }
+      })
+      .state('app.coach-mine', {
+        url: '/coach-mine',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/mine.html'
+          }
+        }
+      })
+      .state('app.coach-address', {
+        url: '/coach-address',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/address.html',
+            controller: 'CoachAddressCtrl'
           }
         }
       })
@@ -191,29 +209,49 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
-      .state('register-info', {
-        url: '/register-info',
-        templateUrl: 'templates/register-info.html',
-        controller: 'HomeCtrl'
+      .state('app.enroll', {
+        url: '/enroll',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/enroll.html'
+          }
+        }
+      })
+      .state('app.coach-enroll', {
+        url: '/coach-enroll',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/enroll.html'
+          }
+        }
+      })
+      .state('app.protocol', {
+        url: '/protocol',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/protocol.html',
+          }
+        }
+      })
+      .state('app.purse', {
+        url: '/purse',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/purse/account.html'
+          }
+        }
+      })
+      .state('app.purse-detail', {
+        url: '/purse-detail',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/purse/detail.html'
+          }
+        }
       })
       .state('contact', {
         url: '/contact',
         templateUrl: 'templates/contact.html',
-        controller: 'Messages'
-      })
-      .state('purse', {
-        url: '/purse',
-        templateUrl: 'templates/purse.html',
-        controller: 'Messages'
-      })
-      .state('enroll', {
-        url: '/enroll',
-        templateUrl: 'templates/enroll.html',
-        controller: 'Messages'
-      })
-      .state('protocol', {
-        url: '/protocol',
-        templateUrl: 'templates/protocol.html',
         controller: 'Messages'
       })
       .state('notify', {
@@ -237,6 +275,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //  controller: 'ExerciseCtrl'
       //});
 
+    cache: false;
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
 
