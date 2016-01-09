@@ -19,36 +19,32 @@
           <h2>昵称</h2>
           <p>学员</p>
         </a>
-        <ion-item class="item-icon-left" menu-close ng-click="login()">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ng-click="login()">
           <i class="icon ion-person"></i>
           登录/注册
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.home">
-          <i class="icon ion-home"></i>
-          首页
-        </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.purse">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.purse">
           <i class="icon ion-cash"></i>
           我的钱包
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.coach-mine">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.coach-mine">
           <i class="icon ion-university"></i>
           我的教练
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.learn-record">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.learn-record">
           <i class="icon ion-connection-bars"></i>
           我的进度
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.notify">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.notify">
           <i class="icon ion-android-notifications"></i>
           消息通知
           <span class="badge badge-assertive">3</span>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.feedback">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.feedback">
           <i class="icon ion-ios-list-outline"></i>
           意见反馈
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.protocol">
+        <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.protocol">
           <i class="icon ion-android-clipboard"></i>
           培训协议
         </ion-item>

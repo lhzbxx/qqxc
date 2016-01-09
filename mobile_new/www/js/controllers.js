@@ -22,7 +22,7 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
-  .controller('HomeCtrl', function ($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation) {
+  .controller('HomeCtrl', function ($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation, $ionicHistory, $ionicSideMenuDelegate) {
     //$http({
     //    method: 'POST',
     //    url: 'http://59.78.46.141/index.php/api/user/login',
@@ -33,6 +33,9 @@ angular.module('starter.controllers', ['baiduMap'])
     //}, function errorCallback(response) {
     //    alert(response.status);
     //});
+    $scope.closeMenu = function() {
+      $ionicSideMenuDelegate.toggleRight();
+    };
     var login = false;
     $scope.login = function () {
       function showConfirm() {
@@ -193,6 +196,37 @@ angular.module('starter.controllers', ['baiduMap'])
         }
       });
     };
+  })
+
+
+  //LOGIN
+  .controller('LoginCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
+    $scope.doLogIn = function(){
+      $state.go('app.feeds-categories');
+    };
+    $scope.user = {};
+    $scope.user.email = "john@doe.com";
+    $scope.user.pin = "12345";
+    // We need this for the form validation
+    $scope.selected_tab = "";
+    $scope.$on('my-tabs-changed', function (event, data) {
+      $scope.selected_tab = data.title;
+    });
+  })
+
+  .controller('SignupCtrl', function($scope, $state) {
+    $scope.user = {};
+    $scope.user.email = "john@doe.com";
+    $scope.doSignUp = function(){
+      $state.go('app.feeds-categories');
+    };
+  })
+
+  .controller('ForgotPasswordCtrl', function($scope, $state) {
+    $scope.recoverPassword = function(){
+      $state.go('app.feeds-categories');
+    };
+    $scope.user = {};
   })
 
   .controller('ChatsCtrl', function ($scope, Chats) {
