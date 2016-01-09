@@ -14,15 +14,11 @@
   <ion-side-menu side="right" class="main-menu" expose-aside-when="large">
     <ion-content>
       <ion-list>
-        <a class="item item-avatar" href="#">
+        <a class="item item-avatar" ng-click="login()">
           <img src="img/ionic.png">
           <h2>昵称</h2>
           <p>学员</p>
         </a>
-        <ion-item class="item-icon-left" ng-click="closeMenu()" ng-click="login()">
-          <i class="icon ion-person"></i>
-          登录/注册
-        </ion-item>
         <ion-item class="item-icon-left" ng-click="closeMenu()" ui-sref="app.purse">
           <i class="icon ion-cash"></i>
           我的钱包
