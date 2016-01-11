@@ -187,7 +187,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/feedback',
         views: {
           'main-content': {
-            templateUrl: 'templates/app/feedback.html'
+            templateUrl: 'templates/app/feedback.html',
+            controller: 'FeedbackCtrl'
           }
         }
       })
@@ -296,3 +297,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     $urlRouterProvider.otherwise('/app/home');
 
   })
+
+.constant('apiUrl', 'http://192.168.55.102/index.php')
+.constant('servicePhone', '13651608916');

@@ -21,8 +21,7 @@ class Feedback extends REST_Controller
     {
         $param = array(
             'phone'         => (string) $this->post('phone'),
-            'content'       => (string) $this->post('content'),
-            'create_time'   => (string) $this->post('create_time'),
+            'content'       => (string) $this->post('content')
         );
 
         $response = array(

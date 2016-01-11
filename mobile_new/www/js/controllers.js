@@ -22,6 +22,43 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
+  .controller('FeedbackCtrl', function($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone) {
+    $scope.servicePhone = servicePhone;
+    $scope.isEmpty = function () {
+
+    };
+    $scope.submitFeedback = function () {
+      if ($scope.comment != '')
+      {
+        $ionicLoading.show({
+          template: '<ion-spinner icon="bubbles" class="spinner-light">'
+          + '</ion-spinner><br>发送中...<style>'
+          + '.spinner svg {width: 50px !important; height: 50px !important;}</style>'
+        });
+        $http({
+          method: 'POST',
+          url: apiUrl+'/feedback/send',
+          data: {
+            'phone': '123456',
+            'content': $scope.comment
+          }
+        }).then(function successCallback(response) {
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: '消息',
+            template: '提交成功！'
+          });
+        }, function errorCallback(response) {
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: '错误',
+            template: '网络错误！'
+          });
+        });
+      }
+    }
+  })
+
   .controller('HomeCtrl', function ($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation, $ionicHistory, $ionicSideMenuDelegate) {
     //$http({
     //    method: 'POST',
