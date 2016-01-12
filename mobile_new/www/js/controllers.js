@@ -342,7 +342,18 @@ angular.module('starter.controllers', ['baiduMap'])
         .then(function (success) {
         }, function (error) {
         });
-    }
+    };
+    $scope.mode = 0; // 默认为答题模式
+    $scope.changeMode = function (index) {
+      $scope.mode = index;
+    };
+    $scope.checkMode = function (index) {
+      return $scope.mode == index;
+    };
+    $scope.switch = false; // 默认为日光
+    $scope.changeSwitch = function () {
+      $scope.switch = !$scope.switch;
+    };
   })
 
   .controller('Messages', function ($scope, $timeout, $location, $ionicScrollDelegate) {

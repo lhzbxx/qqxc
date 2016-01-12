@@ -1,9 +1,26 @@
 <ion-view class="exercise-view">
   <ion-nav-title>
-    <span>答题模式|学习模式</span>
+    <span>科目一 - 章节练习</span>
   </ion-nav-title>
-  <button class="button">夜间/日间</button>
-  <ion-content scroll="false">
+  <div class="bar bar-positive bar-subheader">
+    <h2 class="title">
+      <span class="button" ng-class="{'active':checkMode(0)}" ng-click="changeMode(0)">答题模式</span>
+      <span class="button" ng-class="{'active':checkMode(1)}" ng-click="changeMode(1)">学习模式</span>
+    </h2>
+  </div>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon icon" ng-class="{'ion-ios-sunny':!switch, 'ion-ios-moon':switch}" ng-click="changeSwitch()"></a>
+  </ion-nav-buttons>
+  <style>
+    .dayMode {
+      background-color: white;
+    }
+    .nightMode {
+      background-color: #333;
+      color: #aaa;
+    }
+  </style>
+  <ion-content scroll="true" class="has-subheader" ng-class="{'dayMode':!switch, 'nightMode':switch}">
     <ion-slide-box on-slide-changed="slideHasChanged($index)" style="height: 100%;">
       <ion-slide>
         <div class="prev">
@@ -34,21 +51,27 @@
               </li>
             </ul>
           </div>
-          <div class="row">
-            <span class="col-30"></span>
-            试题详解
-            <span class="col-30"></span>
-          </div>
-          <div>
-            考点
-          </div>
-          <div>
-            统计
-            <span>我的错误率</span>
-            共做过次,做错次,作对次.
-            <span>车友错误率</span>
-            <progress value="50" max="100"></progress>
-            据统计%的人做错过
+          <div ng-show="checkMode(1)">
+            <div style="margin-left: 15px;">
+              <span style="border-left: 2px solid blue; padding-left: 5px;">试题详解</span>
+              <p>123123123123123123 </p>
+            </div>
+            <div style="margin-left: 15px;">
+              <span style="border-left: 2px solid blue; padding-left: 5px;">相关知识点</span>
+              <ul>
+                <li style="float: left; border: 1px solid green; padding: 2px; color: green; margin-right: 10px;">准驾车型</li>
+                <li style="float: left; border: 1px solid green; padding: 2px; color: green;">罚款200-2000</li>
+              </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="margin-left: 15px;">
+              <span style="border-left: 2px solid blue; padding-left: 5px;">统计</span>
+              <span>我的错误率</span>
+              共做过次,做错次,作对次.
+              <span>车友错误率</span>
+              <progress value="50" max="100" style="background-color: red;"></progress>
+              据统计%的人做错过
+            </div>
           </div>
         </div>
       </ion-slide>
@@ -59,7 +82,7 @@
         <div class="box pink"><h1>PINK</h1></div>
       </ion-slide>
     </ion-slide-box>
-    <span style="position: absolute; bottom: 50px; font-size: 13px; color: #9e9e9e; text-align: center; width: 100%">你已经做了多少题</span>
+    <span style="position: absolute; bottom: 47px; font-size: 13px; color: #9e9e9e; text-align: center; width: 100%;" ng-class="{'dayMode':!switch, 'nightMode':switch}">你已经做了多少题</span>
     <progress id="exercise-process" value="50" max="100"></progress>
     <div ng-show="show_all" ng-click="hide_all_exercise()" style="position: fixed; top: 0px; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
     <style>
