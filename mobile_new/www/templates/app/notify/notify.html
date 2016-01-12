@@ -1,0 +1,141 @@
+<!--<ion-pane>-->
+  <!--<ion-header-bar class="bar-positive" style="">-->
+    <!--<button class="button button-icon icon ion-ios-arrow-back" ng-click="back('/')"></button>-->
+    <!--<h1 class="title">我的消息</h1>-->
+  <!--</ion-header-bar>-->
+  <!--<div class="tabs-top tabs-icon-top tabs-background-positive tabs-color-light">-->
+    <!--<div class="tabs">-->
+      <!--<a class="tab-item active" href="#"> <i class="icon ion-home"></i>-->
+        <!--系统通知-->
+      <!--</a>-->
+      <!--<a class="tab-item" href="#"> <i class="icon ion-star"></i>-->
+        <!--个人消息-->
+      <!--</a>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<ion-content style="top: 93px;">-->
+    <!--<div style="padding: 20px;">-->
+      <!--<p>版本号v0.01</p>-->
+      <!--<p>功能介绍：</p>-->
+      <!--<ol>-->
+        <!--<li>1.111111111111</li>-->
+        <!--<li>2.222222222222</li>-->
+        <!--<li>3.333333333333</li>-->
+      <!--</ol>-->
+    <!--</div>-->
+  <!--</ion-content>-->
+<!--</ion-pane>-->
+<ion-view class="feedback-view">
+  <ion-nav-title>
+    <span>我的消息</span>
+  </ion-nav-title>
+  <style>
+    .spin::before{
+      line-height:100px;
+      -webkit-animation: spin 1s infinite linear;
+      -moz-animation: spin 1s infinite linear;
+      -ms-animation: spin 1s infinite linear;
+      -o-animation: spin 1s infinite linear;
+      animation: spin 1s infinite linear;
+    }
+    @keyframes "spin" {
+      from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(359deg);
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-moz-keyframes spin {
+      from {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -moz-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-webkit-keyframes "spin" {
+      from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-ms-keyframes "spin" {
+      from {
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-o-keyframes "spin" {
+      from {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -o-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+  </style>
+  <ion-tabs class="tabs-top tabs-icon-top tabs-background-positive tabs-color-light">
+    <ion-tab title="个人消息" icon-on="ion-ios-chatboxes" icon-off="ion-ios-chatboxes-outline">
+      <ion-nav-view>
+        <ion-content class="no-header has-tabs-top" padding="false">
+          <ion-refresher
+            pulling-text=""
+            refreshing-text=""
+            spinner="spiral"
+            on-refresh="doRefresh()"
+            class="has-tabs-top no-header"
+          >
+          </ion-refresher>
+          <ion-list>
+            <ion-item ng-repeat="item in items" class="item-avatar">
+              <img src="img/ionic.png">
+              <h2>{{item.author}}</h2>
+              <p>{{item.date}}</p>
+              <p>{{item.content}}</p>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="系统通知" icon-on="ion-ios-cog" icon-off="ion-ios-cog-outline">
+      <ion-nav-view class="has-tabs-top">
+        <div class="card">
+          <ion-item class="item-divider">
+            版本号：Ver 0.01
+          </ion-item>
+          <ion-item class="item-text-wrap">
+            <p>功能介绍：</p>
+            <ol style="font-size: 13px;">
+              <li>在线报名，快捷支付！</li>
+              <li>免费做试题，轻松过驾考！</li>
+              <li>选择心仪的教练，学车GoGoGo！</li>
+            </ol>
+          </ion-item>
+        </div>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+  <!--<ion-content class="no-header" padding="false">-->
+  <!--</ion-content>-->
+</ion-view>

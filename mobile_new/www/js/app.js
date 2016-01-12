@@ -183,6 +183,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+      .state('app.coach-contact', {
+        url: '/coach-contact',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/comment/contact.html',
+            controller: 'Messages'
+          }
+        }
+      })
       .state('app.feedback', {
         url: '/feedback',
         views: {
@@ -250,15 +259,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
-      .state('contact', {
-        url: '/contact',
-        templateUrl: 'templates/contact.html',
-        controller: 'Messages'
-      })
-      .state('notify', {
+      .state('app.notify', {
         url: '/notify',
-        templateUrl: 'templates/notify.html',
-        controller: 'Messages'
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/notify/notify.html',
+            controller: 'NotifyCtrl'
+          }
+        }
       })
 
       .state('auth.login', {

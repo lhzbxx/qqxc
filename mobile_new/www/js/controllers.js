@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['baiduMap'])
-  .controller('CoachAddressCtrl', function($scope) {
+  .controller('CoachAddressCtrl', function ($scope) {
     var longitude = 113.738487;
     var latitude = 34.361282;
     $scope.mapOptions = {
@@ -22,14 +22,13 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
-  .controller('FeedbackCtrl', function($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone) {
+  .controller('FeedbackCtrl', function ($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone) {
     $scope.servicePhone = servicePhone;
     $scope.isEmpty = function () {
 
     };
     $scope.submitFeedback = function () {
-      if ($scope.comment != '')
-      {
+      if ($scope.comment != '') {
         $ionicLoading.show({
           template: '<ion-spinner icon="bubbles" class="spinner-light">'
           + '</ion-spinner><br>发送中...<style>'
@@ -37,7 +36,7 @@ angular.module('starter.controllers', ['baiduMap'])
         });
         $http({
           method: 'POST',
-          url: apiUrl+'/feedback/send',
+          url: apiUrl + '/feedback/send',
           data: {
             'phone': '123456',
             'content': $scope.comment
@@ -70,7 +69,7 @@ angular.module('starter.controllers', ['baiduMap'])
     //}, function errorCallback(response) {
     //    alert(response.status);
     //});
-    $scope.closeMenu = function() {
+    $scope.closeMenu = function () {
       $ionicSideMenuDelegate.toggleRight();
     };
     var login = false;
@@ -104,6 +103,7 @@ angular.module('starter.controllers', ['baiduMap'])
           }]
         });
       }
+
       if (!login) {
         showConfirm();
       }
@@ -153,6 +153,30 @@ angular.module('starter.controllers', ['baiduMap'])
             }, function (error) {
               // error
             });
+        });
+    };
+  })
+
+  .controller('NotifyCtrl', function ($scope, $http) {
+    $scope.items = [
+      {
+        'author': '客服',
+        'date': '2016/1/2 15:09',
+        'content': '这是一条来自未来的消息。'
+      },
+      {
+        'author': '教练',
+        'date': '2016/1/2 15:09',
+        'content': '明天约不约？'
+      }
+    ];
+    $scope.doRefresh = function() {
+      $http.get('http://www.runoob.com/try/demo_source/item.json')
+        .success(function(newItems) {
+          // $scope.items = newItems;
+        })
+        .finally(function() {
+          $scope.$broadcast('scroll.refreshComplete');
         });
     };
   })
@@ -237,8 +261,8 @@ angular.module('starter.controllers', ['baiduMap'])
 
 
   //LOGIN
-  .controller('LoginCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
-    $scope.doLogIn = function(){
+  .controller('LoginCtrl', function ($scope, $state, $templateCache, $q, $rootScope) {
+    $scope.doLogIn = function () {
       $state.go('app.feeds-categories');
     };
     $scope.user = {};
@@ -251,16 +275,16 @@ angular.module('starter.controllers', ['baiduMap'])
     });
   })
 
-  .controller('SignupCtrl', function($scope, $state) {
+  .controller('SignupCtrl', function ($scope, $state) {
     $scope.user = {};
     $scope.user.email = "john@doe.com";
-    $scope.doSignUp = function(){
+    $scope.doSignUp = function () {
       $state.go('app.feeds-categories');
     };
   })
 
-  .controller('ForgotPasswordCtrl', function($scope, $state) {
-    $scope.recoverPassword = function(){
+  .controller('ForgotPasswordCtrl', function ($scope, $state) {
+    $scope.recoverPassword = function () {
       $state.go('app.feeds-categories');
     };
     $scope.user = {};
@@ -294,7 +318,7 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
-  .controller('ExerciseCtrl', function ($scope) {
+  .controller('ExerciseCtrl', function ($scope, $cordovaToast) {
     $scope.show_all = false;
     $scope.show_all_exercise = function () {
       $scope.show_all = true;
@@ -302,6 +326,23 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.hide_all_exercise = function () {
       $scope.show_all = false;
     };
+    $scope.isStar = false;
+    $scope.star = function () {
+      $scope.isStar = true;
+      $cordovaToast
+        .show('收藏成功', 'short', 'bottom')
+        .then(function (success) {
+        }, function (error) {
+        });
+    };
+    $scope.unstar = function () {
+      $scope.isStar = false;
+      $cordovaToast
+        .show('取消收藏', 'short', 'bottom')
+        .then(function (success) {
+        }, function (error) {
+        });
+    }
   })
 
   .controller('Messages', function ($scope, $timeout, $location, $ionicScrollDelegate) {
@@ -353,4 +394,4 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.myId = '12345';
     $scope.messages = [];
 
-  });
+  })

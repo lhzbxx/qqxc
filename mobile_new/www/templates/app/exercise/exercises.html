@@ -5,38 +5,62 @@
   <ion-nav-buttons side="right">
     <button class="button button-icon icon ion-android-sync"></button>
   </ion-nav-buttons>
-  <div class="tabs-top tabs-background-positive tabs-color-light">
-    <div class="tabs">
-      <a class="tab-item active" href="#">
-        科目一
-      </a>
-      <a class="tab-item" href="#">
-        科目四
-      </a>
-    </div>
-  </div>
-  <ion-content padding="false" overflow-scroll="false" style="margin-top: 50px;">
-    <div class="list card">
-      <a ui-sref="app.chapter" class="item item-icon-left">
-        <i class="icon ion-home"></i>
-        章节练习
-      </a>
-      <a ui-sref="app.order" class="item item-icon-left">
-        <i class="icon ion-ios-telephone"></i>
-        顺序练习
-      </a>
-      <a ui-sref="app.random" class="item item-icon-left">
-        <i class="icon ion-wifi"></i>
-        随机练习
-      </a>
-      <a ui-sref="app.special" class="item item-icon-left">
-        <i class="icon ion-card"></i>
-        专项练习
-      </a>
-      <a ui-sref="app.exam" class="item item-icon-left">
-        <i class="icon ion-card"></i>
-        模拟考试
-      </a>
-    </div>
-  </ion-content>
+  <ion-tabs class="tabs-top tabs-icon-top tabs-background-positive tabs-color-light">
+    <ion-tab title="科目一" icon-on="ion-ios-circle-filled" icon-off="ion-ios-circle-outline">
+      <ion-nav-view>
+        <ion-content padding="false" overflow-scroll="false" class="no-header has-tabs-top">
+          <div class="list card">
+            <a ui-sref="app.chapter" class="item item-icon-left">
+              <i class="icon ion-home"></i>
+              章节练习
+            </a>
+            <a ui-sref="app.order" class="item item-icon-left">
+              <i class="icon ion-ios-telephone"></i>
+              顺序练习
+            </a>
+            <a ui-sref="app.random" class="item item-icon-left">
+              <i class="icon ion-wifi"></i>
+              随机练习
+            </a>
+            <a ui-sref="app.special" class="item item-icon-left">
+              <i class="icon ion-card"></i>
+              专项练习
+            </a>
+            <a ui-sref="app.exam" class="item item-icon-left">
+              <i class="icon ion-card"></i>
+              模拟考试
+            </a>
+          </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="科目四" icon-on="ion-ios-circle-filled" icon-off="ion-ios-circle-outline">
+      <ion-nav-view>
+        <ion-content padding="false" overflow-scroll="false" class="no-header has-tabs-top">
+          <div class="list card">
+            <a ui-sref="app.chapter" class="item item-icon-left">
+              <i class="icon ion-home"></i>
+              章节练习
+            </a>
+            <a ui-sref="app.order" class="item item-icon-left">
+              <i class="icon ion-ios-telephone"></i>
+              顺序练习
+            </a>
+            <a ui-sref="app.random" class="item item-icon-left">
+              <i class="icon ion-wifi"></i>
+              随机练习
+            </a>
+            <a ui-sref="app.special" class="item item-icon-left">
+              <i class="icon ion-card"></i>
+              专项练习
+            </a>
+            <a ui-sref="app.exam" class="item item-icon-left">
+              <i class="icon ion-card"></i>
+              模拟考试
+            </a>
+          </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
 </ion-view>
