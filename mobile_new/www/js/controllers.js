@@ -22,6 +22,10 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
+  .controller('LearnProcessCtrl', function ($scope, servicePhone) {
+    $scope.servicePhone = servicePhone;
+  })
+
   .controller('FeedbackCtrl', function ($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone) {
     $scope.servicePhone = servicePhone;
     $scope.isEmpty = function () {
@@ -37,17 +41,19 @@ angular.module('starter.controllers', ['baiduMap'])
         $http({
           method: 'POST',
           url: apiUrl + '/feedback/send',
+          timeout: 3000,
+          crossDomain: true,
           data: {
             'phone': '123456',
             'content': $scope.comment
           }
-        }).then(function successCallback(response) {
+        }).success(function(data) {
           $ionicLoading.hide();
           $ionicPopup.alert({
             title: '消息',
             template: '提交成功！'
           });
-        }, function errorCallback(response) {
+        }).error(function(data) {
           $ionicLoading.hide();
           $ionicPopup.alert({
             title: '错误',
@@ -58,17 +64,7 @@ angular.module('starter.controllers', ['baiduMap'])
     }
   })
 
-  .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation, $ionicSideMenuDelegate) {
-    //$http({
-    //    method: 'POST',
-    //    url: 'http://59.78.46.141/index.php/api/user/login',
-    //    data: { 'phone' : '13651608916' }
-    //}).then(function successCallback(response) {
-    //    alert(response.status);
-    //    alert(response.data);
-    //}, function errorCallback(response) {
-    //    alert(response.status);
-    //});
+  .controller('MenuCtrl', function ($scope, $ionicSideMenuDelegate, $ionicPopup) {
     $scope.closeMenu = function () {
       $ionicSideMenuDelegate.toggleRight();
     };
@@ -115,31 +111,31 @@ angular.module('starter.controllers', ['baiduMap'])
         duration: 1000
       });
     };
+  })
+
+  .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $http, $cordovaGeolocation) {
+    //$http({
+    //    method: 'POST',
+    //    url: 'http://59.78.46.141/index.php/api/user/login',
+    //    data: { 'phone' : '13651608916' }
+    //}).then(function successCallback(response) {
+    //    alert(response.status);
+    //    alert(response.data);
+    //}, function errorCallback(response) {
+    //    alert(response.status);
+    //});
     var posOptions = {
       timeout: 3000,
       enableHighAccuracy: false
     };
     $scope.locCity = '';
-    $scope.url = '=';
-
     function toast(content)
     {
       $cordovaToast
         .show(content, 'short', 'bottom');
     }
-
     if ($scope.locCity == '')
     {
-      $http({
-        method: 'GET',
-        url: 'http://jsonplaceholder.typicode.com/posts/1'
-      })
-      .success(function(data){
-        $scope.url = data;
-      })
-      .error(function(data){
-        $scope.url = 'xxxx';
-      });
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
@@ -150,7 +146,6 @@ angular.module('starter.controllers', ['baiduMap'])
             url: 'http://api.map.baidu.com/geocoder/v2/?ak=cgTX3SveDGQq32CoDPXGyGKh&output=json&location=' + lat + ',' + long
           }).success(function(data){
             $scope.locCity = data.result.addressComponent.city;
-            toast('当前定位城市：'+response);
           })
           .error(function(data){
             toast('地图服务故障');
@@ -159,10 +154,8 @@ angular.module('starter.controllers', ['baiduMap'])
           toast('定位失败');
         });
     }
-
     $scope.getPos = function () {
-      if ($scope.locCity == '')
-      {
+      if ($scope.locCity == '') {
         $ionicLoading.show({
           template: '<ion-spinner icon="bubbles" class="spinner-light">'
           + '</ion-spinner><br>正在定位...<style>'
@@ -177,45 +170,20 @@ angular.module('starter.controllers', ['baiduMap'])
             $http({
               method: 'GET',
               url: 'http://api.map.baidu.com/geocoder/v2/?ak=cgTX3SveDGQq32CoDPXGyGKh&output=json&location=' + lat + ',' + long
-            }).then(function successCallback(response) {
-              $scope.url = 'XXXXXXXXXX';
-              $scope.locCity = response.result.addressComponent.city;
+            }).success(function(data){
               $ionicLoading.hide();
-              toast('当前定位城市：'+response);
-            }, function errorCallback(response) {
+              $scope.locCity = data.result.addressComponent.city;
+                toast('当前定位城市：' + $scope.locCity);
+            })
+            .error(function(data){
               $ionicLoading.hide();
-              toast('地图服务故障');
-            });
+              toast('网络错误');
+            })
           }, function (err) {
             $ionicLoading.hide();
             toast('定位失败');
           });
       }
-
-      //if (ionic.Platform.isAndroid()) {
-      //  baidu_location.getCurrentPosition(successCallback, failedCallback);
-      //} else {
-      //  $cordovaGeolocation
-      //    .getCurrentPosition(posOptions)
-      //    .then(function (position) {
-      //      var lat = position.coords.latitude;
-      //      var long = position.coords.longitude;
-      //      ren = $http.get('http://api.map.baidu.com/geocoder/v2/?ak=mGU507GCCZWPEp36krDAgVM7&output=json&location=' + lat + ',' + long);
-      //      $cordovaToast
-      //        .show(ren, 'short', 'bottom')
-      //        .then(function (success) {
-      //          $ionicLoading.hide();
-      //        }, function (error) {
-      //          // error
-      //        });
-      //    }, function (err) {
-      //      $cordovaToast
-      //        .show("定位失败！", 'short', 'bottom')
-      //        .then(function (success) {
-      //          $ionicLoading.hide();
-      //        });
-      //    });
-      //}
     };
   })
 
@@ -241,6 +209,15 @@ angular.module('starter.controllers', ['baiduMap'])
           $scope.$broadcast('scroll.refreshComplete');
         });
     };
+    $scope.loadMore = function() {
+      $http.get('/more-items').success(function(items) {
+        useItems(items);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
+    };
+    $scope.$on('$stateChangeSuccess', function() {
+      $scope.loadMore();
+    });
   })
 
   .controller('DashCtrl', function ($scope, $ionicActionSheet, $ionicSlideBoxDelegate, $http) {

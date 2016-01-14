@@ -9,7 +9,7 @@
     <textarea name="comment" id="comment-textarea" ng-model="comment" style="height: 150px; width: 100%; margin-top: 10px; background-color: white; padding: 10px; font-size: 20px; line-height: 20px;" placeholder="请将您的宝贵意见告诉我们，我们将用于不断完善我们的服务。"></textarea>
     <div class="row">
       <div class="col">
-        <button type="submit" class="button button-block button-positive" ng-disabled="comment.$invalid" ng-click="submitFeedback()">提交</button>
+        <button type="submit" class="button button-block button-positive" ng-disabled="!comment.length" ng-click="submitFeedback()">提交</button>
       </div>
     </div>
   </ion-content>

@@ -115,6 +115,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/app',
         abstract: true,
         templateUrl: 'templates/app/side-menu.html',
+        controller: 'MenuCtrl'
       })
       .state('app.home', {
         url: '/home',
@@ -129,7 +130,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/learn-process',
         views: {
           'main-content': {
-            templateUrl: 'templates/app/learn/process.html'
+            templateUrl: 'templates/app/learn/process.html',
+            controller: 'LearnProcessCtrl'
           }
         }
       })
@@ -175,6 +177,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       })
       .state('app.coach-address', {
         url: '/coach-address',
+        cache: false,
         views: {
           'main-content': {
             templateUrl: 'templates/app/coach/address.html',

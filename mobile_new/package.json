@@ -20,7 +20,9 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-geolocation-baidu"
   ],
   "cordovaPlatforms": [
     "android"

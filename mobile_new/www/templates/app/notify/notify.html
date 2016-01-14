@@ -105,6 +105,7 @@
             spinner="spiral"
             on-refresh="doRefresh()"
             class="has-tabs-top no-header"
+            style="z-index: 888;"
           >
           </ion-refresher>
           <ion-list>
@@ -115,6 +116,12 @@
               <p>{{item.content}}</p>
             </ion-item>
           </ion-list>
+          <ion-infinite-scroll
+            ng-if="moreDataCanBeLoaded()"
+            spinner="spiral"
+            on-infinite="loadMore()"
+            distance="1%">
+          </ion-infinite-scroll>
         </ion-content>
       </ion-nav-view>
     </ion-tab>

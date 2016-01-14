@@ -15,6 +15,7 @@ class Feedback extends REST_Controller
     {
         parent::__construct();
         $this->load->helper('base_tool');
+        header('Access-Control-Allow-Origin: *');
     }
 
     public function send_post()
