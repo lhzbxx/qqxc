@@ -138,7 +138,7 @@ angular.module('starter.controllers', ['baiduMap'])
       $http({
         method: 'GET',
         url: apiUrl + '/api/test',
-        timeout: 3000,
+        timeout: 10000,
         data: {
         }
       }).success(function(data) {
