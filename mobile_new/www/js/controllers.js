@@ -58,7 +58,7 @@ angular.module('starter.controllers', ['baiduMap'])
     }
   })
 
-  .controller('HomeCtrl', function ($scope, $cordovaToast, $location, $rootScope, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation, $ionicHistory, $ionicSideMenuDelegate) {
+  .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $ionicPopup, $http, $cordovaGeolocation, $ionicSideMenuDelegate) {
     //$http({
     //    method: 'POST',
     //    url: 'http://59.78.46.141/index.php/api/user/login',
@@ -103,7 +103,6 @@ angular.module('starter.controllers', ['baiduMap'])
           }]
         });
       }
-
       if (!login) {
         showConfirm();
       }
@@ -116,44 +115,107 @@ angular.module('starter.controllers', ['baiduMap'])
         duration: 1000
       });
     };
-    $scope.hide = function () {
-      $ionicLoading.hide();
-    };
-    $scope.back = function (path) {
-      $location.path(path);
-    };
     var posOptions = {
       timeout: 3000,
       enableHighAccuracy: false
     };
-    $scope.getPos = function () {
-      $ionicLoading.show({
-        template: '<ion-spinner icon="bubbles" class="spinner-light">'
-        + '</ion-spinner><br>正在定位...<style>'
-        + '.spinner svg {width: 50px !important; height: 50px !important;}</style>'
+    $scope.locCity = '';
+    $scope.url = '=';
+
+    function toast(content)
+    {
+      $cordovaToast
+        .show(content, 'short', 'bottom');
+    }
+
+    if ($scope.locCity == '')
+    {
+      $http({
+        method: 'GET',
+        url: 'http://jsonplaceholder.typicode.com/posts/1'
+      })
+      .success(function(data){
+        $scope.url = data;
+      })
+      .error(function(data){
+        $scope.url = 'xxxx';
       });
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
-          var lat = position.coords.latitude
-          var long = position.coords.longitude
-          ren = $http.get('http://api.map.baidu.com/geocoder/v2/?ak=mGU507GCCZWPEp36krDAgVM7&output=json&location=' + lat + ',' + long);
-          $cordovaToast
-            .show(ren, 'short', 'bottom')
-            .then(function (success) {
-              $ionicLoading.hide();
-            }, function (error) {
-              // error
-            });
+          var lat = position.coords.latitude;
+          var long = position.coords.longitude;
+          $http({
+            method: 'GET',
+            url: 'http://api.map.baidu.com/geocoder/v2/?ak=cgTX3SveDGQq32CoDPXGyGKh&output=json&location=' + lat + ',' + long
+          }).success(function(data){
+            $scope.locCity = data.result.addressComponent.city;
+            toast('当前定位城市：'+response);
+          })
+          .error(function(data){
+            toast('地图服务故障');
+          })
         }, function (err) {
-          $cordovaToast
-            .show("定位失败！", 'short', 'bottom')
-            .then(function (success) {
-              $ionicLoading.hide();
-            }, function (error) {
-              // error
-            });
+          toast('定位失败');
         });
+    }
+
+    $scope.getPos = function () {
+      if ($scope.locCity == '')
+      {
+        $ionicLoading.show({
+          template: '<ion-spinner icon="bubbles" class="spinner-light">'
+          + '</ion-spinner><br>正在定位...<style>'
+          + '.spinner svg {width: 50px !important; height: 50px !important;}</style>'
+        });
+        $cordovaGeolocation
+          .getCurrentPosition(posOptions)
+          .then(function (position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            $scope.url = 'http://api.map.baidu.com/geocoder/v2/?ak=cgTX3SveDGQq32CoDPXGyGKh&output=json&location=' + lat + ',' + long;
+            $http({
+              method: 'GET',
+              url: 'http://api.map.baidu.com/geocoder/v2/?ak=cgTX3SveDGQq32CoDPXGyGKh&output=json&location=' + lat + ',' + long
+            }).then(function successCallback(response) {
+              $scope.url = 'XXXXXXXXXX';
+              $scope.locCity = response.result.addressComponent.city;
+              $ionicLoading.hide();
+              toast('当前定位城市：'+response);
+            }, function errorCallback(response) {
+              $ionicLoading.hide();
+              toast('地图服务故障');
+            });
+          }, function (err) {
+            $ionicLoading.hide();
+            toast('定位失败');
+          });
+      }
+
+      //if (ionic.Platform.isAndroid()) {
+      //  baidu_location.getCurrentPosition(successCallback, failedCallback);
+      //} else {
+      //  $cordovaGeolocation
+      //    .getCurrentPosition(posOptions)
+      //    .then(function (position) {
+      //      var lat = position.coords.latitude;
+      //      var long = position.coords.longitude;
+      //      ren = $http.get('http://api.map.baidu.com/geocoder/v2/?ak=mGU507GCCZWPEp36krDAgVM7&output=json&location=' + lat + ',' + long);
+      //      $cordovaToast
+      //        .show(ren, 'short', 'bottom')
+      //        .then(function (success) {
+      //          $ionicLoading.hide();
+      //        }, function (error) {
+      //          // error
+      //        });
+      //    }, function (err) {
+      //      $cordovaToast
+      //        .show("定位失败！", 'short', 'bottom')
+      //        .then(function (success) {
+      //          $ionicLoading.hide();
+      //        });
+      //    });
+      //}
     };
   })
 

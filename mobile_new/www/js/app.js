@@ -115,7 +115,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/app',
         abstract: true,
         templateUrl: 'templates/app/side-menu.html',
-        controller: 'HomeCtrl'
       })
       .state('app.home', {
         url: '/home',
