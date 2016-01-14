@@ -23,6 +23,8 @@ class Welcome extends REST_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Credentials:true');
 	}
 
 	public function index_get()

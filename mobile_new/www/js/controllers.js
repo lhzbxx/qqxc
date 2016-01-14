@@ -26,13 +26,14 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.servicePhone = servicePhone;
   })
 
-  .controller('FeedbackCtrl', function ($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone) {
+  .controller('FeedbackCtrl', function ($scope, $http, $ionicLoading, $ionicPopup, apiUrl, servicePhone, $ionicHistory) {
     $scope.servicePhone = servicePhone;
+    $scope.comment = {};
     $scope.isEmpty = function () {
-
+      return $scope.comment.text.length;
     };
     $scope.submitFeedback = function () {
-      if ($scope.comment != '') {
+      if ($scope.comment.text.length) {
         $ionicLoading.show({
           template: '<ion-spinner icon="bubbles" class="spinner-light">'
           + '</ion-spinner><br>发送中...<style>'
@@ -42,16 +43,25 @@ angular.module('starter.controllers', ['baiduMap'])
           method: 'POST',
           url: apiUrl + '/feedback/send',
           timeout: 3000,
-          crossDomain: true,
+          //data: 'phone=123456&content=123456'
+          transformRequest: function(obj) {
+            var str = [];
+            for(var p in obj)
+              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            return str.join("&");
+          },
           data: {
             'phone': '123456',
-            'content': $scope.comment
+            'content': $scope.comment.text
           }
         }).success(function(data) {
+          $scope.comment = {};
           $ionicLoading.hide();
           $ionicPopup.alert({
             title: '消息',
-            template: '提交成功！'
+            template: '提交成功！'+data.code
+          }).then(function () {
+            $ionicHistory.goBack();
           });
         }).error(function(data) {
           $ionicLoading.hide();
@@ -113,7 +123,7 @@ angular.module('starter.controllers', ['baiduMap'])
     };
   })
 
-  .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $http, $cordovaGeolocation) {
+  .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $http, $cordovaGeolocation, apiUrl, $ionicPopup) {
     //$http({
     //    method: 'POST',
     //    url: 'http://59.78.46.141/index.php/api/user/login',
@@ -124,6 +134,28 @@ angular.module('starter.controllers', ['baiduMap'])
     //}, function errorCallback(response) {
     //    alert(response.status);
     //});
+    $scope.test = function () {
+      $http({
+        method: 'GET',
+        url: apiUrl + '/api/test',
+        timeout: 3000,
+        data: {
+        }
+      }).success(function(data) {
+        $scope.comment = {};
+        $ionicLoading.hide();
+        $ionicPopup.alert({
+          title: '成功',
+          template: data
+        })
+      }).error(function(data) {
+        $ionicLoading.hide();
+        $ionicPopup.alert({
+          title: '失败',
+          template: '网络错误！'
+        });
+      });
+    };
     var posOptions = {
       timeout: 3000,
       enableHighAccuracy: false
