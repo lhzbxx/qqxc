@@ -88,18 +88,28 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.state = '2';
     $scope.title = '注册';
     $scope.verify_code = '获取验证码';
+    $scope.cou = 60;
     $scope.verify = function () {
-      alert("ok");
-      $scope.verify_code = '60';
-      $timeout(counter(), 3000);
+      if ($scope.cou == 60) {
+        $scope.verify_code = $scope.cou+'秒';
+        $timeout(function () {
+          counter()
+        }, 1000);
+      }
     };
     function counter() {
-      if ($scope.verify_code != 0) {
-        $scope.verify_code -= 1;
-        $timeout(counter(), 300);
+      if ($scope.cou != 0) {
+        $scope.cou -= 1;
+        $scope.verify_code = $scope.cou+'秒';
+        $timeout(function () {
+          counter()
+        }, 1000);
       }
-      else
+      else {
+        $timeout.cancel();
+        $scope.cou = 60;
         $scope.verify_code = '获取验证码';
+      }
     }
     $scope.change = function (state) {
       $scope.state = state;
@@ -170,6 +180,22 @@ angular.module('starter.controllers', ['baiduMap'])
     //    showConfirm();
     //  }
     //};
+  })
+
+  .controller('PayCtrl', function ($scope, $pingpp, $ionicPopup) {
+    $scope.pay=function(){
+      var charge={"id":"ch_ez9a5O9GSCy5fj5afHTGmvHG","object":"charge","created":1442542657,"livemode":false,"paid":false,"refunded":false,"app":"app_ir1uHKe9aHaL9SWn","channel":"upacp","order_no":"123456789","client_ip":"127.0.0.1","amount":100,"amount_settle":0,"currency":"cny","subject":"Your Subject","body":"Your Body","extra":{},"time_paid":null,"time_expire":1442546257,"time_settle":null,"transaction_no":null,"refunds":{"object":"list","url":"/v1/charges/ch_ez9a5O9GSCy5fj5afHTGmvHG/refunds","has_more":false,"data":[]},"amount_refunded":0,"failure_code":null,"failure_msg":null,"metadata":{},"credential":{"object":"credential","upacp":{"tn":"201509181017374044084","mode":"00"}},"description":null};
+      try{
+        $pingpp.createPayment(charge, function(result){
+          $ionicPopup.show('suc: '+result);  //"success"
+        }, function(result){
+          $ionicPopup.show('err: '+result);  //"fail"|"cancel"|"invalid"
+        });
+      }
+      catch(e){
+        $ionicPopup.show(e);
+      }
+    };
   })
 
   .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $http, $cordovaGeolocation, apiUrl, $ionicPopup) {

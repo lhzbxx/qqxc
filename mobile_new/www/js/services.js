@@ -24,6 +24,20 @@ angular.module('starter.services', [])
     }
   })
 
+  .factory('$pingpp', ['$q', '$window', function ($q, $window) {
+    return {
+      createPayment: function (charge) {
+        return $q(function (resolve, reject) {
+          $window.pingpp.createPayment(charge, function () {
+            resolve();
+          }, function (err) {
+            reject(err);
+          });
+        });
+      }
+    };
+  }])
+
   .factory('Chats', function () {
     // Might use a resource here that returns a JSON array
 

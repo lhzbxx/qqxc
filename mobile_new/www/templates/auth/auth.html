@@ -11,11 +11,10 @@
       <label class="item item-input">
         <input type="password" placeholder="请输入密码">
       </label>
-      <label class="item item-input" ng-hide="check(1)">
-        <input type="number" placeholder="请输入验证码">
+      <div class="item item-input" ng-hide="check(1)">
+        <input type="number" placeholder="请输入验证码" style="width: 100px !important;">
         <span ng-click="verify()" style="background-color: #71C4BC; color: white; display: inline-block; padding: 5px; margin-right: 5px;">{{verify_code}}</span>
-        <br>
-      </label>
+      </div>
       <div ng-show="check(1)">
         <br>
         <span ng-click="change(2)" style="background-color: #71C4BC; color: white; display: inline-block; padding: 5px;">我是新用户</span>

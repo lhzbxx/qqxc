@@ -1,0 +1,24 @@
+<ion-view class="protocol-view">
+  <ion-nav-title>
+    <span>充值</span>
+  </ion-nav-title>
+  <ion-content style="background-color: #eee;" padding="false" overflow-scroll="false">
+    <ion-list>
+      <div class="item item-divider">
+        请输入充值金额
+      </div>
+      <label class="item item-input">
+        <span class="input-label">充值金额</span>
+        <input type="number">
+      </label>
+      <div class="item item-divider">
+        选择支付平台
+      </div>
+      <ion-radio ng-model="choice" ng-value="'A'">支付宝</ion-radio>
+      <ion-radio ng-model="choice" ng-value="'B'">微信支付</ion-radio>
+      <button class="button button-block button-positive" style="width: 90%; margin-left: 5%;" ng-click="pay()">
+        充值
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-view>

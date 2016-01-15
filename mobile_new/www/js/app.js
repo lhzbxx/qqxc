@@ -162,6 +162,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+      .state('app.coach-comment-list', {
+        url: '/coach-comment-list',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/coach/comment/list.html'
+          }
+        }
+      })
       .state('app.coach-detail', {
         url: '/coach-detail',
         views: {
@@ -253,6 +261,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         views: {
           'main-content': {
             templateUrl: 'templates/app/purse/account.html'
+          }
+        }
+      })
+      .state('app.charge', {
+        url: '/charge',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/purse/charge.html',
+            controller: 'PayCtrl'
+          }
+        }
+      })
+      .state('app.withdraw', {
+        url: '/withdraw',
+        views: {
+          'main-content': {
+            templateUrl: 'templates/app/purse/withdraw.html'
           }
         }
       })
