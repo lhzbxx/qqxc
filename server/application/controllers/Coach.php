@@ -9,6 +9,8 @@ class Coach extends REST_Controller
     {
         parent::__construct();
         $this->load->helper('base_tool');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Credentials:true');
     }
 
     public function add_coach_post()
@@ -312,14 +314,14 @@ class Coach extends REST_Controller
 
         $this->load->model('User_model');
 
-        if (!$this->User_model->valid_openid(param['openid']))
+        if (!$this->User_model->valid_openid($param['openid']))
         {
             $response['code']       = '201';
             $response['message']    = 'Invalid openid.';
             $this->response($response);
         }
 
-        $user_id = $this->User_model->get_user_id_by_openid(param['openid']);
+        $user_id = $this->User_model->get_user_id_by_openid($param['openid']);
 
         $this->load->model('Coach_model');
 

@@ -157,7 +157,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/coach-list',
         views: {
           'main-content': {
-            templateUrl: 'templates/app/coach/list.html'
+            templateUrl: 'templates/app/coach/list.html',
+            controller: 'CoachListCtrl'
           }
         }
       })

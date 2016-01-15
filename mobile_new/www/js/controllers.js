@@ -59,7 +59,7 @@ angular.module('starter.controllers', ['baiduMap'])
           $ionicLoading.hide();
           $ionicPopup.alert({
             title: '消息',
-            template: '提交成功！'+data.code
+            template: '提交成功！'
           }).then(function () {
             $ionicHistory.goBack();
           });
@@ -425,6 +425,68 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.changeSwitch = function () {
       $scope.switch = !$scope.switch;
     };
+  })
+
+  .controller('CoachListCtrl', function ($scope, $ionicLoading, $ionicPopup, $ionicHistory, $http, apiUrl) {
+    $scope.filter = 0;
+    $scope.checkFilter = function (index) {
+      return $scope.filter == index;
+    };
+    $scope.changeFilter = function (index) {
+      $scope.filter = index;
+      $scope.items = [];
+      $scope.loading = true;
+      // todo: 从缓存中获取。
+      $http({
+        method: 'POST',
+        url: apiUrl + '/api/coach/get_coach_list',
+        timeout: 3000,
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        },
+        data: {
+        }
+      }).success(function(data) {
+        $scope.items = data.data;
+        $scope.loading = false;
+      }).error(function(data) {
+        $ionicPopup.alert({
+          title: '错误',
+          template: '网络错误！'
+        }).then(function () {
+          $ionicHistory.goBack();
+        });
+      });
+    };
+    $scope.items = [];
+    $scope.loading = true;
+    // todo: 从缓存中获取。
+    $http({
+      method: 'POST',
+      url: apiUrl + '/api/coach/get_coach_list',
+      timeout: 3000,
+      transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+      },
+      data: {
+      }
+    }).success(function(data) {
+      $scope.items = data.data;
+      $scope.loading = false;
+    }).error(function(data) {
+      $ionicPopup.alert({
+        title: '错误',
+        template: '网络错误！'
+      }).then(function () {
+        $ionicHistory.goBack();
+      });
+    });
   })
 
   .controller('Messages', function ($scope, $timeout, $location, $ionicScrollDelegate) {
