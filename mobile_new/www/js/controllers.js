@@ -74,53 +74,102 @@ angular.module('starter.controllers', ['baiduMap'])
     }
   })
 
-  .controller('MenuCtrl', function ($scope, $ionicSideMenuDelegate, $ionicPopup) {
+  .controller('MenuCtrl', function ($scope, $ionicSideMenuDelegate, $ionicPopup, $ionicModal, $timeout) {
     $scope.closeMenu = function () {
       $ionicSideMenuDelegate.toggleRight();
     };
     var login = false;
-    $scope.login = function () {
-      function showConfirm() {
-        var myPopup = $ionicPopup.show({
-          template: '<div class="list">' +
-          '<label class="item item-input">' +
-          '<input type="text" placeholder="手机号">' +
-          '</label>' +
-          '<label class="item item-input">' +
-          '<input type="text" placeholder="密码">' +
-          '</label>' +
-          '</div><a>新用户注册</a>',
-          title: '用户登录',
-          // subTitle: 'Please use normal things',
-          scope: $scope,
-          buttons: [{
-            text: '取消'
-          }, {
-            text: '<b>登录</b>',
-            type: 'button-positive',
-            onTap: function (e) {
-              if (!$scope.data.wifi) {
-                //don't allow the user to close unless he enters wifi password
-                e.preventDefault();
-              } else {
-                return $scope.data.wifi;
-              }
-            }
-          }]
-        });
+    $ionicModal.fromTemplateUrl('templates/auth/auth.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.state = '2';
+    $scope.title = '注册';
+    $scope.verify_code = '获取验证码';
+    $scope.verify = function () {
+      alert("ok");
+      $scope.verify_code = '60';
+      $timeout(counter(), 3000);
+    };
+    function counter() {
+      if ($scope.verify_code != 0) {
+        $scope.verify_code -= 1;
+        $timeout(counter(), 300);
       }
-      if (!login) {
-        showConfirm();
+      else
+        $scope.verify_code = '获取验证码';
+    }
+    $scope.change = function (state) {
+      $scope.state = state;
+      switch (state) {
+        case 1:
+          $scope.title = '登录';
+          break;
+        case 2:
+          $scope.title = '注册';
+          break;
+        case 3:
+          $scope.title = '修改密码';
+          break;
       }
     };
-    $scope.show = function () {
-      $ionicLoading.show({
-        template: '<ion-spinner icon="bubbles" class="spinner-light">'
-        + '</ion-spinner><br>Loading...<style>'
-        + '.spinner svg {width: 50px !important; height: 50px !important;}</style>',
-        duration: 1000
-      });
+    $scope.check = function (state) {
+      return $scope.state == state;
     };
+    $scope.show = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    //$scope.login = function () {
+    //  function showConfirm() {
+    //    var myPopup = $ionicPopup.show({
+    //      template: '<div class="list">' +
+    //      '<label class="item item-input">' +
+    //      '<input type="text" placeholder="手机号">' +
+    //      '</label>' +
+    //      '<label class="item item-input">' +
+    //      '<input type="text" placeholder="密码">' +
+    //      '</label>' +
+    //      '</div><a>新用户注册</a>',
+    //      title: '用户登录',
+    //      // subTitle: 'Please use normal things',
+    //      scope: $scope,
+    //      buttons: [{
+    //        text: '取消'
+    //      }, {
+    //        text: '<b>登录</b>',
+    //        type: 'button-positive',
+    //        onTap: function (e) {
+    //          if (!$scope.data.wifi) {
+    //            //don't allow the user to close unless he enters wifi password
+    //            e.preventDefault();
+    //          } else {
+    //            return $scope.data.wifi;
+    //          }
+    //        }
+    //      }]
+    //    });
+    //  }
+    //  if (!login) {
+    //    showConfirm();
+    //  }
+    //};
   })
 
   .controller('HomeCtrl', function ($scope, $cordovaToast, $ionicLoading, $http, $cordovaGeolocation, apiUrl, $ionicPopup) {

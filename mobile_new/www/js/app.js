@@ -274,21 +274,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       })
 
-      .state('auth.login', {
-        url: '/login',
-        templateUrl: "templates/auth/login.html",
-        controller: 'LoginCtrl'
-      })
-      .state('auth.signup', {
-        url: '/signup',
-        templateUrl: "templates/auth/signup.html",
-        controller: 'SignupCtrl'
-      })
-      .state('auth.forgot-password', {
-        url: "/forgot-password",
-        templateUrl: "templates/auth/forgot-password.html",
-        controller: 'ForgotPasswordCtrl'
-      })
       //.state('chapter', {
       //  url: '/exercise/chapter',
       //  templateUrl: 'templates/exercise.html',
@@ -305,7 +290,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //  controller: 'ExerciseCtrl'
       //});
 
-    cache: false;
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
 

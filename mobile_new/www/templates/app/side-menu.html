@@ -14,7 +14,7 @@
   <ion-side-menu side="right" class="main-menu" expose-aside-when="large">
     <ion-content>
       <ion-list>
-        <a class="item item-avatar" ng-click="login()">
+        <a class="item item-avatar" ng-click="show()">
           <img src="img/ionic.png">
           <h2>昵称</h2>
           <p>学员</p>
@@ -44,46 +44,11 @@
           <i class="icon ion-android-clipboard"></i>
           培训协议
         </ion-item>
+        <ion-item class="item-icon-left" ng-click="closeMenu()">
+          <i class="icon ion-log-out"></i>
+          退出登录
+        </ion-item>
       </ion-list>
-      <!--<ion-list>-->
-      <!--<ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile">-->
-      <!--<div class="user-image-container">-->
-      <!--<pre-img ratio="_1_1" helper-class="rounded-image">-->
-      <!--<img class="user-image" ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" spinner-on-load>-->
-      <!--</pre-img>-->
-      <!--</div>-->
-      <!--<h2 class="greeting">Hi Brynn</h2>-->
-      <!--<p class="message">Welcome back</p>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">-->
-      <!--<i class="icon ion-bookmark"></i>-->
-      <!--<h2 class="menu-text">Saved for later</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.feeds-categories">-->
-      <!--<i class="icon ion-radio-waves"></i>-->
-      <!--<h2 class="menu-text">Feeds</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.wordpress">-->
-      <!--<i class="icon ion-social-wordpress"></i>-->
-      <!--<h2 class="menu-text">Wordpress</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.layouts">-->
-      <!--<i class="icon ion-wand"></i>-->
-      <!--<h2 class="menu-text">Layouts</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.miscellaneous">-->
-      <!--<i class="icon ion-asterisk"></i>-->
-      <!--<h2 class="menu-text">Miscellaneous</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.forms">-->
-      <!--<i class="icon ion-document"></i>-->
-      <!--<h2 class="menu-text">Forms</h2>-->
-      <!--</ion-item>-->
-      <!--<ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.settings">-->
-      <!--<i class="icon ion-gear-a"></i>-->
-      <!--<h2 class="menu-text">Settings</h2>-->
-      <!--</ion-item>-->
-      <!--</ion-list>-->
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
