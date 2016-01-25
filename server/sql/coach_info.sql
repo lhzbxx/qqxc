@@ -1,0 +1,41 @@
+use qqxc;
+
+drop table coach_info;
+
+create table coach_info (
+    id int primary key auto_increment,
+    coach_id int not null unique,
+    name varchar(20) comment '姓名',
+    age tinyint comment '年龄',
+    gender char(1) comment '性别，F/M/N' default 'N',
+    exp tinyint comment '教龄',
+    idcard varchar(20) comment '身份证号',
+    phone varchar(20) comment '联系电话',
+    phone_back varchar(20) comment '备用联系电话',
+    car_type bit(16) comment '可教车型，C1C2C3C4...',
+    commission varchar(20) comment '服务费',
+    c1_price varchar(10) comment 'C1价格',
+    c2_price varchar(10) comment 'C2价格',
+    card_url varchar(128) comment '身份证正面照片',
+    card_back_url varchar(128) comment '身份证背面照片',
+    credit_url varchar(128) comment '教练证正本照片',
+    credit_back_url varchar(128) comment '教练正副本照片',
+    license_url varchar(128) comment '驾驶证照片',
+    avatar_url varchar(128) comment '教练头像照片',
+    status char(1) comment '审核状态，N 未审核，Y 审核通过，T 审核中，F 未通过' default 'N',
+    status_detail char(128) comment '审核详情',
+    driver_school_id int,
+    c1_sub2_pass int comment '科目2通过人数' default 0,
+    c1_sub2_total int comment '科目2总人数' default 1,
+    c1_sub3_pass int comment '科目3通过人数' default 0,
+    c1_sub3_total int comment '科目3总人数' default 1,
+	c2_sub2_pass int comment '科目2通过人数' default 0,
+	c2_sub2_total int comment '科目2总人数' default 1,
+	c2_sub3_pass int comment '科目3通过人数' default 0,
+	c2_sub3_total int comment '科目3总人数' default 1,
+	`comment` varchar(128) comment '对教练的备注，对管理员可见。',
+	block_id int,
+	lat float comment '经度',
+	lng float comment '纬度',
+	address varchar(32) comment '教练地址'
+)

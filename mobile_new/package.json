@@ -25,6 +25,7 @@
     "cordova-plugin-geolocation-baidu"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ]
 }
