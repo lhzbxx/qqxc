@@ -1,5 +1,7 @@
 use qqxc;
 
+DROP TABLE account;
+
 create table account (
 	id int primary key auto_increment,
 	cid int not null comment '用户ID',

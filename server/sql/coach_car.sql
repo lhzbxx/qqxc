@@ -1,6 +1,6 @@
-coach_car.sql
-
 use qqxc;
+
+drop table coach_car;
 
 create table coach_car (
 	id int primary key auto_increment,

@@ -1,5 +1,7 @@
 use qqxc;
 
+drop table coach_pass;
+
 create table coach_pass (
 	id int primary key auto_increment,
 	coach_id int not null,

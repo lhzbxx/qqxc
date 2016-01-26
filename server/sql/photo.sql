@@ -1,5 +1,7 @@
 use qqxc;
 
+drop TABLE photo;
+
 create table photo (
     id int primary key auto_increment,
     cid int not null,

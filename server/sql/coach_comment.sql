@@ -1,5 +1,7 @@
 use qqxc;
 
+drop table coach_comment;
+
 CREATE TABLE coach_comment (
 	id int primary key auto_increment,
     user_id int not null,
