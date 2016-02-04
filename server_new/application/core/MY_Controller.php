@@ -14,6 +14,10 @@ class MY_API_Controller extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
+        header('Access-Control-Request-Headers: *');
+        header('Access-Control-Allow-Headers: x-requested-with, content-type');
         $this->result = new Result();
         $this->result->code = 100;
         $this->result->msg = '正常';

@@ -27,6 +27,11 @@ class Validation {
         $this->timestamp = $this->CI->input->get_request_header('timestamp', TRUE);
         $this->sign = $this->CI->input->get_request_header('sign', TRUE);
         $this->api_key = $this->CI->input->get_request_header('api_key', TRUE);
+        if ( ! ($this->platform && $this->version && $this->request)) {
+            $result = $this->CI->util->result(204);
+            $this->CI->util->response($result);
+        }
+
     }
 
     private function check_platform()

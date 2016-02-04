@@ -67,6 +67,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><body></body><script>
+	$(document).ready(function(){
+		$.ajaxSetup({
+			headers: {
+				'api_key': '123',
+			},
+		});
+		$.ajax({
+				type: 'GET',
+				crossDomain: true,
+				dataType: '',
+				url: 'http://120.27.194.121/index.php/api/wx/1/feedback/list',
+				success: function(data) {
+					alert(data);
+				},
+				contentType: "application/json; charset=utf-8" ,
+			})
+			.done(function(data) {
+				console.log(data.code);
+				console.log(data.msg);
+				console.log(data.data);
+			});
+	})
+</script>
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
 

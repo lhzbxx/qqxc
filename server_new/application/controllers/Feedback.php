@@ -15,8 +15,6 @@ class Feedback extends MY_API_Controller
     {
         parent::__construct();
         $this->load->model('FeedbackModel');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Credentials:true');
     }
 
     public function send_fb()
