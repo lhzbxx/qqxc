@@ -320,5 +320,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   })
 
-.constant('apiUrl', 'http://192.168.55.102/index.php')
+.constant('apiUrl', 'http://120.27.194.121/index.php')
 .constant('servicePhone', '13651608916');

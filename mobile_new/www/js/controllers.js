@@ -41,7 +41,7 @@ angular.module('starter.controllers', ['baiduMap'])
         });
         $http({
           method: 'POST',
-          url: apiUrl + '/feedback/send',
+          url: apiUrl + '/api/app/1/feedback/send',
           timeout: 3000,
           //data: 'phone=123456&content=123456'
           transformRequest: function(obj) {
@@ -212,7 +212,7 @@ angular.module('starter.controllers', ['baiduMap'])
     $scope.test = function () {
       $http({
         method: 'GET',
-        url: apiUrl + '/api/test',
+        url: apiUrl + 'app/1/api/test',
         timeout: 10000,
         data: {
         }
