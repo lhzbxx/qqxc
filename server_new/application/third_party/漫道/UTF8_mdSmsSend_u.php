@@ -7,9 +7,9 @@
 $flag = 0; 
         //要post的数据 
 $argv = array( 
-         'sn'=>'DXX-WSS-107-06110', ////替换成您自己的序列号
-		 'pwd'=>strtoupper(md5('DXX-WSS-107-06110'.'LHxueche')), //此处密码需要加密 加密方式为 md5(sn+password) 32位大写
-		 'mobile'=>'13162570221',//手机号 多个用英文的逗号隔开 post理论没有长度限制.推荐群发一次小于等于10000个手机号
+         'sn'=>'SDK-OFT-010-xxxxx', ////替换成您自己的序列号
+		 'pwd'=>strtoupper(md5('SDK-OFT-010-xxxxx'.'xxxxxx')), //此处密码需要加密 加密方式为 md5(sn+password) 32位大写
+		 'mobile'=>'1532158155',//手机号 多个用英文的逗号隔开 post理论没有长度限制.推荐群发一次小于等于10000个手机号
 		 'content'=>urlencode( '您好测试短#信[XXX公司]'),//短信内容
 		 'ext'=>'',
 		 'rrid'=>'',//默认空 如果空返回系统生成的标识串 如果传值保证值唯一 成功则返回传入的值

@@ -1,0 +1,7 @@
+我们所有序列号首次使用，必须先注册。且只需注册一次。Register.php是注册序列号的文件
+
+也可以在这里注册 ：http://sdk2.entinfo.cn:8060/webservice.asmx?op=Register 
+
+如果您的系统是UTF-8。请转成GB2312后，再向mt方法提交。
+
+参考代码：iconv( "UTF-8", "gb2312//IGNORE" ,"你好，测试短信")

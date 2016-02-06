@@ -68,7 +68,8 @@ class Util {
     /*
      * 生成结果
      */
-    public function result($code) {
+    public function result($code)
+    {
         $result = new Result();
         $result->code = $code;
         $result->msg = $this->CI->config->item('status_code')[$code];
@@ -78,7 +79,8 @@ class Util {
     /*
      * 输出信息
      */
-    public function response($result){
+    public function response($result)
+    {
         $this->CI->output
             ->set_content_type('application/json')
             ->set_output(json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
@@ -86,20 +88,40 @@ class Util {
         exit();
     }
 
-
     /*
-     * 过期版本
+     * 发送短信
      */
-    public function invalid_version(){
-        $result = new Result();
-        $code = 206;
-        $result->code = $code;
-        $result->msg = $this->CI->config->item('status_code')[$code];
-        $this->CI->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
-            ->_display();
-        exit();
+    public function send_sms($phone, $captcha)
+    {
+        $argv = array(
+            'sn' => 'SDK-LMQ-010-00031',
+            'pwd' => strtoupper(md5('SDK-LMQ-010-00031' . 'bc0-4fa)')),
+            'mobile' => $phone,
+            'content' => urlencode('您的验证码是' . $captcha . '[快来学车]'),
+            'ext' => '',
+            'rrid' => '',
+            'stime' => ''
+        );
+        $flag = 0;
+        $params = '';
+        foreach ($argv as $key => $value) {
+            if ($flag != 0) {
+                $params .= "&";
+                $flag = 1;
+            }
+            $params .= $key . "=";
+            $params .= urlencode($value);
+            $flag = 1;
+        }
+        $length = strlen($params);
+        $fp = fsockopen("sdk2.entinfo.cn", 8060, $errno, $errstr, 10) or exit($errstr . "--->" . $errno);
+        $header = "POST /webservice.asmx/mdSmsSend_u HTTP/1.1\r\n";
+        $header .= "Host:sdk2.entinfo.cn\r\n";
+        $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $header .= "Content-Length: " . $length . "\r\n";
+        $header .= "Connection: Close\r\n\r\n";
+        $header .= $params . "\r\n";
+        fputs($fp, $header);
     }
 
 }

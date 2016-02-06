@@ -541,6 +541,7 @@ $config['exception'] = array(
     // todo: 不需要api_key的例外情况.
     'coach/list',
     'feedback/send',
+    'common/request_captcha_code',
 );
 
 $config['version'] = array(
@@ -549,6 +550,7 @@ $config['version'] = array(
     'coupon/submit_code' => 1,
     'feedback/send' => 1,
     'feedback/list' => 1,
+    'common/request_captcha_code' => 1,
 );
 
 $config['param_rule'] = array(
@@ -566,5 +568,8 @@ $config['param_rule'] = array(
     ),
     'feedback/list' => array(
         'page'
+    ),
+    'common/request_captcha_code' => array(
+        'phone'
     ),
 );

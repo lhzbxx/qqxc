@@ -18,7 +18,7 @@ class Captcha {
 
     public function set_captcha($key, $id)
     {
-        $this->CI->cache->redis->save($key, $id, 60*15);
+        $this->CI->cache->redis->save($key, $id, 60*1);
     }
 
     public function get_captcha($key)
