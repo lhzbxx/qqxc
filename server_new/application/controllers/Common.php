@@ -16,6 +16,12 @@ class Common extends MY_API_Controller {
         $this->load->library('Util');
     }
 
+    /**
+     *
+     * 请求手机验证码
+     *
+     * @author: LuHao
+     */
     public function request_captcha_code()
     {
         $phone = $this->params['phone'];
@@ -28,8 +34,10 @@ class Common extends MY_API_Controller {
         }
         else
         {
-            $captcha = $this->util->random_str();
+            $captcha = (string) rand(1000, 9999);
             $this->captcha->set_captcha($key, $captcha);
+            $this->util->send_sms($phone, '您的验证码是' .
+            $captcha);
         }
         $this->response();
     }

@@ -6,26 +6,35 @@
  * Date: 2015/12/29
  * Time: 6:13
  */
-class FeedbackModel extends CI_Model
+
+class FeedbackModel extends MY_Model
 {
 
-    public function __construct()
+    function __construct()
     {
         parent::__construct();
-        $this->load->database();
-        $this->load->library('Util');
     }
 
+    /**
+     *
+     * 提交反馈
+     *
+     * @param $params
+     * @author: LuHao
+     */
     public function send_fb($params)
     {
-        $params['create_time'] = time();
-        if ( ! $this->db->insert('feedback', $params))
-        {
-            $result = $this->util->result(210);
-            $this->util->response($result);
-        }
+        $this->insert_whole_params('feedback', $params);
     }
 
+    /**
+     *
+     * 列出反馈
+     *
+     * @param $page
+     * @return mixed
+     * @author: LuHao
+     */
     public function list_fb($page)
     {
         $num = 10;

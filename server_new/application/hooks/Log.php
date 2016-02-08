@@ -16,9 +16,15 @@ class Log {
         $this->CI->load->library('Util');
     }
 
+    /**
+     *
+     * 日志Hook入口
+     *
+     * @author: LuHao
+     */
     public function entrance()
     {
-        $this->CI->util->response($this->CI->benchmark->elapsed_time());
+        $time = $this->CI->benchmark->elapsed_time();
         // todo: 超时报警.
     }
 

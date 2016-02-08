@@ -35,6 +35,14 @@ class MY_API_Controller extends CI_Controller {
         exit;
     }
 
+    public function responseWithCustom($code, $msg)
+    {
+        $this->code = $code;
+        $this->msg = $msg;
+        $this->response();
+    }
+
+
     public function responseWithCache()
     {
         $this->output

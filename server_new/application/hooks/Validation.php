@@ -34,6 +34,12 @@ class Validation {
 
     }
 
+    /**
+     *
+     * 检查平台
+     *
+     * @author: LuHao
+     */
     private function check_platform()
     {
         if ( ! in_array($this->platform, $this->CI->config->item('platform')))
@@ -43,6 +49,12 @@ class Validation {
         }
     }
 
+    /**
+     *
+     * 检查API版本
+     *
+     * @author: LuHao
+     */
     private function check_version()
     {
         if ($this->version != $this->CI->config->item('version')[(string)$this->request])
@@ -52,6 +64,12 @@ class Validation {
         }
     }
 
+    /**
+     *
+     * 验证时间戳
+     *
+     * @author: LuHao
+     */
     public function valid_timestamp()
     {
         if ( ! $this->CI->util->valid_time($this->timestamp))
@@ -61,6 +79,12 @@ class Validation {
         }
     }
 
+    /**
+     *
+     * 验证签名
+     *
+     * @author: LuHao
+     */
     public function valid_sign()
     {
         $params = $this->CI->input->get_post();
@@ -74,7 +98,12 @@ class Validation {
         }
     }
 
-
+    /**
+     *
+     * 参数验证
+     *
+     * @author: LuHao
+     */
     public function valid_param()
     {
         $rule = $this->CI->config->item('param_rule')[$this->request];
@@ -88,6 +117,12 @@ class Validation {
         }
     }
 
+    /**
+     *
+     * 验证时间戳和签名值
+     *
+     * @author: LuHao
+     */
     public function valid()
     {
         $this->valid_param();
@@ -102,6 +137,12 @@ class Validation {
         }
     }
 
+    /**
+     *
+     * 验证权限
+     *
+     * @author: LuHao
+     */
     public function authentication()
     {
         $this->check_platform();

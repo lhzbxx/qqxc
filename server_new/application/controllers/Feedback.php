@@ -17,6 +17,12 @@ class Feedback extends MY_API_Controller
         $this->load->model('FeedbackModel');
     }
 
+    /**
+     *
+     * 提交反馈
+     *
+     * @author: LuHao
+     */
     public function send_fb()
     {
         $this->Param_validation->valid_null(
@@ -25,9 +31,16 @@ class Feedback extends MY_API_Controller
         $this->response();
     }
 
+    /**
+     *
+     * 反馈列表
+     *
+     * @author: LuHao
+     */
     public function list_fb()
     {
-        $this->result->data = $this->FeedbackModel->list_fb($this->params['page']);
+        $this->result->data =
+            $this->FeedbackModel->list_fb($this->params['page']);
         $this->response();
     }
 

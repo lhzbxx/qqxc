@@ -77,6 +77,22 @@ class Util {
     }
 
     /*
+     * 自定义返回结果
+     * 一般是异常处理
+     */
+    public function response_custom($code, $msg)
+    {
+        $result = new Result();
+        $result->code = $code;
+        $result->msg = $msg;
+        $this->CI->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+        exit();
+    }
+
+    /*
      * 输出信息
      */
     public function response($result)
@@ -91,13 +107,13 @@ class Util {
     /*
      * 发送短信
      */
-    public function send_sms($phone, $captcha)
+    public function send_sms($phone, $content)
     {
         $argv = array(
             'sn' => 'SDK-LMQ-010-00031',
             'pwd' => strtoupper(md5('SDK-LMQ-010-00031' . 'bc0-4fa)')),
             'mobile' => $phone,
-            'content' => urlencode('您的验证码是' . $captcha . '[快来学车]'),
+            'content' => urlencode($content . '【快来学车】'),
             'ext' => '',
             'rrid' => '',
             'stime' => ''

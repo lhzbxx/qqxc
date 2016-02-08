@@ -16,6 +16,13 @@ class Blacklist {
         $this->CI->load->library('Util');
     }
 
+    /**
+     *
+     * 封禁IP
+     *
+     * @param $ip
+     * @author: LuHao
+     */
     public function block($ip)
     {
         // 封禁10秒.
@@ -24,12 +31,25 @@ class Blacklist {
         $this->CI->util->response($result);
     }
 
+    /**
+     *
+     * 封禁结果
+     *
+     * @author: LuHao
+     */
     private function show()
     {
         $result = $this->CI->util->result(205);
         $this->CI->util->response($result);
     }
 
+    /**
+     *
+     * 查看IP是否在黑名单
+     *
+     * @param $ip
+     * @author: LuHao
+     */
     public function check($ip)
     {
         // 如果5秒内访问次数超过100,则对IP封禁.
@@ -51,6 +71,12 @@ class Blacklist {
         }
     }
 
+    /**
+     *
+     * 黑名单入口
+     *
+     * @author: LuHao
+     */
     public function entrance()
     {
         $ip = $this->CI->input->ip_address();
