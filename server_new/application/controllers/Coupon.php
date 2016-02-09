@@ -26,7 +26,7 @@ class coupon extends MY_API_Controller {
     public function check_code()
     {
         $this->result->data =
-            $this->CouponModel->check_code($this->params);
+            $this->couponModel->check_code();
         $this->response();
     }
 
@@ -38,11 +38,11 @@ class coupon extends MY_API_Controller {
      */
     public function submit_code()
     {
-        if ($this->CouponModel->valid_user())
+        if ($this->couponModel->valid_user())
             $this->responseWithCustom(301, '已经领取邀请码');
-        if ($this->CouponModel->valid_coupon($this->params))
+        if ($this->couponModel->valid_coupon($this->params))
             $this->responseWithCustom(302, '无效邀请码');
-        $this->CouponModel->use_coupon($this->params);
+        $this->couponModel->use_coupon($this->params);
         $this->response();
     }
 

@@ -5,6 +5,11 @@
  * Date: 16/1/31
  * Time: 下午4:16
  */
+
+/**
+ * @property Param_validation $Param_validation
+ * Class Param_validation
+ */
 class Param_validation {
 
     private $CI;

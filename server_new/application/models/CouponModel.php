@@ -23,6 +23,7 @@ class CouponModel extends MY_Model {
      */
     public function add_coupon($params)
     {
+        // todo: 验重
         $this->db->insert('coupon', $params);
     }
 
@@ -36,7 +37,7 @@ class CouponModel extends MY_Model {
      */
     public function use_coupon($params)
     {
-        if ($this->valid_user($this->id))
+        if ($this->valid_user())
         {
             $this->util->response_custom(301, '已经使用过邀请码');
         }
@@ -58,7 +59,7 @@ class CouponModel extends MY_Model {
      * @return bool
      * @author: LuHao
      */
-    private function valid_user()
+    public function valid_user()
     {
         $array = array(
             'user_id' => $this->id,
@@ -75,7 +76,7 @@ class CouponModel extends MY_Model {
      * @return mixed
      * @author: LuHao
      */
-    private function valid_coupon($params)
+    public function valid_coupon($params)
     {
         $array = array(
             'state' => 1,

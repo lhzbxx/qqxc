@@ -26,7 +26,7 @@ class Common extends MY_API_Controller {
     {
         $phone = $this->params['phone'];
         $key = 'captcha' . $phone;
-        $this->Param_validation->valid_phone($phone);
+        $this->param_validation->valid_phone($phone);
         if ($this->captcha->get_captcha($key))
         {
             $this->result->code = '201';

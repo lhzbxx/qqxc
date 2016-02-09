@@ -25,9 +25,9 @@ class Feedback extends MY_API_Controller
      */
     public function send_fb()
     {
-        $this->Param_validation->valid_null(
+        $this->param_validation->valid_null(
             $this->params['content'], 301, '内容为空');
-        $this->FeedbackModel->send_fb($this->params);
+        $this->feedbackModel->send_fb($this->params);
         $this->response();
     }
 
@@ -40,7 +40,7 @@ class Feedback extends MY_API_Controller
     public function list_fb()
     {
         $this->result->data =
-            $this->FeedbackModel->list_fb($this->params['page']);
+            $this->feedbackModel->list_fb($this->params['page']);
         $this->response();
     }
 

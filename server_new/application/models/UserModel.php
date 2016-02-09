@@ -18,9 +18,10 @@ class UserModel extends MY_Model {
 
     }
 
-    public function bind_wx($phone, $openid)
+    public function bind_wx($params)
     {
-
+        $phone = $params['phone'];
+        $openid = $params['openid'];
     }
 
     public function login($params)
@@ -28,7 +29,7 @@ class UserModel extends MY_Model {
 
     }
 
-    public function add_balance($user_id, $amount)
+    public function add_balance($amount)
     {
 
     }

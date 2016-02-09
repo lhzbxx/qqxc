@@ -6,6 +6,44 @@
  * Time: 下午9:34
  */
 
+/**
+ *
+ * @property CI_DB $db
+ * @property CI_DB_forge $dbforge
+ * @property CI_Benchmark $benchmark
+ * @property CI_Calendar $calendar
+ * @property CI_Cart $cart
+ * @property CI_Config $config
+ * @property CI_Controller $controller
+ * @property CI_Email $email
+ * @property CI_Encrypt $encrypt
+ * @property CI_Exceptions $exceptions
+ * @property CI_Form_validation $form_validation
+ * @property CI_Ftp $ftp
+ * @property CI_Hooks $hooks
+ * @property CI_Image_lib $image_lib
+ * @property CI_Input $input
+ * @property CI_Loader $load
+ * @property CI_Log $log
+ * @property CI_Model $model
+ * @property CI_Output $output
+ * @property CI_Pagination $pagination
+ * @property CI_Parser $parser
+ * @property CI_Profiler $profiler
+ * @property CI_Router $router
+ * @property CI_Session $session
+ * @property CI_Table $table
+ * @property CI_Trackback $trackback
+ * @property CI_Typography $typography
+ * @property CI_Unit_test $unit_test
+ * @property CI_Upload $upload
+ * @property CI_URI $uri
+ * @property CI_User_agent $user_agent
+ * @property CI_Xmlrpc $xmlrpc
+ * @property CI_Xmlrpcs $xmlrpcs
+ * @property CI_Zip $zip
+ *
+ */
 class MY_Model extends CI_Model {
 
     public $id;
@@ -70,10 +108,31 @@ class MY_Model extends CI_Model {
      */
     public function select_one_result($table, $array)
     {
-        $query = $this->db->get_where('coupon',
+        $query = $this->db->get_where($table,
             $array, 1);
         $row = $query->row();
         return $row;
+    }
+
+    /**
+     *
+     * 生成api_key
+     *
+     * @param $prefix
+     * @param $val
+     * @param $length
+     * @return string
+     * @author: LuHao
+     */
+    public function generate_api_key($prefix, $val, $length = 8)
+    {
+        $chars = 'abcdefghijklmnopqrstuvwxyz
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $api_key = '';
+        for ( $i = 0; $i < $length; $i++ )
+            $api_key .= $chars[ rand(0, strlen($chars) - 1) ];
+        $this->api_key->set_key($prefix.$api_key, $val);
+        return $api_key;
     }
 
 }
