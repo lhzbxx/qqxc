@@ -6,10 +6,6 @@
  * Time: 下午4:16
  */
 
-/**
- * @property Param_validation $Param_validation
- * Class Param_validation
- */
 class Param_validation {
 
     private $CI;
@@ -33,9 +29,9 @@ class Param_validation {
         }
     }
 
-    public function valid_passwd($passwd)
+    public function valid_password($password)
     {
-        if (strlen(trim($passwd)) != 32)
+        if (strlen(trim($password)) != 32)
         {
             $this->config(402, '密码格式错误');
             $this->show();

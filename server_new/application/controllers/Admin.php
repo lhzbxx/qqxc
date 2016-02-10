@@ -14,6 +14,43 @@ class Admin extends MY_API_Controller {
     {
         parent::__construct();
         $this->load->model('AdminModel');
+        $this->load->model('CoachModel');
+        $this->load->model('UserModel');
+    }
+
+    public function register()
+    {
+        $this->param_validation->valid_phone($this->params['phone']);
+        $this->result->data =
+            $this->adminModel->register($this->params);
+        $this->response();
+    }
+
+    public function add_coach()
+    {
+        $this->param_validation->valid_phone($this->params['phone']);
+        $this->coachModel->register($this->params);
+        $this->response();
+    }
+
+    public function add_coach_photo()
+    {
+
+    }
+
+    public function remove_coach_photo()
+    {
+
+    }
+
+    public function add_coach_car()
+    {
+
+    }
+
+    public function remove_coach_car()
+    {
+
     }
 
 }

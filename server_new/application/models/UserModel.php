@@ -15,13 +15,18 @@ class UserModel extends MY_Model {
 
     public function register($params)
     {
-
+        return $this->generate_api_key('user', $this->id);
     }
 
     public function bind_wx($params)
     {
         $phone = $params['phone'];
         $openid = $params['openid'];
+    }
+
+    public function init_wx($params)
+    {
+        $this->insert_whole_params('user_info', $params);
     }
 
     public function login($params)

@@ -8,40 +8,40 @@
 
 /**
  *
- * @property CI_DB $db
- * @property CI_DB_forge $dbforge
- * @property CI_Benchmark $benchmark
- * @property CI_Calendar $calendar
- * @property CI_Cart $cart
- * @property CI_Config $config
- * @property CI_Controller $controller
- * @property CI_Email $email
- * @property CI_Encrypt $encrypt
- * @property CI_Exceptions $exceptions
+ * @property CI_DB              $db
+ * @property CI_DB_forge        $dbforge
+ * @property CI_Benchmark       $benchmark
+ * @property CI_Calendar        $calendar
+ * @property CI_Cart            $cart
+ * @property CI_Config          $config
+ * @property CI_Controller      $controller
+ * @property CI_Email           $email
+ * @property CI_Encrypt         $encrypt
+ * @property CI_Exceptions      $exceptions
  * @property CI_Form_validation $form_validation
- * @property CI_Ftp $ftp
- * @property CI_Hooks $hooks
- * @property CI_Image_lib $image_lib
- * @property CI_Input $input
- * @property CI_Loader $load
- * @property CI_Log $log
- * @property CI_Model $model
- * @property CI_Output $output
- * @property CI_Pagination $pagination
- * @property CI_Parser $parser
- * @property CI_Profiler $profiler
- * @property CI_Router $router
- * @property CI_Session $session
- * @property CI_Table $table
- * @property CI_Trackback $trackback
- * @property CI_Typography $typography
- * @property CI_Unit_test $unit_test
- * @property CI_Upload $upload
- * @property CI_URI $uri
- * @property CI_User_agent $user_agent
- * @property CI_Xmlrpc $xmlrpc
- * @property CI_Xmlrpcs $xmlrpcs
- * @property CI_Zip $zip
+ * @property CI_Ftp             $ftp
+ * @property CI_Hooks           $hooks
+ * @property CI_Image_lib       $image_lib
+ * @property CI_Input           $input
+ * @property CI_Loader          $load
+ * @property CI_Log             $log
+ * @property CI_Model           $model
+ * @property CI_Output          $output
+ * @property CI_Pagination      $pagination
+ * @property CI_Parser          $parser
+ * @property CI_Profiler        $profiler
+ * @property CI_Router          $router
+ * @property CI_Session         $session
+ * @property CI_Table           $table
+ * @property CI_Trackback       $trackback
+ * @property CI_Typography      $typography
+ * @property CI_Unit_test       $unit_test
+ * @property CI_Upload          $upload
+ * @property CI_URI             $uri
+ * @property CI_User_agent      $user_agent
+ * @property CI_Xmlrpc          $xmlrpc
+ * @property CI_Xmlrpcs         $xmlrpcs
+ * @property CI_Zip             $zip
  *
  */
 class MY_Model extends CI_Model {
@@ -54,9 +54,10 @@ class MY_Model extends CI_Model {
         $this->load->database();
         $this->load->library('API_key');
         $this->load->library('Util');
-        if ( ! in_array($this->request, $this->CI->config->item('exception')))
+        $request = $this->uri->slash_segment(4) . $this->uri->segment(5);
+        if ( ! in_array($request, $this->config->item('exception')))
         {
-            $api_key = $this->CI->input->get_request_header('api_key', TRUE);
+            $api_key = $this->input->get_request_header('api_key', TRUE);
             $this->id = $this->api_key->get_key($api_key);
         }
     }
@@ -112,6 +113,41 @@ class MY_Model extends CI_Model {
             $array, 1);
         $row = $query->row();
         return $row;
+    }
+
+    /**
+     *
+     * 查询一页的结果
+     *
+     * @param $table
+     * @param $array
+     * @param $page
+     * @return mixed
+     * @author: LuHao
+     */
+    public function select_page_results($table, $array, $page)
+    {
+        $num = 10;
+        $query = $this->db->get($table, $num, $num * $page);
+        $rows = $query->result();
+        return $rows;
+    }
+
+    /**
+     *
+     * 查询所有结果
+     *
+     * @param $table
+     * @param $array
+     * @return mixed
+     * @author: LuHao
+     */
+    public function select_all_results($table, $array)
+    {
+        $query = $this->db->get_where(
+            $table, $array);
+        $rows = $query->result();
+        return $rows;
     }
 
     /**

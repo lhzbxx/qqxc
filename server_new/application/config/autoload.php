@@ -60,7 +60,6 @@ $autoload['packages'] = array();
 */
 $autoload['libraries'] = array(
     'Result' => 'Result',
-    'Param_validation' => 'Param_validation',
 );
 
 /*

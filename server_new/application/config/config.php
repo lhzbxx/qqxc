@@ -529,6 +529,12 @@ $config['status_code'] = array(
 $config['admin_auth'] = array(
     // todo: 权限设置.
     'feedback/list' => 1,
+    'manage_coach/add_coach' => 1,
+    'manage_coach/add_photo' => 1,
+    'manage_coach/remove_photo' => 1,
+    'manage_coach/add_school' => 1,
+    'manage_coach/remove_school' => 1,
+    'manage_coach/update_pass' => 1,
 );
 
 $config['platform'] = array(
@@ -542,6 +548,7 @@ $config['exception'] = array(
     'coach/list',
     'feedback/send',
     'common/request_captcha_code',
+    'user/bind_wx'
 );
 
 $config['version'] = array(
@@ -551,6 +558,13 @@ $config['version'] = array(
     'feedback/send' => 1,
     'feedback/list' => 1,
     'common/request_captcha_code' => 1,
+    'user/bind_wx' => 1,
+    'manage_coach/add_coach' => 1,
+    'manage_coach/add_photo' => 1,
+    'manage_coach/remove_photo' => 1,
+    'manage_coach/add_school' => 1,
+    'manage_coach/remove_school' => 1,
+    'manage_coach/update_pass' => 1
 );
 
 $config['param_rule'] = array(
@@ -571,5 +585,52 @@ $config['param_rule'] = array(
     ),
     'common/request_captcha_code' => array(
         'phone'
+    ),
+    'user/bind_wx' => array(
+        'openid',
+        'phone',
+        'password',
+        'captcha'
+    ),
+    'manage_coach/add_coach' => array(
+        'name',
+        'age',
+        'gender',
+        'exp',
+        'idcard',
+        'phone',
+        'commission',
+        'car_type',
+        'c1_price',
+        'c2_price',
+        'card_url',
+        'card_back_url',
+        'credit_url',
+        'credit_back_url',
+        'license_url',
+        'avatar_url',
+        'comment',
+        'driver_school_id'
+    ),
+    'manage_coach/add_photo' => array(
+        'img_url'
+    ),
+    'manage_coach/remove_photo' => array(
+        'photo_id'
+    ),
+    'manage_coach/add_school' => array(
+        'name',
+        'lat',
+        'lng',
+        'addr_name'
+    ),
+    'manage_coach/remove_school' => array(
+        'school_id'
+    ),
+    'manage_coach/update_pass' => array(
+        'car_type',
+        'subject',
+        'pass_num',
+        'total_num'
     ),
 );

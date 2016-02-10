@@ -87,13 +87,18 @@ class Validation {
      */
     public function valid_sign()
     {
-        $params = $this->CI->input->get_post();
+        $rule = $this->CI->config->
+        item('param_rule')[$this->CI->uri->slash_segment(4).$this->CI->uri->segment(5)];
+        foreach($rule as $i)
+        {
+            $params[$i] = $this->CI->input->get_post($i);
+        }
         $params['timestamp'] = $this->timestamp;
         $params['api_key'] = $this->api_key;
         if ( ! $this->CI->util->valid_sign($params, $this->sign))
         {
             $result = $this->CI->util->result(207);
-            // $result->data = $this->CI->util->sign($params);
+            $result->data = $this->CI->util->sign($params);
             $this->CI->util->response($result);
         }
     }

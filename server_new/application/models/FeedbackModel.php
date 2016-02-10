@@ -37,8 +37,7 @@ class FeedbackModel extends MY_Model
      */
     public function list_fb($page)
     {
-        $num = 10;
-        return $this->db->get('feedback', $num, $num * $page)->result();
+        return $this->select_page_results('feedback', array(), $page);
     }
 
 }

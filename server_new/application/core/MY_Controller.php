@@ -48,7 +48,7 @@
  * @property Result             $result
  * @property Util               $util
  * @property Captcha            $captcha
- * @property Param_validation   $param_validation
+ * @property param_validation   $param_validation
  * @property UserModel          $userModel
  * @property CouponModel        $couponModel
  * @property AdminModel         $adminModel
@@ -64,6 +64,7 @@ class MY_API_Controller extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('Param_validation');
         $this->result = new Result();
         $this->result->code = 100;
         $this->result->msg = '正常';

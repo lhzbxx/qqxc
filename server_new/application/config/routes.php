@@ -59,7 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['api/([a-z]+)/(\d+)/coupon/check_code']['get'] = 'coupon/check_code';
 $route['api/([a-z]+)/(\d+)/coupon/submit_code']['post'] = 'coupon/submit_code';
 
-$route['api/admin/feedback/list']['get'] = 'feedback/list_fb';
+$route['api/admin/(\d+)/feedback/list']['get'] = 'feedback/list_fb';
 $route['api/([a-z]+)/(\d+)/feedback/send']['post'] = 'feedback/send_fb';
 
 $route['api/([a-z]+)/(\d+)/common/request_captcha_code']['post'] = 'common/request_captcha_code';
