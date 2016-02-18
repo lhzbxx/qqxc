@@ -13,9 +13,9 @@ class Admin extends MY_API_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('AdminModel');
-        $this->load->model('CoachModel');
-        $this->load->model('UserModel');
+        $this->load->model('adminModel');
+        $this->load->model('coachModel');
+        $this->load->model('userModel');
     }
 
     public function register()

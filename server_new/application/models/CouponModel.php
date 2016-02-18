@@ -21,10 +21,18 @@ class CouponModel extends MY_Model {
      * @param $params
      * @author: LuHao
      */
-    public function add_coupon($params)
+    public function add_coupon($uid)
     {
-        // todo: 验重
+        $code = $this->generate_code();
+        // 验重, 保证优惠码是唯一的.
+        while ($this->is_exist_coupon($code))
+            $code = $this->generate_code();
+        $params = array(
+            'id'    => $uid,
+            'coupon_code'  => $code,
+        );
         $this->db->insert('coupon', $params);
+        return $code;
     }
 
     /**
@@ -80,9 +88,36 @@ class CouponModel extends MY_Model {
     {
         $array = array(
             'state' => 1,
-            'code' => $params['code'],
+            'coupon_code' => $params['code'],
         );
         return $this->select_one_result('coupon', $array);
+    }
+
+    private function generate_code()
+    {
+        $r = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm12345678901234567890';
+        $i = 6;
+        $code = "";
+        while ($i--)
+            $code .= $r[rand(0, 72)];
+        return $code;
+    }
+
+    /**
+     *
+     * 检查优惠码是否已经存在
+     *
+     * @param $code
+     * @return bool
+     * @author: LuHao
+     */
+    private function is_exist_coupon($code)
+    {
+        $params = array(
+            'coupon_code' => $code
+        );
+        $row = $this->select_one_result('coupon', $params);
+        return isset($row);
     }
 
     /**
@@ -99,9 +134,10 @@ class CouponModel extends MY_Model {
         );
         $row = $this->select_one_result('coupon', $array);
         if (isset($row)) {
-            return $row->code;
+            return $row->coupon_code;
         } else {
-            $this->add_coupon($this->id);
+            // 如果没有优惠码, 说明没有添加, 在这里手动添加上.
+            return $this->add_coupon($this->id);
         }
     }
 

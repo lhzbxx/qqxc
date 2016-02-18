@@ -13,7 +13,7 @@ class User extends MY_API_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('UserModel');
+        $this->load->model('userModel');
     }
 
     public function register()
@@ -29,6 +29,13 @@ class User extends MY_API_Controller {
         $this->param_validation->valid_phone($this->params['phone']);
         $this->result->data =
             $this->userModel->bind_wx($this->params);
+        $this->response();
+    }
+
+    public function update_location()
+    {
+        $this->userModel->update_location(
+            $this->id, $this->params['lat'], $this->params['lng']);
         $this->response();
     }
 

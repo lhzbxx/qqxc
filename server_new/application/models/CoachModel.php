@@ -14,9 +14,18 @@ class CoachModel extends MY_Model {
     }
 
 
+    /**
+     *
+     * 注册教练
+     *
+     * @param $params
+     * @return bool
+     * @author: LuHao
+     */
     public function register($params)
     {
         $this->insert_whole_params('coach', $params);
+        return true;
     }
 
     public function login($params)

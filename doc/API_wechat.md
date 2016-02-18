@@ -8,7 +8,7 @@
 
 * 前缀
 
-	http://120.27.194.121/API/wx/[version]
+	http://120.27.194.121/index.php/API/wx/[version]
 
 * 具体接口
 

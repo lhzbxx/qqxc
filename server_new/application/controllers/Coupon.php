@@ -8,12 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 下午1:10
  */
 
-class coupon extends MY_API_Controller {
+class Coupon extends MY_API_Controller {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('CouponModel');
+        $this->load->model('couponModel');
     }
 
 

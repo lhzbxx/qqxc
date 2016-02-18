@@ -12,8 +12,8 @@ class Common extends MY_API_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('Captcha');
-        $this->load->library('Util');
+        $this->load->library('captcha');
+        $this->load->library('util');
     }
 
     /**
@@ -25,7 +25,7 @@ class Common extends MY_API_Controller {
     public function request_captcha_code()
     {
         $phone = $this->params['phone'];
-        $key = 'captcha' . $phone;
+        $key = 'captcha:' . $phone;
         $this->param_validation->valid_phone($phone);
         if ($this->captcha->get_captcha($key))
         {

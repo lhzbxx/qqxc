@@ -14,7 +14,7 @@ class Feedback extends MY_API_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('FeedbackModel');
+        $this->load->model('feedbackModel');
     }
 
     /**
