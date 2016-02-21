@@ -39,4 +39,16 @@ class UserModel extends MY_Model {
 
     }
 
+    public function update_location($uid, $lng, $lat)
+    {
+        $data = array(
+            'lat'       => $lat,
+            'lng'       => $lng
+        );
+        $filter = array(
+            'user_id' => $uid
+        );
+        $this->db->update('user_info', $data, $filter, 1);
+    }
+
 }

@@ -63,3 +63,9 @@ $route['api/admin/(\d+)/feedback/list']['get'] = 'feedback/list_fb';
 $route['api/([a-z]+)/(\d+)/feedback/send']['post'] = 'feedback/send_fb';
 
 $route['api/([a-z]+)/(\d+)/common/request_captcha_code']['post'] = 'common/request_captcha_code';
+
+$route['api/([a-z]+)/(\d+)/user/update_location']['post'] = 'user/update_location';
+$route['api/([a-z]+)/(\d+)/user/bind_wx']['post'] = 'user/bind_wx';
+
+$route['api/wx/(\d+)/wechat/redirect']['post'] = 'wechat/redirect';
+$route['api/wx/1/wechat/openid']['post'] = 'wechat/openid';

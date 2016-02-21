@@ -13,7 +13,7 @@ class Coach extends MY_API_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('CoachModel');
+        $this->load->model('coachModel');
     }
 
     public function register()

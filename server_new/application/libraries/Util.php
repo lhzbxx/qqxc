@@ -15,8 +15,13 @@ class Util {
         $this->CI= & get_instance();
     }
 
-    /*
+    /**
+     *
      * 验证接口调用时间是否过期
+     *
+     * @param $time
+     * @return bool
+     * @author: LuHao
      */
     public function valid_time($time)
     {
@@ -26,8 +31,14 @@ class Util {
             return true;
     }
 
-    /*
-     * 验证 sign
+    /**
+     *
+     * 验证签名
+     *
+     * @param $params
+     * @param $sign
+     * @return bool
+     * @author: LuHao
      */
     public function valid_sign($params, $sign){
         $str = '';
@@ -41,8 +52,14 @@ class Util {
             return false;
     }
 
-    /*
+    /**
+     *
      * 计算校验值
+     * 即签名
+     *
+     * @param $params
+     * @return string
+     * @author: LuHao
      */
     public function sign($params)
     {
@@ -54,8 +71,13 @@ class Util {
         return md5($str);
     }
 
-    /*
+    /**
+     *
      * 生成随机字符串
+     *
+     * @param int $length
+     * @return string
+     * @author: LuHao
      */
     function random_str($length = 6)
     {
@@ -65,8 +87,13 @@ class Util {
         return $str;
     }
 
-    /*
-     * 生成结果
+    /**
+     *
+     * 生成响应结果
+     *
+     * @param $code
+     * @return Result
+     * @author: LuHao
      */
     public function result($code)
     {
@@ -76,9 +103,14 @@ class Util {
         return $result;
     }
 
-    /*
+    /**
+     *
      * 自定义返回结果
      * 一般是异常处理
+     *
+     * @param $code
+     * @param $msg
+     * @author: LuHao
      */
     public function response_custom($code, $msg)
     {
@@ -92,8 +124,12 @@ class Util {
         exit();
     }
 
-    /*
+    /**
+     *
      * 输出信息
+     *
+     * @param $result
+     * @author: LuHao
      */
     public function response($result)
     {
@@ -104,8 +140,13 @@ class Util {
         exit();
     }
 
-    /*
+    /**
+     *
      * 发送短信
+     *
+     * @param $phone
+     * @param $content
+     * @author: LuHao
      */
     public function send_sms($phone, $content)
     {
@@ -138,6 +179,36 @@ class Util {
         $header .= "Connection: Close\r\n\r\n";
         $header .= $params . "\r\n";
         fputs($fp, $header);
+    }
+
+    /**
+     *
+     * 解析XML
+     *
+     * @param $xml_str
+     * @return SimpleXMLElement
+     * @author: LuHao
+     */
+    public function parse_xml($xml_str)
+    {
+        $xml = simplexml_load_string($xml_str);
+        return $xml;
+    }
+
+    /**
+     *
+     * 返回解析对象
+     *
+     * @param $xml
+     * @param $obj
+     * @return string
+     * @author: LuHao
+     */
+    public function fetch_xml_obj($xml, $obj)
+    {
+
+        $r = (string) $xml->$obj;
+        return $r;
     }
 
 }

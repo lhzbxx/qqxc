@@ -60,17 +60,23 @@ class MY_API_Controller extends CI_Controller {
 
     public $result;
     public $params;
+    public $id;
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library('Param_validation');
+        $this->load->library('API_key');
         $this->result = new Result();
         $this->result->code = 100;
         $this->result->msg = '正常';
+        $this->id = -1;
+        $request = $this->uri->slash_segment(4).$this->uri->segment(5);
+        if ( ! in_array($this->$request, $this->config->item('exception')))
+            $this->id = $this->api_key->get_key('api_key:' . $this->input->get_request_header('api_key'));
         $this->params = array();
         $rule = $this->config->
-        item('param_rule')[$this->uri->slash_segment(4).$this->uri->segment(5)];
+        item('param_rule')[$request];
         foreach($rule as $i)
         {
             $this->params[$i] = $this->input->get_post($i);

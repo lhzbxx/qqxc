@@ -548,7 +548,8 @@ $config['exception'] = array(
     'coach/list',
     'feedback/send',
     'common/request_captcha_code',
-    'user/bind_wx'
+    'user/bind_wx',
+    'wechat/redirect'
 );
 
 $config['version'] = array(
@@ -564,7 +565,9 @@ $config['version'] = array(
     'manage_coach/remove_photo' => 1,
     'manage_coach/add_school' => 1,
     'manage_coach/remove_school' => 1,
-    'manage_coach/update_pass' => 1
+    'manage_coach/update_pass' => 1,
+    'wechat/redirect' => 1,
+    'user/update_location' => 1,
 );
 
 $config['param_rule'] = array(
@@ -632,5 +635,11 @@ $config['param_rule'] = array(
         'subject',
         'pass_num',
         'total_num'
+    ),
+    'wechat/redirect' => array(
+    ),
+    'user/update_location' => array(
+        'lat',
+        'lng'
     ),
 );

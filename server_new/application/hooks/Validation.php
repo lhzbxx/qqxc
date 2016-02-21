@@ -158,7 +158,7 @@ class Validation {
         }
         else
         {
-            if ( ! $this->CI->api_key->get_key('api_key' . $this->api_key))
+            if ( ! $this->CI->api_key->get_key('api_key:' . $this->api_key))
             {
                 $result = $this->CI->util->result(203);
                 $this->CI->util->response($result);
@@ -166,7 +166,7 @@ class Validation {
             if ($this->platform == 'admin')
             {
                 // 权限验证.
-                if ($this->CI->api_key->get_key('auth' . $this->api_key)
+                if ($this->CI->api_key->get_key('auth:' . $this->api_key)
                     < $this->CI->config->item('admin_auth')[(string)$this->request])
                 {
                     $result = $this->CI->util->result(209);
