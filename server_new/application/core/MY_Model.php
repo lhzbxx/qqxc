@@ -43,6 +43,12 @@
  * @property CI_Xmlrpcs         $xmlrpcs
  * @property CI_Zip             $zip
  *
+ * @property Api_key            $api_key
+ * @property Result             $result
+ * @property Util               $util
+ * @property Captcha            $captcha
+ * @property param_validation   $param_validation
+ *
  */
 class MY_Model extends CI_Model {
 

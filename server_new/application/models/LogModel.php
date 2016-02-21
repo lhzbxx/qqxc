@@ -13,7 +13,7 @@ class LogModel extends CI_Model
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library('Util');
+        $this->load->library('util');
     }
 
     public function send_log($params)

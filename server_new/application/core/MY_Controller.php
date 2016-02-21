@@ -44,7 +44,7 @@
  * @property CI_Xmlrpcs         $xmlrpcs
  * @property CI_Zip             $zip
  *
- * @property API_key            $api_key
+ * @property Api_key            $api_key
  * @property Result             $result
  * @property Util               $util
  * @property Captcha            $captcha
@@ -65,14 +65,14 @@ class MY_API_Controller extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('Param_validation');
-        $this->load->library('API_key');
+        $this->load->library('param_validation');
+        $this->load->library('api_key');
         $this->result = new Result();
         $this->result->code = 100;
         $this->result->msg = '正常';
         $this->id = -1;
         $request = $this->uri->slash_segment(4).$this->uri->segment(5);
-        if ( ! in_array($this->$request, $this->config->item('exception')))
+        if ( ! in_array($request, $this->config->item('exception')))
             $this->id = $this->api_key->get_key('api_key:' . $this->input->get_request_header('api_key'));
         $this->params = array();
         $rule = $this->config->
