@@ -19,8 +19,8 @@ class Validation {
     function Validation()
     {
         $this->CI = &get_instance();
-        $this->CI->load->library('API_key');
-        $this->CI->load->library('Util');
+        $this->CI->load->library('api_key');
+        $this->CI->load->library('util');
         $this->platform = $this->CI->uri->segment(2, 0);
         $this->version = $this->CI->uri->segment(3, 0);
         $this->request = $this->CI->uri->slash_segment(4) . $this->CI->uri->segment(5);

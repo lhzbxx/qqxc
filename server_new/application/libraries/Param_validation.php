@@ -15,6 +15,7 @@ class Param_validation {
     {
         $this->CI= & get_instance();
         $this->CI->load->library('util');
+        $this->CI->load->library('captcha');
         $this->result = new Result();
     }
 
@@ -62,6 +63,11 @@ class Param_validation {
         {
             $param[$fill] = $default;
         }
+    }
+
+    public function valid_captcha($phone, $captcha)
+    {
+        return $captcha === $this->CI->captcha->get_captcha('captcha:' . $phone);
     }
 
     private function config($code, $msg)

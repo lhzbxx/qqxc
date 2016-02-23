@@ -112,11 +112,12 @@ class Util {
      * @param $msg
      * @author: LuHao
      */
-    public function response_custom($code, $msg)
+    public function response_custom($code, $msg, $data=null)
     {
         $result = new Result();
         $result->code = $code;
         $result->msg = $msg;
+        $result->data = $data;
         $this->CI->output
             ->set_content_type('application/json')
             ->set_output(json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))

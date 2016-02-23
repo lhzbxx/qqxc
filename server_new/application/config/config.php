@@ -512,6 +512,9 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+$config['wx_appid'] = 'wx96e6b1df252e6b82';
+$config['wx_secret'] = 'f7743dfba6a883de8b6434858a078b81';
+
 $config['status_code'] = array(
     100 => '正常',
     201 => 'headers缺失',
@@ -549,7 +552,8 @@ $config['exception'] = array(
     'feedback/send',
     'common/request_captcha_code',
     'user/bind_wx',
-    'wechat/redirect'
+    'wechat/redirect',
+    'wechat/openid',
 );
 
 $config['version'] = array(
@@ -567,6 +571,7 @@ $config['version'] = array(
     'manage_coach/remove_school' => 1,
     'manage_coach/update_pass' => 1,
     'wechat/redirect' => 1,
+    'wechat/openid' => 1,
     'user/update_location' => 1,
 );
 
@@ -637,6 +642,9 @@ $config['param_rule'] = array(
         'total_num'
     ),
     'wechat/redirect' => array(
+    ),
+    'wechat/openid' => array(
+        'code'
     ),
     'user/update_location' => array(
         'lat',

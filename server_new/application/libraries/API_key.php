@@ -6,7 +6,7 @@
  * Time: 下午2:40
  */
 
-class API_key {
+class Api_key {
 
     private $CI;
 
