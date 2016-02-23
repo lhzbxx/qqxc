@@ -2,7 +2,7 @@
  * @Author: LuHao
  * @Date:   2015-12-04 10:37:04
  * @Last Modified by:   LuHao
- * @Last Modified time: 2016-02-21 01:44:54
+ * @Last Modified time: 2016-02-23 19:04:36
  */
 
 // Load plugins
@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
     rename = require('gulp-rename'),
     del = require('del');
     concat = require('gulp-concat'),
@@ -36,7 +37,6 @@ gulp.task('styles', function() {
     return gulp.src('src/styles/*.scss')
         .pipe(sass({ sourcemap: true }))
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('dist/styles'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(gulp.dest('dist/css'))
@@ -47,7 +47,6 @@ gulp.task('styles-rev', function() {
     return gulp.src('src/styles/*.scss')
         .pipe(sass())
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('dist/styles'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(rev())
@@ -69,7 +68,6 @@ gulp.task('scripts', function() {
         // .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('dist/scripts'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
@@ -79,9 +77,10 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
     return gulp.src('src/images/*')
         .pipe(cache(imagemin({
-            optimizationLevel: 3,
+            optimizationLevel: 5,
             progressive: true,
-            interlaced: true
+            interlaced: true,
+            use: [pngquant()]
         })))
         .pipe(gulp.dest('dist/img'))
 });

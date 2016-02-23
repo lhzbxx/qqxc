@@ -302,9 +302,12 @@ nav#header {
         height: 60px;
         display: inline-block;
         line-height: 60px;
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
     #btns {
-        top: 50%;
+        top: 10px;
         position: absolute;
         right: 10%;
         ul {
@@ -313,6 +316,20 @@ nav#header {
                 float: left;
             }
         }
+    }
+}
+
+#about-us {
+    img {
+        height: 50px;
+    }
+}
+
+#weixin {
+    cursor: pointer;
+    img {
+        height: 50px;
+        margin-left: 10px;
     }
 }
 
@@ -333,52 +350,101 @@ a.btn {
     }
 }
 
+.pic-road {
+    position: fixed;
+    right: 70px;
+    top: 50%;
+    margin-top: -178.5px;
+    @media (max-width: 830px) {
+        display: none;
+    }
+}
+
+.text-line-1 {
+    height: 40px;
+    margin-bottom: 10px;
+    animation-delay: 0.8s;
+}
+.text-line-2 {
+    height: 25px;
+    animation-delay: 1.2s;
+}
+
+.inactive {
+    display: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
 #section0 {
     background-color: #03caa8;
-    #line {
+    // #line {
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 25px;
+    //     width: 100%;
+    // }
+    // #phone {
+    //     position: absolute;
+    //     bottom: 0;
+    //     right: 20px;
+    //     z-index: 10;
+    // }
+    // #tree {
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 0;
+    //     z-index: 10;
+    // }
+    // #car-red {
+    //     position: absolute;
+    //     bottom: 70px;
+    //     left: 42%;
+    // }
+    #pic-1-back {
         position: absolute;
-        left: 0;
-        bottom: 25px;
         width: 100%;
-    }
-    #phone {
-        position: absolute;
         bottom: 0;
-        right: 20px;
-        z-index: 10;
-    }
-    #tree {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 10;
     }
     #car-green {
         position: absolute;
         left: 50%;
-        top: 40%;
+        top: 35%;
+        height: 15%;
         &.active {
             left: 20%;
             transition: all 1.5s 0.2s;
         }
-    }
-    #car-red {
-        position: absolute;
-        bottom: 70px;
-        left: 42%;
+        @media (max-width: 830px) {
+            display: none;
+        }
     }
     #banner-txt-1 {
         position: absolute;
-        left: 20%;
-        margin-left: 300px;
-        top: 25%;
+        left: 50%;
+        height: 8%;
+        line-height: 8%;
+        top: 50%;
+        margin-top: -8%;
+        margin-left: -100px;
         animation-delay: 1.2s;
     }
     #banner-txt-2 {
         position: absolute;
-        left: 20%;
-        margin-left: 300px;
-        top: 38%;
+        left: 50%;
+        height: 5%;
+        line-height: 5%;
+        margin-top: -3%;
+        @media (max-width: 830px) {
+            margin-top: 0;
+        }
+        @media (max-width: 530px) {
+            margin-top: 20px;
+        }
+        margin-left: -100px;
+        top: 50%;
         animation-delay: 2s;
     }
 }
@@ -386,9 +452,12 @@ a.btn {
     background-color: #ea6a76;
     #pic-1-car {
         position: absolute;
-        right: 30px;
+        right: 35px;
         top: 50%;
-        margin-top: -200px;
+        margin-top: -180px;
+        @media (max-width: 830px) {
+            display: none;
+        }
     }
     #pic-1-1 {
         position: relative;
@@ -398,6 +467,46 @@ a.btn {
         position: absolute;
         width: 100px;
         bottom: 0;
+        right: 50px;
+    }
+    #pic-1-3-1 {
+        position: absolute;
+        width: 75px;
+        top: 70px;
+        left: 200px;
+        &.active {
+            left: 220px;
+            transition: left 1s;
+        }
+    }
+    #pic-1-3-2 {
+        position: absolute;
+        width: 70px;
+        top: 60px;
+        right: 180px;
+        &.active {
+            right: 210px;
+            transition: right 1.5s;
+        }
+    }
+    #pic-1-4 {
+        position: absolute;
+        width: 150px;
+        top: 80px;
+        left: 20px;
+        animation-delay: 2s;
+    }
+    #pic-1-5 {
+        position: absolute;
+        width: 50px;
+        top: -50px;
+        left: 70px;
+        opacity: 0;
+        &.active {
+            opacity: 1;
+            top: 40px;
+            transition: all 0.7s 2s;
+        }
     }
 }
 #section2 {
@@ -406,7 +515,10 @@ a.btn {
         position: absolute;
         right: 30px;
         top: 50%;
-        margin-top: 0px;
+        margin-top: -35px;
+        @media (max-width: 830px) {
+            display: none;
+        }
     }
     #pic-2-1 {
         position: relative;
@@ -433,6 +545,19 @@ a.btn {
         top: 20px;
         animation-delay: 1s;
     }
+    #pic-2-5 {
+        position: absolute;
+        width: 30px;
+        left: 100px;
+        bottom: 80px;
+        animation-delay: 1.8s;
+    }
+    #pic-text-2-1 {
+        animation-delay: 1.8s;
+    }
+    #pic-text-2-2 {
+        animation-delay: 2.2s;
+    }
 }
 #section3 {
     background-color: #ffcb00;
@@ -440,7 +565,10 @@ a.btn {
         position: absolute;
         right: 30px;
         top: 50%;
-        margin-top: 200px;
+        margin-top: 120px;
+        @media (max-width: 830px) {
+            display: none;
+        }
     }
     #pic-3-1 {
         position: relative;
@@ -452,31 +580,47 @@ a.btn {
         width: 110px;
         left: 30px;
         top: 110px;
+        animation-delay: 0.9s;
     }
     #pic-3-3 {
         position: absolute;
         width: 100px;
         right: 15px;
         top: 20px;
-        animation-delay: 1s;
+        animation-delay: 1.3s;
+    }
+    #pic-3-4 {
+        position: absolute;
+        width: 250px;
+        left: 75px;
+        top: 30px;
+        animation-delay: 0.1s;
+    }
+    #pic-text-3-1 {
+        animation-delay: 1.8s;
+    }
+    #pic-text-3-2 {
+        animation-delay: 2.2s;
     }
 }
 #section4 {
     background-color: #03caa8;
     #qr-hang {
         position: absolute;
-        height: 500px;
-        left: 50%;
-        margin-left: -279px;
-        top: 50%;
-        margin-top: -350px;
-    }
-    #qr-txt {
-        position: absolute;
+        height: 300px;
         left: 50%;
         margin-left: -150px;
         top: 50%;
-        margin-top: 0px;
+        margin-top: -200px;
+    }
+    #qr-txt {
+        position: absolute;
+        width: 250px;
+        left: 50%;
+        margin-left: -70px;
+        top: 50%;
+        margin-top: 10px;
+        animation-delay: 0.8s;
     }
     footer {
         position: absolute;
