@@ -6,7 +6,7 @@
 */
 
 html{
-	font-size: 80px;
+	font-size: 37px;
 	/* background-color: red; */
 	background-color: #EEEEEE;
 }
@@ -40,7 +40,7 @@ html{
 	height: 0.4875rem;
 	background:  url(../images/icon/location.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -54,7 +54,7 @@ html{
 	top:50%;
 	background:  url(../images/icon/mine.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -101,7 +101,7 @@ html{
 	padding:0.1375rem 0.08125rem ;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	position: relative;
@@ -148,7 +148,7 @@ html{
 	display: inline-block;
 	background:  url(../images/icon/car.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -188,7 +188,7 @@ html{
 	-moz-transform: translateX(-50%);
 	background: #fff url(../images/icon/gift.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -202,7 +202,7 @@ html{
 	height: 0.875rem;
 	background:  url(../images/icon/circle.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -222,7 +222,7 @@ html{
 	-moz-transform: translateX(-50%);
 	background:  url(../images/icon/coach.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -243,7 +243,7 @@ html{
 	background:  url(../images/icon/advice.png
 		) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;

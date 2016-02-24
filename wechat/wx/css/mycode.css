@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-13 15:53:21
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 	background-color: #fff;
 }
 .bg{
@@ -25,7 +25,7 @@ html{
 	padding-top:1.225rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	/* border: 1px solid #000; */

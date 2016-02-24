@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-13 15:48:41
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 
 }
 body{
@@ -104,7 +104,7 @@ body{
 	background-color: #fff;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	display: inline-block;
@@ -120,7 +120,7 @@ body{
 	background-color: #fff;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	outline: none;
@@ -214,7 +214,7 @@ body{
 	padding-left: 1.625rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	color: #666;

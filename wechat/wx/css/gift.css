@@ -5,14 +5,14 @@
 * @Last Modified time: 2016-02-13 14:54:16
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 	background-color: #fff;
 }
 .bg{
 	width: 100%;
 	background:  url(../images/icon/giftbg.jpg) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -22,10 +22,10 @@ html{
 .text{
 	width: 5.9rem;
 	/* padding :1.225rem 1.5875rem 0; */
-	padding-top:1.225rem;
+	padding-top:1rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	/* border: 1px solid #000; */
@@ -33,7 +33,7 @@ html{
 	top:3.0rem;
 	left: 51%;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -63,7 +63,7 @@ html{
 	padding:0 0.9rem 0;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	width: 100%;
@@ -78,7 +78,7 @@ html{
 	width: 4.3875rem;
 	margin-left: 50%;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -95,7 +95,7 @@ html{
 .code{
 	background:  url(../images/icon/code.jpg) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -112,7 +112,7 @@ html{
 	top:50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	-webkit- transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
 	-o-transform: translate(-50%,-50%);
 	-ms-transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
@@ -129,7 +129,7 @@ html{
 	bottom: 0.175rem;
 	left: 50%;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);

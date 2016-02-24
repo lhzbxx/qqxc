@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-13 20:57:37
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 }
 .main{
 	width: 100%;
@@ -13,7 +13,7 @@ html{
 	box-sizing:border-box;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	font-family: "苹方";

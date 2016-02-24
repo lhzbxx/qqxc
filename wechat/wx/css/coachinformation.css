@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-13 15:55:35
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 	background-color: #EEEEEE;
 	position: relative;
 }
@@ -17,7 +17,7 @@ html{
 	box-sizing:border-box;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	/* border: 1px solid #000; */
@@ -89,7 +89,7 @@ html{
 	padding-left: 0.675rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	font-family: "苹方";
@@ -117,7 +117,7 @@ html{
 	padding-left: 0.675rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	font-family:  "苹方";
@@ -185,7 +185,7 @@ html{
 	padding:5px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	float: left;

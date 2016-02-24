@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-20 01:51:39
 */
 html{
-	font-size: 80px;
+	font-size: 37px;
 
 }
 /* 智能排序 */
@@ -99,7 +99,7 @@ html{
 	font-family: "苹方";
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-webkit- box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	border-top: 1px solid #d7d4d5;

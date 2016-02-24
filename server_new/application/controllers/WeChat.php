@@ -92,6 +92,7 @@ class Wechat extends MY_API_Controller {
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token="
             . $access_token . "&openid=" . $openid . "&lang=zh_CN";
         $r = (array) json_decode(file_get_contents($url));
+        $this->result->data = $r;
         $sex = array(
             'N',
             'M',
@@ -100,8 +101,8 @@ class Wechat extends MY_API_Controller {
         if ( ! $this->userModel->is_wx_binded($openid))
         {
             $this->userModel->add_user(array(
-                'openid' => $openid,
-                'gender' => $sex[$r['sex']],
+                'wx_openid' => $openid,
+                'gender' => $sex[(int)$r['sex']],
                 'avatar' => $r['headimgurl'],
                 'nickname' => $r['nickname'],
                 'city' => $r['city']

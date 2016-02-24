@@ -37,7 +37,7 @@ class UserModel extends MY_Model {
      */
     public function add_user($params)
     {
-        $params['create_time'] = time();
+        $params['register_time'] = time();
         $this->db->insert('user_info', $params);
     }
 
@@ -50,6 +50,7 @@ class UserModel extends MY_Model {
      */
     public function update_user($params, $filter)
     {
+        $params['create_time'] = time();
         $this->db->update('user_info', $params, $filter, 1);
     }
 
