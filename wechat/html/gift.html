@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/gift.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/gift.js"></script>
+
+         <script type="text/javascript">
+			 window.onload = function(){
+			 	function getfont(){
+			 		var html1 = document.documentElement;
+			 		var screen = html1.clientWidth;
+			 			html1.style.fontSize = 0.106667*screen+'px';
+			 	}
+			 	getfont();
+			 	window.onresize = function(){
+			 		getfont();
+			 	}
+			 }
+        </script>
+    </head>
+    <body>
+   	 <div class="bg">
+		<div class="text">
+			<div class="topText">
+				<h3>邀请好友快来学车</h3>
+				<p>分享您的<b>邀请码</b>给好友，好友输入邀请码并报名学车，您将获得<b>200元</b>现金到我的钱包。</p>
+			</div>
+			<div class="invitation">
+				<h3>邀请码</h3>
+				<div class="code">
+					<p class="inviteCode"></p>
+					<span>长按复制分享好友</span>
+				</div>
+			</div>
+		</div>
+   	 </div>
+   	
+    </body>
+</html>

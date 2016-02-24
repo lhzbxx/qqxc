@@ -1,0 +1,227 @@
+/* 
+* @Author: zz
+* @Date:   2016-01-25 16:51:21
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-02-13 15:59:20
+*/
+html{
+	font-size: 80px;
+	padding:0;
+}
+.main{
+	width: 100%;
+	padding:0.45rem 0.375rem 0 0.375rem;
+	background-color: #EEEEEE;
+	box-sizing:border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	
+}
+.suggestion{
+	
+	position: relative;
+	width: 100%;
+	margin-bottom: 0.45rem;
+	height: 4.27rem;
+}
+.suggestion textarea{
+	width:100%;
+	height: 4.25rem;
+	border: 1px solid #bcbcbc;
+	border-radius:0.1625rem;
+	resize:none;
+	text-align:justify;
+	word-wrap: break-word;
+	outline: none;
+	position: absolute;
+	top:0;
+	left: 0;
+	padding:0.375rem 0.5rem;
+	line-height: 0.45rem;
+	color: #9D9D9D;
+	font-family: "苹方";
+	background-color: #fff;
+	box-sizing:border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	text-indent: 0.75rem;
+	font-size: 0.3rem;
+}
+.suggestion p{
+	position: absolute;
+	/* top:0.375rem; */
+	top:0.6rem;
+	left: 0;
+	font-size: 0.275rem;
+	line-height: 0.45rem;
+	color: #9D9D9D;
+	font-family: "苹方";
+	padding-left: 1.225rem;
+}
+.suggestion .current{
+	display: none;
+}
+.suggestion span{
+	display: inline-block;
+	width: 0.35rem;
+	height: 0.35rem;
+	/* margin-right: 0.3875rem; */
+	background:  url(../images/icon/artboards.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	top:50%;
+	left: 0.5rem;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%); 
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%)Y;
+
+}
+/* 联系电话 */
+.telephone{
+	width: 100%;
+	position: relative;
+}
+.telephone em{
+	display: inline-block;
+	width: 0.3625rem;
+	height: 0.4375rem;
+	background:  url(../images/icon/tel.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	top:50%;
+	left: 0.5rem;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%); 
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%)Y;
+}
+.telephone input{
+	width: 100%;
+	height: 0.85rem;
+	background-color: #fff;
+	border: 1px solid #bcbcbc;
+	border-radius:0.1625rem;
+	line-height: 0.85rem;
+	font-size: 0.3rem;
+	color: #9d9d9d;
+	font-family: "苹方";
+	padding-left: 1.2375rem;
+	box-sizing:border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	outline: none;
+}
+button{
+	width: 100%;
+	height: 0.85rem;
+	margin-top: 0.45rem;
+	background-color: #03C9A9;
+	color: #fff;
+	font-family: "苹方";
+	font-size: 0.5rem;
+	border-radius:0.1625rem;
+	line-height: 0.85rem;
+	/* display: inline-block;
+	text-align: center; */
+}
+/* 提示弹窗 */
+
+.clicktext,.clicktext1{
+	width:100%;
+	/* height: 100%; */
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 10; 
+	display: none;
+}
+.clickbg .current,.clickbg1 .current{
+	display: inline-block;
+}
+
+.tip,.tip1{
+	width: 4.6rem;
+	height: 3.125rem;
+	background-color: #fff;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-webkit- transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.tip p{
+	font-family:  "苹方";
+	font-size: 0.4125rem;
+	color: #1a1a1a;
+	text-align: center;
+	padding-top: 0.8rem;
+}
+.tip i{
+	display:block;
+	width: 0.775rem;
+	height: 0.775rem;
+	background:  url(../images/icon/comment.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	bottom: 0.4625rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-webkit- transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+.tip em,.tip1 em{
+	width: 0.325rem;
+	height: 0.3rem;
+	background:  url(../images/icon/dele.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	display: inline-block;
+	position: absolute;
+	top:0.1875rem;
+	right: 0.1875rem;
+}
+.tip a{
+
+}
+/* 弹窗提示失败 */
+.tip1 p{
+	font-family:  "苹方";
+	font-size: 0.4125rem;
+	color: #1a1a1a;
+	text-align: center;
+	padding-top: 0.8rem;
+	line-height:  1.5rem;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/myaccount.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/myaccount.js"></script>
+        <script type="text/javascript">
+	 window.onload = function(){
+	 	function getfont(){
+	 		var html1 = document.documentElement;
+	 		var screen = html1.clientWidth;
+	 			html1.style.fontSize = 0.106667*screen+'px';
+	 	}
+	 	getfont();
+	 	window.onresize = function(){
+	 		getfont();
+	 	}
+	 }
+        </script>
+    </head>
+    <body>
+            <div class="clickbg ">
+                <div class="tips">
+                    <p class="text1">提示</p>
+                    <p class="text2">此功能需要登陆后才能查看</p>
+                    <button class="quit">取消</button>
+                    <a href="logined.html" class="login">登陆</a>
+                </div>
+            </div>
+    	<div class="back">
+    		<a href="index.html"><i></i></a>
+    		<p>我的</p>
+    	</div>
+    	<div class="pic">
+    		<div class="inPic" >
+                        <a href="logined.html">
+                            <p>未登录</p>
+                            <i>请登录</i>
+                        </a>
+    		</div>
+    	</div>
+    	<ul class="list1">
+    		<li>
+			<a href="javascript:;">
+				<em></em>
+				<p>我的钱包</p>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<em></em>
+				<p>我的教练</p>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<em></em>
+				<p>邀请码</p>
+			</a>
+		</li>
+    	</ul>
+    	<ul class="list2">
+    		<li class="suggestion">
+    			<a href="javascript:;">
+    				<em></em>
+    				<p>意见反馈</p>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="agreement.html">
+    				<em></em>
+    				<p>学员培训协议</p>
+    			</a>
+    		</li>
+    	</ul>
+    </body>
+</html>

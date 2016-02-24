@@ -1,0 +1,71 @@
+/* 
+* @Author: Administrator
+* @Date:   2016-02-13 19:43:01
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-02-13 20:57:37
+*/
+html{
+	font-size: 80px;
+}
+.main{
+	width: 100%;
+	padding:0.5rem;
+	box-sizing:border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	font-family: "苹方";
+	color: #000;
+}
+h2{
+	text-align: center;
+	font-size: 0.5rem;
+	line-height: 1.5rem;
+	font-family: "苹方";
+	color: #000;
+	font-weight: normal;
+}
+.text{
+	font-size: 0.325rem;
+	color: #000;
+	line-height: 0.6rem;
+	text-align: justify;
+	width: 100%;
+	padding-bottom: 0.25rem;
+	font-family: "苹方";
+}
+.text span{
+	text-indent: 2em;
+	display: block;
+	color: #000;
+	font-family: "苹方";
+}
+.normal{
+	font-size: 0.325rem;
+	line-height: 0.6rem;
+	/* text-indent: 2em; */
+	padding-bottom: 0.25rem;
+	color: #000;
+	font-family: "苹方";
+}
+.sign{
+	font-size: 0.325rem;
+	color: #000;
+	line-height: 0.6rem;
+	text-align: justify;
+	width: 100%;
+	padding-bottom: 0.25rem;
+	font-family: "苹方";
+}
+.right{
+	padding-top: 0.2rem;
+}
+.last{
+	text-align: right;
+	color: #000;
+	font-family: "苹方";
+	font-size: 0.325rem;
+	
+}

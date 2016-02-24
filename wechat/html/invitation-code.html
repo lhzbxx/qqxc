@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/invitation-code.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/invitation-code.js"></script>
+          <script type="text/javascript">
+	 window.onload = function(){
+	 	function getfont(){
+	 		var html1 = document.documentElement;
+	 		var screen = html1.clientWidth;
+	 			html1.style.fontSize = 0.106667*screen+'px';
+	 	}
+	 	getfont();
+	 	window.onresize = function(){
+	 		getfont();
+	 	}
+	 }
+        </script>
+    </head>
+    <body>
+    <div class="clickbg">
+        <div class="clicktext">
+            <div class="tip">
+                <p>邀请码错误</p>
+                <!-- <i></i> -->
+                <em class="close"></em>
+            </div>
+        </div>
+    </div>
+    	<div class="main">
+    		<div class="inputBg">
+    			<div class="inputCode">
+    				<input type="text" placeholder="输入好友优惠码">
+    				<div class="codebtn ">
+    					<button class="quit">取消</button>
+    					<button class="confirmed">确定</button>
+    				</div>
+    			</div>
+    			
+    		</div>
+    		<div class="btnlist">
+    			<button class="inputBtn">输入邀请码</button>
+                                <a href="mycode.html"  class="myBtn">我的邀请码</a>
+    			
+    		</div>
+    		<div class="myCode">
+    			
+    		</div>
+    		
+    	</div>
+    </body>
+</html>

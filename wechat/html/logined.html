@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/logined.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/logined.js"></script>
+        <script type="text/javascript">
+	 window.onload = function(){
+	 	function getfont(){
+	 		var html1 = document.documentElement;
+	 		var screen = html1.clientWidth;
+	 			html1.style.fontSize = 0.106667*screen+'px';
+	 	}
+	 	getfont();
+	 	window.onresize = function(){
+	 		getfont();
+	 	}
+	 }
+        </script>
+    </head>
+    <body>
+    	  <!-- 提交失败提示弹窗 -->
+            <div class="clickbg1">
+                <div class="clicktext1">
+                    <div class="tip1">
+                        <p>内容不能为空</p>
+                        <em class="close"></em>
+                    </div>
+                </div>
+            </div>    
+        <div class="back">
+            <a href="index.html"><i></i></a>
+            <p>绑定手机号</p>
+        </div>
+        <p class="logo"></p>
+        <ul class="informationList">
+            <li class="li-01">手机号码<input type="text" value="" class="phone" required></li>
+            <li class="li-03">验证码<input type="text" value="" class="verifyCode" required>
+                        <button style="outline:none;">获取验证码</button>
+                    </li>
+            <li class="li-04">姓名<input type="text" value="" class="userName" required></li>
+        </ul>
+        <div class="bindpone">
+             <a class="submit" href="javascript:;">提交</a>
+             <p>您的消息不会透露给任何无关的第三方，请放心填写。</p>
+        </div>
+    </body>
+</html>

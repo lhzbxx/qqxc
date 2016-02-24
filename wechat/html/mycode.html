@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/mycode.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/mycode.js"></script>
+
+         <script type="text/javascript">
+			 window.onload = function(){
+			 	function getfont(){
+			 		var html1 = document.documentElement;
+			 		var screen = html1.clientWidth;
+			 			html1.style.fontSize = 0.106667*screen+'px';
+			 	}
+			 	getfont();
+			 	window.onresize = function(){
+			 		getfont();
+			 	}
+			 }
+        </script>
+    </head>
+    <body>
+   	 <div class="bg">
+		<div class="text">
+			<div class="invitation">
+				<h3>我的邀请码</h3>
+				<div class="code">
+					<!-- <p >HHSKO8</p> -->
+					<p></p>
+					<span>长按复制分享好友</span>
+				</div>
+			</div>
+		</div>
+   	 </div>
+   	
+    </body>
+</html>
