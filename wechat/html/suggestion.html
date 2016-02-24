@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/suggestion.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/suggestion.js"></script>
+         <script type="text/javascript">
+             window.onload = function(){
+                function getfont(){
+                    var html1 = document.documentElement;
+                    var screen = html1.clientWidth;
+                        html1.style.fontSize = 0.106667*screen+'px';
+                }
+                getfont();
+                window.onresize = function(){
+                    getfont();
+                }
+             }
+        </script>
+    </head>
+    <body>
+    <!-- 提交成功提示弹窗 -->
+        <div class="clickbg">
+            <div class="clicktext">
+                <div class="tip">
+                    <p>提交成功</p>
+                    <i></i>
+                    <a href="home.html"><em class="close"></em></a>
+                </div>
+            </div>
+        </div>
+    <!-- 提交失败提示弹窗 -->
+        <div class="clickbg1">
+            <div class="clicktext1">
+                <div class="tip1">
+                    <p>内容不能为空</p>
+                    <em class="close"></em>
+                </div>
+            </div>
+        </div>    
+        <!-- 弹窗结束 -->
+        <div class="main">
+            <div class="suggestion">
+                <textarea  name="" action="" placeholder="有什么意见和建议，尽管来咆哮吧~" required ></textarea>
+                <p><span></span></p>
+            </div>
+            <div class="telephone">
+                <em></em>
+                <input type="text" placeholder="留下个联系方式呗，方便我们与您联系~  " required>
+            </div>
+            <button class="submit">提交</button>
+
+        </div>
+   
+    </body>
+</html>

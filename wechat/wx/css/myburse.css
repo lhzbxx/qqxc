@@ -1,0 +1,86 @@
+/* 
+* @Author: Administrator
+* @Date:   2016-01-27 20:19:15
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-02-13 15:51:36
+*/
+html{
+	font-size: 80px;
+	background-color: #fff;
+}
+.main{
+	width: 100%;
+	height: 7.35rem;
+	border-bottom: 1px solid #979797;
+	background-color: #fff;
+	position: relative;
+}
+.bg{
+	width: 3.7375rem;
+	height: 3.7375rem;
+	background:  	url(../images/icon/moneybg.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	top:1.4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit- transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+.money{
+	font-size: 0.4rem;
+	color: #1e1e1e;
+	text-align: center;
+	line-height: 1.05rem;
+	position: absolute;
+	bottom: 0.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit- transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	font-family: "苹方";
+}
+/* 提现功能 */
+.rest{
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	padding:0.8125rem 1.2rem 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	font-family: "苹方";
+}
+.rest p{
+	font-size: 0.45rem;
+	color: #b1b0b0;
+	padding:0 0.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	line-height: 0.675rem;
+
+}
+button{
+	width: 7rem;
+	height: 1.3rem;
+	border-radius: 0.1875rem;
+	color: #fff;
+	font-size: 0.425rem;
+	line-height: 1.3rem;
+	font-family: "苹方";
+	margin-top: 0.55rem;
+	outline: none;
+}

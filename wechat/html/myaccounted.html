@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/myaccounted.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/myaccounted.js"></script>
+        <script type="text/javascript">
+	 window.onload = function(){
+	 	function getfont(){
+	 		var html1 = document.documentElement;
+	 		var screen = html1.clientWidth;
+	 			html1.style.fontSize = 0.106667*screen+'px';
+	 	}
+	 	getfont();
+	 	window.onresize = function(){
+	 		getfont();
+	 	}
+	 }
+        </script>
+    </head>
+    <body>
+    	<div class="back">
+    		<a href="home.html"><i></i></a>
+    		<p>我的</p>
+    	</div>
+    	<div class="pic">
+    		<div class="inPic">
+    			<img src=""  alt="">
+    		</div>
+    	</div>
+    	<ul class="list1">
+    		<li>
+			<a href="myburse.html">
+				<em></em>
+				<p>我的钱包</p>
+			</a>
+		</li>
+		<li>
+			<a href="mycoach.html">
+				<em></em>
+				<p>我的教练</p>
+			</a>
+		</li>
+		<li>
+			<a href="invitation-code.html">
+				<em></em>
+				<p>邀请码</p>
+			</a>
+		</li>
+    	</ul>
+    	<ul class="list2">
+    		<li>
+    			<a href="suggestion.html">
+    				<em></em>
+    				<p>意见反馈</p>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="agreement.html">
+    				<em></em>
+    				<p>学员培训协议</p>
+    			</a>
+    		</li>
+    	</ul>
+    </body>
+</html>

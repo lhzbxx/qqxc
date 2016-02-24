@@ -1,0 +1,162 @@
+/* 
+* @Author: zz
+* @Date:   2016-01-23 12:21:04
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-02-20 01:51:39
+*/
+html{
+	font-size: 80px;
+
+}
+/* 智能排序 */
+.order{
+	text-align: center;
+	background-color: #e4e4e4;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}
+.intelligent{
+	width: 100%;
+	/* height: 0.825rem; */
+	height: 0.9rem;
+	font-family: "苹方";
+	font-size: 0.375rem;
+	color: #565656;
+	line-height: 0.9rem;
+	position: relative;
+	background-color: #fff;
+	cursor: pointer;
+}
+.intelligent i{
+	display: inline-block;
+	width: 0.1875rem;
+	height:0.125rem;
+	background:  url(../images/icon/order.png) 0 0 no-repeat; 
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	top:45%;
+	right: 3.5625rem;
+	
+}
+.orderList{
+	margin-top: 0.05rem;
+	/* display: none; */
+}
+.order .current{
+	display:none;
+}
+.orderList li{
+	border-top:1px solid #d7d4d5;
+	/* height: 0.7625rem; */
+	height: 0.82rem;
+	width: 100%;
+	font-size:0.375rem;
+	line-height: 0.82rem;
+	background-color: #fff;
+	font-family: "苹方";
+	color:  #565656;
+	cursor: pointer;
+}
+.orderList li.floor{
+	border-bottom: 1px solid #d7d4d5;
+}
+.clickbg{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 1500px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.bgin{
+	display: block;
+}
+/* 教练列表 */
+.coach{
+	width: 100%;
+	/* height: 1000px; */
+	padding-top: 0.825rem;
+	background-color: #e4e4e4;
+	font-family:"苹方";
+}
+.inList{
+	width: 100%;
+	height: 2.075rem;
+	background-color: #fff;
+	margin-top: 0.2rem;
+}
+.inList a{
+	display: inline-block;
+	width: 100%;
+	height: 2.075rem;
+	padding:0 0.575rem;
+	font-family: "苹方";
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	border-top: 1px solid #d7d4d5;
+	border-bottom: 1px solid #d7d4d5;
+}
+.inList em{
+	display: inline-block;
+	width: 1.6375rem;
+	height: 1.6375rem; 
+	float: left;
+	margin-top: 0.21875rem;
+	border: 1px solid #9a9999;
+	border-radius: 50%;
+}
+.coachInfo{
+	float: left;
+	margin-left: 0.4125rem;
+	/* width: 3.5rem; */
+	padding:0.3rem 0;
+}
+
+.name p{
+	font-size: 0.325rem;
+	color: #010101;
+	display: inline-block;
+	float: left;
+}
+.name i{
+	font-size: 0.375rem;
+	font-size: 0.35rem;
+	float: right;
+	padding-right: 0.5rem;
+	color: #010101;
+}
+.coachAge,.address{
+	font-size: 0.275rem;
+	color: #666;
+	line-height: 1rem;
+	line-height: 0.4125rem;
+	line-height: 0.45rem;
+}
+.price{
+	float: right;
+	font-size: 15px;
+	padding:0.625rem 0 0.4rem;
+	padding:0.4rem 0 0.1rem;
+}
+.price b{
+	font-size: 0.45rem;
+	color: #03c9a9;
+	font-weight: 500;
+}
+.price i{
+	font-size: 0.275rem;
+	color: #666;
+	line-height: 0.8rem;
+	text-align: right;
+	display: block;
+} 
+/*  教列表结束 */

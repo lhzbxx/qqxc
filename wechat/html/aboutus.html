@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/aboutus.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+          <script type="text/javascript">
+			 window.onload = function(){
+			 	function getfont(){
+			 		var html1 = document.documentElement;
+			 		var screen = html1.clientWidth;
+			 			html1.style.fontSize = 0.106667*screen+'px';
+			 	}
+			 	getfont();
+			 	window.onresize = function(){
+			 		getfont();
+			 	}
+			 }
+        </script>
+    </head>
+    <body>
+    	<div class="bg">
+    		<img src="../wx/images/icon/about.jpg"  alt="">
+    	</div>
+    </body>
+</html>

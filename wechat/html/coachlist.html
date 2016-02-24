@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+        <link rel="stylesheet" type="text/css" href="../wx/css/coachlist.css">
+        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../wx/js/arttemplate.js"></script>
+        <script type="text/javascript" src="../wx/js/coachlist.js"></script>
+        <script type="text/javascript" src="../wx/js/angularCoachList.js"></script>
+        <script type="text/javascript">
+        	 window.onload = function(){
+        	 	function getfont(){
+        	 		var html1 = document.documentElement;
+        	 		var screen = html1.clientWidth;
+        	 			html1.style.fontSize = 0.106667*screen+'px';
+        	 	}
+        	 	getfont();
+        	 	window.onresize = function(){
+        	 		getfont();
+        	 	};
+                    $.ajaxSetup({
+                        headers: {
+                            'api_key': '123',
+                        },
+                    });
+                    $.ajax({
+                            type: 'GET',
+                            url: 'http://120.27.194.121/index.php/api/wx/1/coach/list',
+                            data:{
+                                    'lat':"lat",
+                                    'lng':"lng",
+                                    'querry':"type",
+                                    'page':"page"
+                            }
+
+                        })
+                        .done(function(data) {
+                            console.log(data.code);
+                            console.log(data.msg);
+                            console.log(data.data);
+                            var datalist = data;
+                            var html = template('test', data);
+                            document.getElementById('content').innerHTML = html;
+                        });
+                        //点击智能排序
+                        document.getElementById('auto').onclick = function(){
+                                $.ajaxSetup({
+                                        headers: {
+                                                'api_key': '123',
+                                        },
+                                });
+                                $.ajax({
+                                        type: 'GET',
+                                        url: 'http://120.27.194.121/index.php/api/wx/1/coach/list',
+                                        data:{
+                                                'lat':"lat",
+                                                'lng':"lng",
+                                                'querry':"type",
+                                                'page':"page"
+                                                //经纬度获取，排序类型，页码page
+                                         }
+                                })
+                                .done(function(data) {
+                                        console.log(data.code);
+                                        console.log(data.msg);
+                                        console.log(data.data);
+                                        var datalist = data.data;
+                                        var html = template('test', data);
+                                        document.getElementById('content').innerHTML = html;
+                                });
+                        };
+                        //点击距离排序
+                        document.getElementById('auto').onclick = function(){
+                                $.ajaxSetup({
+                                        headers: {
+                                                'api_key': '123',
+                                        },
+                                });
+                                $.ajax({
+                                        type: 'GET',
+                                        url: 'http://120.27.194.121/index.php/api/wx/1/coach/list',
+                                        data:{
+                                                'lat':"lat",
+                                                'lng':"lng",
+                                                'querry':"type",
+                                                'page':"page"
+                                                //经纬度获取，排序类型，页码page
+                                         }
+                                })
+                                .done(function(data) {
+                                        console.log(data.code);
+                                        console.log(data.msg);
+                                        console.log(data.data);
+                                        var datalist = data.data;
+                                        var html = template('test', data);
+                                        document.getElementById('content').innerHTML = html;
+                                });
+                        };
+                        //点击价格排序
+                        document.getElementById('auto').onclick = function(){
+                                $.ajaxSetup({
+                                        headers: {
+                                                'api_key': '123',
+                                        },
+                                });
+                                $.ajax({
+                                        type: 'GET',
+                                        url: 'http://120.27.194.121/index.php/api/wx/1/coach/list',
+                                        data:{
+                                                'lat':"lat",
+                                                'lng':"lng",
+                                                'querry':"type",
+                                                'page':"page"
+                                                //经纬度获取，排序类型，页码page
+                                         }
+                                })
+                                .done(function(data) {
+                                        console.log(data.code);
+                                        console.log(data.msg);
+                                        console.log(data.data);
+                                        var datalist = data.data;
+                                        var html = template('test', data);
+                                        document.getElementById('content').innerHTML = html;
+                                });
+                        };
+	}
+        </script>
+       
+    </head>
+    <body>
+    	<div class="order">
+    		<div class=" intelligent">
+    			<p>智能排序</p>
+    			<i></i>
+    		</div>
+    		<ul class="orderList current">
+    			<li id="auto">智能排序</li>
+    			<li id="dist">距离最近</li>
+    			<li id="floor">价格最低</li>
+    		</ul>	
+    	</div>
+        <div class="clickbg "></div>
+    	<div class="coach">
+            <div class="content"></div>
+                <script type="text/html" id="test">
+                            <ul class="coachlist">
+                                {{each datalist as value}}
+                                    <li class="inList ">
+                                        <p style="display:none;" class="coachId"></p>
+                                        <a href="coachindetails.html" class="clearfix">
+                                            <em>
+                                                <img src="{{data.avatar}}"  alt="">
+                                            </em>
+                                            <div class="coachInfo">
+                                                <div class="name clearfix">
+                                                    <p class="inName">{{data.name}}</p>
+                                                    <i class="testType">{{data.type}}</i>
+                                                </div>
+                                                <p class="coachAge"> 教龄: {{data.exp}}</p>
+                                                <p class="address">{{data.addr}}</p>
+                                            </div>
+                                            <p class="price">
+                                                <b>￥{{data.price}}</b><br>
+                                                <i>{{data.dist}}</i>
+                                            </p>
+                                        </a>
+                                        <p class="coachId" style="display:none;">{{data.coach_id}}</p>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                </script>
+                
+    		<!-- <ul class="coachlist" >
+                <li class="inList ">
+                                                <a href="coachindetails.html" class="clearfix">
+                                                    <em>
+                                                    <img src="../wx/images/image/coachpic/coachpic-1.png"  alt="">
+                                                                    </em>
+                                                                                                <div class="coachInfo">
+                                                                                                        <div class="name clearfix">
+                                                                                                            <p class="inName">黄建军</p>
+                                                                                                            <i class="testType">C1</i>
+                                                                                                        </div>
+                                                                                                        <p class="coachAge"> 教龄: 3年</p>
+                                                                                                        <p class="address">闵行莘建东路58弄练车场</p>
+                                                                                                </div>
+                                                                                                <p class="price">
+                                                                                                    <b>￥6800</b><br>
+                                                                                                    <i>158 Km</i>
+                                                                                                </p>
+                                                                                    </a>
+                                            </li>
+            </ul> -->
+            
+    	</div>
+    </body>
+</html>

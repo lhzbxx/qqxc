@@ -1,0 +1,285 @@
+/* 
+* @Author: zz
+* @Date:   2016-01-23 17:02:45
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-02-13 15:55:35
+*/
+html{
+	font-size: 80px;
+	background-color: #EEEEEE;
+	position: relative;
+}
+.all{
+	width: 100%;
+	height: 100%;
+	background-color: #EEEEEE;
+	padding:0.1875rem 0.25625rem 0;
+	box-sizing:border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	/* border: 1px solid #000; */
+}
+.topline{
+	/* display: inline-block; */
+	width: 100%;
+	height: 0.325rem;
+	background-color: #03caa8;
+	border-radius:0.1625rem 0.1625rem 0 0;
+}
+.pic{
+	width: 100%;
+	background: #fff url() 0 0 no-repeat;
+	
+}
+.coachPic{
+	height: 4.5rem;
+	width: 100%;
+	position: relative;
+	border-bottom:1px solid #dbdbdb ;
+}
+.inPic{
+	position: absolute;
+	width: 2.5875rem;
+	height: 2.5875rem;
+	border-radius: 50%;
+	border: 1px solid #bbb;
+	top:0.425rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%); 
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+.coachName{
+	font-size: 0.425rem;
+	color: #1b1b1b;
+	text-align: center;
+	font-family: "苹方";
+	position: absolute;
+	bottom: 0.45rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%); 
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+.bottom{
+	display: box;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	display:-ms-box;
+	width: 100%;
+	height: 0.975rem;
+	border-radius:0 0 0.1625rem 0.1625rem;
+	background-color: #fff;
+}
+.bottom p{
+	height: 100%;
+	flex:1;
+	-moz-box-flex:1;
+    	-webkit-box-flex:1;
+	-o-flex:1;
+	-ms-flex:1;
+	padding-left: 0.675rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	font-family: "苹方";
+	color: #666;
+	font-size:0.3125rem;
+	line-height: 0.975rem;
+	border-right: 1px solid #dbdbdb; 	
+}
+.distance{
+	padding-left: 0;
+	padding-right:0.675rem;
+	text-align: right; 
+}
+.specific{
+	width: 100%;
+	border-radius:0.1625rem ; 
+	background-color: #fff;
+	margin-top: 0.125rem;
+	padding-bottom: 0.3875rem;
+}
+.specific p{
+	width:100%;
+	height: 1.1875rem;
+	border-bottom: 1px solid #dbdbdb;
+	padding-left: 0.675rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	font-family:  "苹方";
+	font-size: 0.3125rem;
+	line-height: 1.1875rem;
+	color: #666;
+}
+.specific p span{
+	text-indent: 2em;
+	display: inline-block;
+	color: #1b1b1b;
+}
+.picList{
+	width: 100%;
+	height: 2.925rem;
+	display: box;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	display:-ms-box;
+	margin-top: 0.125rem;
+}
+.picList li{
+	height: 2.925rem;
+	flex:1;
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+	-o-flex:1;
+	-ms-flex:1;
+	margin-right: 0.0625rem;
+} 
+.picList li:nth-child(2){
+	margin-right: 0;
+	margin-left: 0.0625rem;
+}
+
+/* 评论留言 */
+.text{
+	width: 100%;
+	/* height: 1.0625rem; */
+	border-radius:5px;
+	margin-top: 0.5125rem;
+	appearance: none;
+	-webkit-appearance: none;
+	-webkit- appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	padding-bottom: 15px;
+}
+.text textarea{
+	height: 1.0625rem;
+	width: 7.1125rem;
+	font-size: 0.3rem;
+	font-family:  "苹方";
+	resize:none;
+	/* line-height: 0.40rem; */
+	color: #1a1a1a;
+	border-radius:5px;
+	border: 1px solid #dbdbdb;
+	background-color: #fff;
+	text-align:justify;
+	word-wrap: break-word;
+	line-height: 0.45rem;
+	padding:5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit- box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	float: left;
+}
+.text .commnetBtn{
+	width: 1.6rem;
+	height:  1.0625rem;
+	border-radius:5px;
+	border: 1px solid #dbdbdb;
+	background-color: #DCDCDC;
+	color: #959595;
+	float: right;
+	font-family:  "苹方";
+	font-size: 0.35rem;
+	line-height: 1.0625rem;	
+	outline: none;
+}
+/* 评论成功 */
+.clicktext,.clicktext1{
+	width:100%;
+	/* height: 100%; */
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 10; 
+	display: none;
+}
+.clickbg .current,.clickbg1 .current{
+	display: inline-block;
+}
+
+.tip,.tip1{
+	width: 4.6rem;
+	height: 3.125rem;
+	background-color: #fff;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-webkit- transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.tip p{
+	font-family:  "苹方";
+	font-size: 0.4125rem;
+	color: #1a1a1a;
+	text-align: center;
+	padding-top: 0.8rem;
+}
+.tip i{
+	display:block;
+	width: 0.775rem;
+	height: 0.775rem;
+	background:  url(../images/icon/comment.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	position: absolute;
+	bottom: 0.4625rem;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-webkit- transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+}
+.tip em,.tip1 em{
+	width: 0.325rem;
+	height: 0.3rem;
+	background:  url(../images/icon/dele.png) 0 0 no-repeat;
+	background-size:100%;
+	-webkit- background-size:100%;
+	-o-background-size:100%;
+	-ms-background-size:100%;
+	-moz-background-size:100%;
+	display: inline-block;
+	position: absolute;
+	top:0.1875rem;
+	right: 0.1875rem;
+}
+.tip a{
+
+}
+/* 弹窗提示失败 */
+.tip1 p{
+	font-family:  "苹方";
+	font-size: 0.4125rem;
+	color: #1a1a1a;
+	text-align: center;
+	padding-top: 0.8rem;
+	line-height:  1.5rem;
+}
