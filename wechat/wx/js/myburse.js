@@ -8,20 +8,15 @@
 $(function() {
 	$.ajaxSetup({
     		headers: {
-    			'api_key': '123',
-    		},
+    			'api_key': getCookie('openid')
+    		}
 	});
     	$.ajax({
             type: 'GET',
-            url: 'http://120.27.194.121/index.php/api/wx/1/account/check_balance',
-            data:{
-                'api_key': '123'
-            }
+            url: 'http://120.27.194.121:8877/index.php/api/wx/1/user/check_balance'
         })
         .done(function(data) {
-            console.log(data.code);
             console.log(data.msg);
-            console.log(data.data);
             $(".main span").html(data.data);
         });
 });

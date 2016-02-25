@@ -54,4 +54,11 @@ class User extends MY_API_Controller {
         $this->response();
     }
 
+    public function check_balance()
+    {
+        $this->result->data
+            = $this->userModel->check_balance();
+        $this->response();
+    }
+
 }

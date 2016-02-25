@@ -140,9 +140,35 @@ class UserModel extends MY_Model {
      * @param $amount
      * @author: LuHao
      */
-    public function add_balance($amount)
+    public function add_balance($amount=200)
     {
+        $this->check_balance();
 
+    }
+
+    /**
+     *
+     * 查看余额
+     *
+     * @return int
+     * @author: LuHao
+     */
+    public function check_balance()
+    {
+        $row = $this->select_one_result('account', array(
+            'cid' => $this->id, 'type' => 'U'
+        ));
+        if ( ! isset($row))
+        {
+            $params = array(
+                'cid'   => $this->id,
+                'type'  => 'U'
+            );
+            $this->db->insert('account', $params);
+            return 0;
+        }
+        else
+            return $row->balance;
     }
 
     /**
@@ -164,5 +190,6 @@ class UserModel extends MY_Model {
         $this->db->where('user_id', $uid);
         $this->db->update('user_info', $data);
     }
+
 
 }

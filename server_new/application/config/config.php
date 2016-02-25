@@ -578,6 +578,7 @@ $config['version'] = array(
     'wechat/login' => 1,
     'user/update_location' => 1,
     'user/avatar' => 1,
+    'user/check_balance' => 1,
 );
 
 $config['param_rule'] = array(
@@ -662,5 +663,7 @@ $config['param_rule'] = array(
         'password',
         'realname',
         'captcha'
+    ),
+    'user/check_balance' => array(
     ),
 );
