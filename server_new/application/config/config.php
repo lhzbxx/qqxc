@@ -514,6 +514,7 @@ $config['proxy_ips'] = '';
 
 $config['wx_appid'] = 'wx96e6b1df252e6b82';
 $config['wx_secret'] = 'f7743dfba6a883de8b6434858a078b81';
+$config['baidu_ak'] = 'mGU507GCCZWPEp36krDAgVM7';
 
 $config['status_code'] = array(
     100 => '正常',
@@ -555,6 +556,8 @@ $config['exception'] = array(
     'wechat/openid',
     'wechat/is_binded',
     'wechat/login',
+    'wechat/city',
+    'wechat/config',
     'user/bind_wx',
 );
 
@@ -576,6 +579,8 @@ $config['version'] = array(
     'wechat/openid' => 1,
     'wechat/is_binded' => 1,
     'wechat/login' => 1,
+    'wechat/city' => 1,
+    'wechat/config' => 1,
     'user/update_location' => 1,
     'user/avatar' => 1,
     'user/check_balance' => 1,
@@ -652,6 +657,13 @@ $config['param_rule'] = array(
     ),
     'wechat/login' => array(
         'openid'
+    ),
+    'wechat/city' => array(
+        'lat',
+        'lng'
+    ),
+    'wechat/config' => array(
+        'url'
     ),
     'user/update_location' => array(
         'lat',

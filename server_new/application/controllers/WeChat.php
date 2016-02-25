@@ -67,21 +67,43 @@ class Wechat extends MY_API_Controller {
         $this->response();
     }
 
+    /**
+     *
+     * 微信JS_CONFIG
+     *
+     * @author: LuHao
+     */
     public function config()
     {
-        debug: true, // 开启调试模式
-        appId: '', // 必填，公众号的唯一标识
-        timestamp: '', // 必填，生成签名的时间戳
-        nonceStr: '', // 必填，生成签名的随机串
-        signature: '',// 必填，签名，见附录1
-        jsApiList: []
         $params = array(
-            'url'
-            'appId'     => $this->config->item('wx_appid'),
-            'timestamp' => time(),
-            'nonceStr'  => $this->util->random_str(16),
+            'url'           => $this->params['url'],
+            'jsapi_ticket'  => $this->config->item('jsapi_ticket'),
+            'appId'         => $this->config->item('wx_appid'),
+            'timestamp'     => time(),
+            'nonceStr'      => $this->util->random_str(16)
         );
         $params['signature'] = $this->util->wx_sign($params);
+        $this->result->data = $params;
+        $this->response();
+    }
+
+    /**
+     *
+     * 定位到具体城市
+     *
+     * @author: LuHao
+     */
+    public function city()
+    {
+        $url = "http://api.map.baidu.com/geocoder/v2/?ak=" .
+            $this->config->item('baidu_ak') .
+            "&callback=renderReverse&location=" .
+            $this->params['lat'] .
+            "," . $this->params['lng'] .
+            "&output=json&pois=1";
+        $r = (array) json_decode(file_get_contents($url));
+        $this->result->data = $r['result']['addressComponent']['city'];
+        $this->response();
     }
 
     /**
