@@ -73,3 +73,5 @@ $route['api/wx/(\d+)/wechat/redirect']['post'] = 'wechat/redirect';
 $route['api/wx/(\d+)/wechat/openid']['get'] = 'wechat/openid';
 $route['api/wx/(\d+)/wechat/is_binded']['get'] = 'wechat/is_binded';
 $route['api/wx/(\d+)/wechat/login']['post'] = 'wechat/login';
+
+$route['api/([a-z]+)/(\d+)/coach/list']['get'] = 'coach/list_coach';

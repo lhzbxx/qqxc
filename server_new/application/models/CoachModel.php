@@ -34,28 +34,48 @@ class CoachModel extends MY_Model {
 
     /**
      *
-     * 列出教练
+     * 智能查询教练
      *
      * @param $page
-     * @param $query
-     * @return mixed
      * @author: LuHao
      */
-    public function list_coach($params)
+    public function list_coach_auto($page)
     {
-        $page = $params['page'];
-        $query = $params['query'];
-        switch ($query)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            default:
-                break;
-        }
-        return $this->select_page_results(
-            'coach', $array, $page);
+        $row = $this->db->where();
+    }
+
+    /**
+     *
+     * 按距离查询教练
+     *
+     * @param $page
+     * @author: LuHao
+     */
+    public function list_coach_dis($page)
+    {
+        $row = $this->db->where('city', );
+    }
+
+    public function confirm_city()
+    {
+        $row = $this->select_one_result('user_info',
+            array('user_id' => $this->id));
+        if (isset($row) && $row->city)
+            return $row->city;
+        else
+            return false;
+    }
+
+    /**
+     *
+     * 按价格查询教练
+     *
+     * @param $page
+     * @author: LuHao
+     */
+    public function list_coach_price($page)
+    {
+        $row = $this->db->where();
     }
 
     /**

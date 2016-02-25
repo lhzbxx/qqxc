@@ -27,7 +27,8 @@ class Validation {
         $this->timestamp = $this->CI->input->get_request_header('timestamp', TRUE);
         $this->sign = $this->CI->input->get_request_header('sign', TRUE);
         $this->api_key = $this->CI->input->get_request_header('api_key', TRUE);
-        if ( ! ($this->platform && $this->version && $this->request)) {
+        if ( ! ($this->platform && $this->version && $this->request)
+            && $this->CI->uri->segment(1, 0) != 'cli') {
             $result = $this->CI->util->result(204);
             $this->CI->util->response($result);
         }
@@ -130,6 +131,8 @@ class Validation {
      */
     public function valid()
     {
+        if ($this->CI->uri->segment(1, 0) == 'cli')
+            return;
         $this->valid_param();
         if ($this->platform == 'wx')
         {
@@ -150,6 +153,8 @@ class Validation {
      */
     public function authentication()
     {
+        if ($this->CI->uri->segment(1, 0) == 'cli')
+            return;
         $this->check_platform();
         $this->check_version();
         if (in_array($this->request, $this->CI->config->item('exception')))

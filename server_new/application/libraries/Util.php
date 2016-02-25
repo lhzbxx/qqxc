@@ -54,7 +54,7 @@ class Util {
 
     /**
      *
-     * 计算校验值
+     * 计算校验值(MD5)
      * 即签名
      *
      * @param $params
@@ -70,6 +70,25 @@ class Util {
         }
         return md5($str);
     }
+
+    /**
+     *
+     * 计算校验值(SHA1)
+     *
+     * @param $params
+     * @return string
+     * @author: LuHao
+     */
+    public function wx_sign($params)
+    {
+        $str = '';
+        ksort($params);
+        foreach ($params as $k => $v) {
+            $str .= "$k=$v";
+        }
+        return sha1($str);
+    }
+
 
     /**
      *

@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Date: 16/2/9
  * Time: 上午9:03
  */
-
-class Coach extends MY_API_Controller {
+class Coach extends MY_API_Controller
+{
 
     public function __construct()
     {
@@ -24,25 +24,45 @@ class Coach extends MY_API_Controller {
         $this->response();
     }
 
+    public function add_coach()
+    {
+        $this->response();
+    }
+
     public function list_coach()
     {
-        $this->result->data = $this->coachModel->list_coach($this->params);
+        $page = $this->params['page'];
+        $query = $this->params['query'];
+        $city = $this->coachModel->confirm_city();
+        if ( ! $city)
+            $this->responseWithCustom(302, '未知城市');
+        if ($query == 'auto')
+            $this->result->data = $this->coachModel->list_coach_auto($page);
+        elseif ($query == 'dis')
+            $this->result->data = $this->coachModel->list_coach_dis($page);
+        elseif ($query == 'price')
+            $this->result->data = $this->coachModel->list_coach_price($page);
+        else
+            $this->responseWithCustom(301, '未知排序方式');
+        $this->response();
     }
 
     public function check_coach_detail()
     {
         $coach = $this->coachModel->valid_coach($this->params);
-        if ( ! isset($coach))
+        if (!isset($coach))
             $this->responseWithCustom(301, '教练不存在');
         $this->result->data = $coach;
+        $this->response();
     }
 
     public function check_coach_photos()
     {
         $photos = $this->coachModel->coach_photos($this->params);
-        if ( ! isset($coach))
+        if (!isset($coach))
             $this->responseWithCustom(301, '教练不存在');
         $this->result->data = $photos;
+        $this->response();
     }
 
 }

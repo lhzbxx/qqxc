@@ -579,6 +579,7 @@ $config['version'] = array(
     'user/update_location' => 1,
     'user/avatar' => 1,
     'user/check_balance' => 1,
+    'coach/list' => 1,
 );
 
 $config['param_rule'] = array(
@@ -666,4 +667,8 @@ $config['param_rule'] = array(
     ),
     'user/check_balance' => array(
     ),
+    'coach/list' => array(
+        'query',
+        'page'
+    )
 );
