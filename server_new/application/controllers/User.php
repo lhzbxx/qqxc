@@ -29,16 +29,23 @@ class User extends MY_API_Controller {
         $this->param_validation->valid_phone($this->params['phone']);
         if ( ! $this->param_validation->valid_captcha($this->params['phone'], $this->params['captcha']))
             $this->util->response_custom('301', '验证码不正确');
+        $this->userModel->bind_wx(
+            $this->params['phone'], $this->params['password'],
+            $this->input->get_request_header('api_key'), $this->params['realname']);
+        $this->response();
+    }
+
+    public function fetch_avatar()
+    {
         $this->result->data =
-            $this->userModel->bind_wx(
-                $this->params['phone'], $this->params['password'], $this->params['openid']);
+            $this->userModel->fetch_avatar();
         $this->response();
     }
 
     public function update_location()
     {
         $this->userModel->update_location(
-            $this->id, $this->params['lat'], $this->params['lng']);
+            $this->params['lat'], $this->params['lng']);
         $this->response();
     }
 

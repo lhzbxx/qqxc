@@ -70,10 +70,10 @@ class MY_API_Controller extends CI_Controller {
         $this->result = new Result();
         $this->result->code = 100;
         $this->result->msg = '正常';
-        $this->id = -1;
+//        $this->id = -1;
         $request = $this->uri->slash_segment(4).$this->uri->segment(5);
-        if ( ! in_array($request, $this->config->item('exception')))
-            $this->id = $this->api_key->get_key('api_key:' . $this->input->get_request_header('api_key'));
+//        if ( ! in_array($request, $this->config->item('exception')))
+//            $this->id = $this->api_key->get_key('api_key:' . $this->input->get_request_header('api_key'));
         $this->params = array();
         $rule = $this->config->
         item('param_rule')[$request];

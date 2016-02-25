@@ -64,7 +64,7 @@ class MY_Model extends CI_Model {
         if ( ! in_array($request, $this->config->item('exception')))
         {
             $api_key = $this->input->get_request_header('api_key', TRUE);
-            $this->id = $this->api_key->get_key($api_key);
+            $this->id = $this->api_key->get_key('api_key:' . $api_key);
         }
     }
 

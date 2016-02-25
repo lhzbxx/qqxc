@@ -23,7 +23,7 @@ $(function() {
 		} else{		//上传评论
 				$.ajax({
 				            type: 'POST',
-				            url: 'http://120.27.194.121/index.php/api/wx/1/feedback/send',
+				            url: 'http://120.27.194.121:8877/index.php/api/wx/1/feedback/send',
 				            data:{
 				            	'content':content,
 				            	'contact':contact,

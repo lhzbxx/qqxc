@@ -10,17 +10,15 @@ $(function() {
 	$(".bg").css('height', h);
 	$.ajaxSetup({
     		headers: {
-    			'api_key': '123',
-    		},
+    			'api_key': getCookie('openid')
+    		}
 		});
     	$.ajax({
             type: 'GET',
-            url: 'http://120.27.194.121/index.php/api/wx/1/coupon/check_code'
+            url: 'http://120.27.194.121:8877/index.php/api/wx/1/coupon/check_code'
         })
         .done(function(data) {
-            console.log(data.code);
             console.log(data.msg);
-            console.log(data.data);
             $(".code p").html(data.data);
         });
         

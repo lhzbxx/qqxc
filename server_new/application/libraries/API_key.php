@@ -16,9 +16,9 @@ class Api_key {
         $this->CI->load->driver('cache');
     }
 
-    public function set_key($key, $id)
+    public function set_key($key, $id, $time=10)
     {
-        $this->CI->cache->redis->save($key, $id, 10);
+        $this->CI->cache->redis->save($key, $id, $time);
     }
 
     public function get_key($key)

@@ -28,7 +28,7 @@ class CouponModel extends MY_Model {
         while ($this->is_exist_coupon($code))
             $code = $this->generate_code();
         $params = array(
-            'id'    => $uid,
+            'user_id'    => $uid,
             'coupon_code'  => $code,
         );
         $this->db->insert('coupon', $params);

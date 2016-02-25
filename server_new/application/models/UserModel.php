@@ -56,6 +56,21 @@ class UserModel extends MY_Model {
 
     /**
      *
+     * 返回用户头像
+     *
+     * @param $id
+     * @return mixed
+     * @author: LuHao
+     */
+    public function fetch_avatar()
+    {
+        $id = $this->id;
+        $row = $this->select_one_result('user_info', array('user_id' => $id));
+        return $row->avatar;
+    }
+
+    /**
+     *
      * 绑定用户微信
      *
      * @param $phone
@@ -63,21 +78,39 @@ class UserModel extends MY_Model {
      * @param $openid
      * @author: LuHao
      */
-    public function bind_wx($phone, $pwd, $openid)
+    public function bind_wx($phone, $pwd, $openid, $realname)
     {
         $salt = $this->util->random_str(16);
         $params = array(
-            'phone' => $phone,
+            'account' => $phone,
             'pwd'   => $pwd,
             'salt'  => $salt
         );
-        $uid = $this->db->insert_id('user', $params);
+        $this->db->insert('user', $params);
+        $uid = $this->db->insert_id();
         $params = array(
             'user_id' => $uid,
+            'realname' => $realname
         );
         $this->db->where('wx_openid', $openid);
         $this->db->update('user_info', $params);
-        $this->api_key->set_key('api_key:' . $openid, $uid);
+        $this->api_key->set_key('api_key:' . $openid, $uid, 60*60*24*30*12);
+    }
+
+    /**
+     *
+     * 微信尝试用openid登录
+     *
+     * @param $openid
+     * @return bool
+     * @author: LuHao
+     */
+    public function wx_login($openid)
+    {
+        $row = $this->select_one_result('user_info', array('wx_openid' => $openid));
+        if (isset($row) && $row->user_id)
+            $this->api_key->set_key('api_key:' . $openid, $row->user_id, 60*60*24*30*12);
+//        return $this->api_key->get_key('api_key:' . $openid);
     }
 
     /**
@@ -91,7 +124,7 @@ class UserModel extends MY_Model {
     public function is_wx_binded($openid)
     {
         $row = $this->select_one_result('user_info', array('wx_openid' => $openid));
-        return isset($row);
+        return (isset($row) && $row->user_id);
     }
 
 
@@ -121,8 +154,9 @@ class UserModel extends MY_Model {
      * @param $lat
      * @author: LuHao
      */
-    public function update_location($uid, $lng, $lat)
+    public function update_location($lng, $lat)
     {
+        $uid = $this->id;
         $data = array(
             'lat' => $lat,
             'lng' => $lng

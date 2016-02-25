@@ -14,5 +14,16 @@ if ( ! myOpenid) {
         "&response_type=code&scope=snsapi_userinfo&state=wechat#wechat_redirect";
 } else {
     // 上传openid
-    window.location.href="../../html/home.html";
+    $.ajax({
+        type: 'POST',
+        url: 'http://120.27.194.121:8877/index.php/api/wx/1/wechat/login',
+        data: {
+            'openid': myOpenid
+        }
+    })
+    .done(function (data) {
+        console.log(data.msg);
+        console.log(data.data);
+        window.location.href="../../html/home.html";
+    });
 }

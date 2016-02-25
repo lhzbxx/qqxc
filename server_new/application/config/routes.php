@@ -66,6 +66,9 @@ $route['api/([a-z]+)/(\d+)/common/request_captcha_code']['post'] = 'common/reque
 
 $route['api/([a-z]+)/(\d+)/user/update_location']['post'] = 'user/update_location';
 $route['api/([a-z]+)/(\d+)/user/bind_wx']['post'] = 'user/bind_wx';
+$route['api/([a-z]+)/(\d+)/user/avatar']['get'] = 'user/fetch_avatar';
 
-$route['api/([a-z]+)/(\d+)/wechat/redirect']['post'] = 'wechat/redirect';
-$route['api/([a-z]+)/(\d+)/wechat/openid']['get'] = 'wechat/openid';
+$route['api/wx/(\d+)/wechat/redirect']['post'] = 'wechat/redirect';
+$route['api/wx/(\d+)/wechat/openid']['get'] = 'wechat/openid';
+$route['api/wx/(\d+)/wechat/is_binded']['get'] = 'wechat/is_binded';
+$route['api/wx/(\d+)/wechat/login']['post'] = 'wechat/login';

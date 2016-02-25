@@ -42,6 +42,33 @@ class Wechat extends MY_API_Controller {
 
     /**
      *
+     * 是否已经绑定微信号
+     *
+     * @author: LuHao
+     */
+    public function is_binded()
+    {
+        $openid = $this->params['openid'];
+        $this->result->data = $this->userModel->is_wx_binded($openid);
+        $this->response();
+    }
+
+    /**
+     *
+     * 尝试登录
+     *
+     * @author: LuHao
+     */
+    public function login()
+    {
+        $openid = $this->params['openid'];
+//        $this->result->data = $this->userModel->wx_login($openid);
+        $this->userModel->wx_login($openid);
+        $this->response();
+    }
+
+    /**
+     *
      * 检查和记录用户的openid
      *
      * @author: LuHao

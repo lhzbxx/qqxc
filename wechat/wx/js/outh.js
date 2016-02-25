@@ -7,7 +7,7 @@
 
 $(function () {
 
-    function getUrlParam (code) {
+    function getUrlParam(code) {
         var reg = new RegExp("(^|&)" + code + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
@@ -23,7 +23,7 @@ $(function () {
         })
         .done(function (data) {
             setCookie("openid", data.data.openid, 365);
-            window.location.href="../../html/home.html";
+            window.location.href = "../../html/home.html";
         });
 
 });

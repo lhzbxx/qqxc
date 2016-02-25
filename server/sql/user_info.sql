@@ -16,6 +16,7 @@ CREATE TABLE user_info (
     city VARCHAR(10) COMMENT '城市',
     lat float COMMENT '经度' DEFAULT 0,
     lng FLOAT COMMENT '纬度' DEFAULT 0,
+    realname varchar(10) COMMENT '真实姓名',
     user_state char(1) COMMENT '账号状态, N 正常, S 停用' not null default 'N',
     wx_openid varchar(32) COMMENT '微信平台Openid' UNIQUE
 );

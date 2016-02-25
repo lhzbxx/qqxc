@@ -551,9 +551,11 @@ $config['exception'] = array(
     'coach/list',
     'feedback/send',
     'common/request_captcha_code',
-    'user/bind_wx',
     'wechat/redirect',
     'wechat/openid',
+    'wechat/is_binded',
+    'wechat/login',
+    'user/bind_wx',
 );
 
 $config['version'] = array(
@@ -572,7 +574,10 @@ $config['version'] = array(
     'manage_coach/update_pass' => 1,
     'wechat/redirect' => 1,
     'wechat/openid' => 1,
+    'wechat/is_binded' => 1,
+    'wechat/login' => 1,
     'user/update_location' => 1,
+    'user/avatar' => 1,
 );
 
 $config['param_rule'] = array(
@@ -593,12 +598,6 @@ $config['param_rule'] = array(
     ),
     'common/request_captcha_code' => array(
         'phone'
-    ),
-    'user/bind_wx' => array(
-        'openid',
-        'phone',
-        'password',
-        'captcha'
     ),
     'manage_coach/add_coach' => array(
         'name',
@@ -646,8 +645,22 @@ $config['param_rule'] = array(
     'wechat/openid' => array(
         'code'
     ),
+    'wechat/is_binded' => array(
+        'openid'
+    ),
+    'wechat/login' => array(
+        'openid'
+    ),
     'user/update_location' => array(
         'lat',
         'lng'
+    ),
+    'user/avatar' => array(
+    ),
+    'user/bind_wx' => array(
+        'phone',
+        'password',
+        'realname',
+        'captcha'
     ),
 );
