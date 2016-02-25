@@ -101,7 +101,7 @@ html{
 	top:50%;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
-	-webkit- transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
@@ -175,12 +175,12 @@ html{
 	top:50%;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
-	-webkit- transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -194,7 +194,7 @@ html{
 	right:0.375rem;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
-	-webkit- transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
@@ -228,7 +228,7 @@ html{
 .paytyes i{
 	display: inline-block;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -268,7 +268,7 @@ html{
 	position: absolute;
 	top:50%;
 	transform: translateY(-50%);
-	-webkit- transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
@@ -332,7 +332,7 @@ html{
 	margin-left: 50%;
 	position: absolute;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);

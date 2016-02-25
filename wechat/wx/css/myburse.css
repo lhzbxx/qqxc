@@ -20,7 +20,7 @@ html{
 	height: 3.7375rem;
 	background:  	url(../images/icon/moneybg.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -28,7 +28,7 @@ html{
 	top:1.4rem;
 	left: 50%;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -42,7 +42,7 @@ html{
 	bottom: 0.75rem;
 	left: 50%;
 	transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);

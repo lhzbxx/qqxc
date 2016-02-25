@@ -53,4 +53,10 @@ class Cli extends MY_CLI_Controller
         return $this->config->item('jsapi_ticket');
     }
 
+    public function check($name)
+    {
+        echo $name . ': ' . $this->config->item($name);
+        echo "\n";
+    }
+
 }

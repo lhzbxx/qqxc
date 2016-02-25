@@ -1,102 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<script type="text/javascript">
-			window.onload = function(){
-				function getfont(){
-					var html1 = document.documentElement;
-					var screen = html1.clientWidth;
-					html1.style.fontSize =0.106667 *screen+'px';
-				}
-				getfont();
-				window.onresize = function(){
-					getfont();
-				}
-			}
-		</script>
-        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
-        <link rel="stylesheet" type="text/css" href="../wx/css/home.css">
-		<script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="../wx/js/cookie.js"></script>
-        <script type="text/javascript" src="../wx/js/TouchSlide.1.1.js"></script>
-        <script type="text/javascript" src="../wx/js/home.js"></script>
-		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    </head>
-    <body>
-		<!-- 顶部开始 -->
-			<div class="header clearfix">
-				<a href="javascript:;" class="position"></a>
-				<h1>快来学车</h1>
-				<a href="javascript:;" class="myInformation"></a>
-			</div>
-		<!-- 顶部结束 -->
-		<!-- banner部分 -->
-		<div class="banner">
-			<div id="focus" class="focus">
-				<div class="hd">
-					<ul></ul>
-				</div>
-				<div class="bd">
-					<ul>
-							<li><a href="javascript:;"><img src="../wx/images/image/banner/banner1.jpg" /></a></li>
-							<li><a href="javascript:;"><img src="../wx/images/image/banner/banner2.jpg"  /></a></li>
-							
-					</ul>
-				</div>
-			</div>
-			<script type="text/javascript">
-				TouchSlide({ 
-					slideCell:"#focus",
-					titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-					mainCell:".bd ul", 
-					effect:"leftLoop", 
-					autoPlay:true,//自动播放
-					autoPage:true //自动分页
-				});
-			</script>
-			<!-- 本例主要代码 End ================================ -->
-		</div>
-		<!-- banner结束 -->
-		<!-- 主体按钮 -->
-		<div class="btnList">
-		
-			<ul class="btnTop">
-				<li>
-					<a href="aboutus.html" class="about">
-						<i></i>
-						<p>关于我们</p>
-					</a>
-				</li>
-				<li>
-					<a href="gift.html" class="gift">
-						<em></em>
-						<i></i>
-						<p>邀请有礼</p>
-					</a>
-				</li>
-			</ul>
-			<ul class="btnBottom">
-				<li>
-					<a href="coachlist.html" class="coach">
-						<i></i>
-						<p>选择教练</p>
-					</a>
-				</li>
-				<li>
-					<a href="suggestion.html" class="advice">
-						<i></i>
-						<p>意见反馈</p>
-					</a>
-				</li>
-			</ul>	
-		</div>
-		<!-- 主体按钮结束 -->
-		
-		<!-- 报名咨询 -->
-		<div class="footer">
-			<a href="javascript:;">报名咨询</a>
-		</div>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        window.onload = function () {
+            function getfont() {
+                var html1 = document.documentElement;
+                var screen = html1.clientWidth;
+                html1.style.fontSize = 0.106667 * screen + 'px';
+            }
+
+            getfont();
+            window.onresize = function () {
+                getfont();
+            }
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../wx/css/home.css">
+    <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../wx/js/cookie.js"></script>
+    <script type="text/javascript" src="../wx/js/TouchSlide.1.1.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../wx/js/home.js"></script>
+</head>
+<body>
+
+<!-- 提示定位地点 -->
+<div class="clickbg1">
+    <div class="clicktext1">
+        <div class="tip1">
+            <p>正在定位...</p>
+            <em class="close"></em>
+        </div>
+    </div>
+</div>
+<!-- 顶部开始 -->
+<div class="header clearfix">
+    <a href="javascript:;" class="position"></a>
+    <h1>快来学车</h1>
+    <a href="javascript:;" class="myInformation"></a>
+</div>
+<!-- 顶部结束 -->
+<!-- banner部分 -->
+<div class="banner">
+    <div id="focus" class="focus">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd">
+            <ul>
+                <li><a href="javascript:;"><img src="../wx/images/image/banner/banner1.jpg"/></a></li>
+                <li><a href="javascript:;"><img src="../wx/images/image/banner/banner2.jpg"/></a></li>
+
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        TouchSlide({
+            slideCell: "#focus",
+            titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell: ".bd ul",
+            effect: "leftLoop",
+            autoPlay: true,//自动播放
+            autoPage: true //自动分页
+        });
+    </script>
+    <!-- 本例主要代码 End ================================ -->
+</div>
+<!-- banner结束 -->
+<!-- 主体按钮 -->
+<div class="btnList">
+
+    <ul class="btnTop">
+        <li>
+            <a href="aboutus.html" class="about">
+                <i></i>
+                <p>关于我们</p>
+            </a>
+        </li>
+        <li>
+            <a href="gift.html" class="gift">
+                <em></em>
+                <i></i>
+                <p>邀请有礼</p>
+            </a>
+        </li>
+    </ul>
+    <ul class="btnBottom">
+        <li>
+            <a href="coachlist.html" class="coach">
+                <i></i>
+                <p>选择教练</p>
+            </a>
+        </li>
+        <li>
+            <a href="suggestion.html" class="advice">
+                <i></i>
+                <p>意见反馈</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- 主体按钮结束 -->
+
+<!-- 报名咨询 -->
+<div class="footer">
+    <a href="javascript:;">报名咨询</a>
+</div>
+</body>
 </html>

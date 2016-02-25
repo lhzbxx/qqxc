@@ -225,7 +225,7 @@ html{
 	left: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
-	-webkit- transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
 	-o-transform: translate(-50%,-50%);
 	-ms-transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
@@ -243,7 +243,7 @@ html{
 	height: 0.775rem;
 	background:  url(../images/icon/comment.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;
@@ -252,7 +252,7 @@ html{
 	left: 50%;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
-	-webkit- transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -262,7 +262,7 @@ html{
 	height: 0.3rem;
 	background:  url(../images/icon/dele.png) 0 0 no-repeat;
 	background-size:100%;
-	-webkit- background-size:100%;
+	-webkit-background-size:100%;
 	-o-background-size:100%;
 	-ms-background-size:100%;
 	-moz-background-size:100%;

@@ -78,11 +78,11 @@ class Wechat extends MY_API_Controller {
         $params = array(
             'url'           => $this->params['url'],
             'jsapi_ticket'  => $this->config->item('jsapi_ticket'),
-            'appId'         => $this->config->item('wx_appid'),
             'timestamp'     => time(),
-            'nonceStr'      => $this->util->random_str(16)
+            'noncestr'      => $this->util->random_str(16)
         );
         $params['signature'] = $this->util->wx_sign($params);
+        $params['jsapi_ticket'] = '';
         $this->result->data = $params;
         $this->response();
     }
@@ -100,9 +100,11 @@ class Wechat extends MY_API_Controller {
             "&callback=renderReverse&location=" .
             $this->params['lat'] .
             "," . $this->params['lng'] .
-            "&output=json&pois=1";
-        $r = (array) json_decode(file_get_contents($url));
-        $this->result->data = $r['result']['addressComponent']['city'];
+            "&output=xml&pois=0&coordtype=wgs84ll";
+        $r = file_get_contents($url);
+        $xml = $this->util->parse_xml($r);
+        $city = (string) $xml->result->addressComponent->city;
+        $this->result->data = $city;
         $this->response();
     }
 

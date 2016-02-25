@@ -84,9 +84,9 @@ class Util {
         $str = '';
         ksort($params);
         foreach ($params as $k => $v) {
-            $str .= "$k=$v";
+            $str .= "&$k=$v";
         }
-        return sha1($str);
+        return sha1(substr($str, 1));
     }
 
 
@@ -226,7 +226,6 @@ class Util {
      */
     public function fetch_xml_obj($xml, $obj)
     {
-
         $r = (string) $xml->$obj;
         return $r;
     }
