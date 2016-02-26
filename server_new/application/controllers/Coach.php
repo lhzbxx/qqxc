@@ -37,11 +37,14 @@ class Coach extends MY_API_Controller
         if ( ! $city)
             $this->responseWithCustom(302, '未知城市');
         if ($query == 'auto')
-            $this->result->data = $this->coachModel->list_coach_auto($page);
+            $this->result->data = $this->coachModel->list_coach_auto(
+                $page, $this->params['lat'], $this->params['lng']);
         elseif ($query == 'dis')
-            $this->result->data = $this->coachModel->list_coach_dis($page);
+            $this->result->data = $this->coachModel->list_coach_dis(
+                $page, $this->params['lat'], $this->params['lng']);
         elseif ($query == 'price')
-            $this->result->data = $this->coachModel->list_coach_price($page);
+            $this->result->data = $this->coachModel->list_coach_price(
+                $page, $this->params['lat'], $this->params['lng']);
         else
             $this->responseWithCustom(301, '未知排序方式');
         $this->response();
@@ -50,7 +53,7 @@ class Coach extends MY_API_Controller
     public function check_coach_detail()
     {
         $coach = $this->coachModel->valid_coach($this->params);
-        if (!isset($coach))
+        if ( ! isset($coach))
             $this->responseWithCustom(301, '教练不存在');
         $this->result->data = $coach;
         $this->response();
@@ -59,7 +62,7 @@ class Coach extends MY_API_Controller
     public function check_coach_photos()
     {
         $photos = $this->coachModel->coach_photos($this->params);
-        if (!isset($coach))
+        if ( ! isset($coach))
             $this->responseWithCustom(301, '教练不存在');
         $this->result->data = $photos;
         $this->response();

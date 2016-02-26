@@ -230,4 +230,42 @@ class Util {
         return $r;
     }
 
+    /**
+     *
+     * 根据经纬度确认城市
+     *
+     * @param $lat
+     * @param $lng
+     * @return string
+     * @author: LuHao
+     */
+    public function locate_city($lat, $lng)
+    {
+        $url = "http://api.map.baidu.com/geocoder/v2/?ak=" .
+            $this->CI->config->item('baidu_ak') .
+            "&callback=renderReverse&location=" .
+            $lat . "," . $lng .
+            "&output=xml&pois=0&coordtype=wgs84ll";
+        $r = file_get_contents($url);
+        $xml = $this->parse_xml($r);
+        return (string) $xml->result->addressComponent->city;
+    }
+
+
+    /**
+     *
+     * 判断两个GPS坐标的距离
+     *
+     * @param $x
+     * @param $y
+     * @param $lat
+     * @param $lng
+     * @return int
+     * @author: LuHao
+     */
+    function dis($x, $y, $lat, $lng) {
+        return (2 * 6378.137 * asin(sqrt(pow(sin(pi() * ($y - $lat) / 360), 2)
+                + cos(pi() * $x / 180) * cos($lat *  pi() / 180) * pow(sin(pi()
+                    * ($x - $lng) / 360), 2))));
+    }
 }

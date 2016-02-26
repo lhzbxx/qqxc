@@ -58,7 +58,6 @@ class UserModel extends MY_Model {
      *
      * 返回用户头像
      *
-     * @param $id
      * @return mixed
      * @author: LuHao
      */
@@ -175,7 +174,6 @@ class UserModel extends MY_Model {
      *
      * 更新地理位置
      *
-     * @param $uid
      * @param $lng
      * @param $lat
      * @author: LuHao

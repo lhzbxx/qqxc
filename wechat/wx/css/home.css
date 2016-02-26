@@ -311,6 +311,7 @@ html {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: 10;
+    display: none;
 }
 
 .clickbg .current, .clickbg1 .current {

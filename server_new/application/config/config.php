@@ -514,8 +514,8 @@ $config['proxy_ips'] = '';
 
 $config['wx_appid'] = 'wx96e6b1df252e6b82';
 $config['wx_secret'] = 'f7743dfba6a883de8b6434858a078b81';
-$config['access_token'] = 'AGusNdZHHQyECqGcuMpS91RiQfyUZvTV83GXFm7-fYojwBKNxe7hfSXQiQJ5GKpZ2PlKv-PZ3WTeINnKWb41TudwQ3m4ZpnMHL096M7sqK0KCZeAEADVS';
-$config['jsapi_ticket'] = 'sM4AOVdWfPE4DxkXGEs8VAXE1lxtb6kA1cxS9Fk96v_9IsYEx5tHcWTgS0ESiv7E82uquF3q00JNMTNE2EJHOA';
+$config['access_token'] = 'pQ1hwcm-q9nuK7YYN6HEF5SFMPSCZ35fF5qY7AJ-jSO43xVCrhOKmzGfMzjDr6ds-dRIKCoY7jGcMB8CqEfnrNuckAPOLz9q23SQBfyTxscWUOgAGASQK';
+$config['jsapi_ticket'] = 'sM4AOVdWfPE4DxkXGEs8VAXE1lxtb6kA1cxS9Fk96v86K0hUyN1i1YuCPnRlXCjSZMmLWgzEdGFdBVr87rmL2Q';
 $config['baidu_ak'] = 'mGU507GCCZWPEp36krDAgVM7';
 
 $config['status_code'] = array(
@@ -683,6 +683,8 @@ $config['param_rule'] = array(
     ),
     'coach/list' => array(
         'query',
-        'page'
+        'page',
+        'lat',
+        'lng'
     )
 );

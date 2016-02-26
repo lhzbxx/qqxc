@@ -6,11 +6,13 @@
  */
 
 $(function () {
-    if (!getCookie('city')) {
+    if ( ! getCookie('city')) {
         var h = $(window).height();
         $(".clicktext1").css('height', h);
         $(".clicktext1").addClass('current');
     }
+    if ( ! getCookie('openid'))
+        $("a.gift").attr('href', 'bind.html');
     $.ajax({
             type: 'GET',
             url: 'http://120.27.194.121:8877/index.php/api/wx/1/wechat/config',
