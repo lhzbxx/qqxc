@@ -100,7 +100,19 @@
                             signType: 'MD5', // 签名方式
                             paySign: r.data.paySign, // 支付签名
                             success: function (res) {
-                                window.location.href = 'home.html';
+                                $.ajax({
+                                            type: 'POST',
+                                            url: 'http://120.27.194.121:8877/index.php/api/wx/1/order/check_pay',
+                                            data: {
+                                                'pay_id': r.data.pay_id
+                                            },
+                                            headers: {
+                                                'api_key': getCookie('openid')
+                                            }
+                                        })
+                                        .done(function (res) {
+                                            window.location.href = 'home.html';
+                                        });
                             },
                             fail: function (res) {
 //                                alert(res.errMsg);
@@ -134,6 +146,9 @@
 
         </li>
     </ul>
+
+
+
     </script>
     <ul class="characteristic">
         <li>

@@ -19,6 +19,9 @@ class Order extends MY_API_Controller
 
     public function prepay()
     {
+        $car_type = $this->params['car_type'];
+        $coach_id = $this->params['coach_id'];
+        $price = $this->coachModel->check_price($car_type, $coach_id);
         $time = time();
         $rand = $this->util->random_str_safe(16);
         $params = array(
@@ -29,8 +32,11 @@ class Order extends MY_API_Controller
         );
         $params['signature'] = $this->util->wx_sign($params);
         $params['jsapi_ticket'] = '';
-        $pay_id = 19911105199513 + rand(15, 30);
-        $params['prepay_id'] = $this->wx_pay($pay_id, $rand);
+        $pay_id = $time . $this->util->random_str_safe(8);
+
+        $this->orderModel->add_order($coach_id, $car_type, $price, $pay_id);
+
+        $params['prepay_id'] = $this->wx_pay($pay_id, $rand, $price);
         $pay_params = array(
             'appId' => $this->config->item('wx_appid'),
             'timeStamp' => $time,
@@ -38,6 +44,7 @@ class Order extends MY_API_Controller
             'package' => 'prepay_id=' . $params['prepay_id'],
             'signType' => 'MD5'
         );
+        $params['pay_id'] = $pay_id;
 //        print_r($pay_params);
 //        print_r($params);
         $params['paySign'] = $this->util->wx_pay_sign($pay_params);
@@ -47,7 +54,7 @@ class Order extends MY_API_Controller
         $this->response();
     }
 
-    public function wx_pay($pay_id, $rand)
+    private function wx_pay($pay_id, $rand, $price)
     {
         $params = array(
             'appid'         => $this->config->item('wx_appid'),
@@ -55,10 +62,12 @@ class Order extends MY_API_Controller
             'body'          => '快来学车',
             'mch_id'        => $this->config->item('wx_mchid'),
             'nonce_str'     => $rand,
-            'notify_url'    => 'http://120.27.194.121:8877/index.php/api/wx/1/order/pay_notify',
+//            'notify_url'    => 'http://www.qqxueche.net:8877/index.php/api/wx/1/order/pay_notify',
+            'notify_url'    => 'http://www.weixin.qq.com/wxpay/pay.php',
             'openid'        => $this->input->get_request_header('api_key'),
             'out_trade_no'  => $pay_id,
             'spbill_create_ip' => $this->input->ip_address(),
+//            'total_fee'     => $price * 100,
             'total_fee'     => 1,
             'trade_type'    => 'JSAPI'
         );
@@ -89,12 +98,12 @@ class Order extends MY_API_Controller
     {
         $xml = file_get_contents('php://input');
         $xml = $this->util->parse_xml($xml);
-        $openid = (string) $xml->openid;
-        $result_code = (string) $xml->result_code;
-        $transaction_id = (string) $xml->transaction_id;
-        $time_end = (string) $xml->time_end;
-        $this->orderModel->add_order();
-        $this->api_key->set_key('notify:' . time(), $openid, 1000);
+//        $openid = (string) $xml->openid;
+//        $result_code = (string) $xml->result_code;
+//        $transaction_id = (string) $xml->transaction_id;
+//        $time_end = (string) $xml->time_end;
+//        $this->orderModel->add_order();
+        $this->api_key->set_key('notify:' . time(), (string) $xml, 1000);
         $xml = "<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>";
         $this->output->set_content_type('text/xml');
         $this->output->set_output($xml);
@@ -102,12 +111,13 @@ class Order extends MY_API_Controller
 
     public function check_pay_state()
     {
+        $pay_id = $this->params['pay_id'];
         $rand = $this->util->random_str_safe(16);
         $params = array(
             'appid'         => $this->config->item('wx_appid'),
             'mch_id'        => $this->config->item('wx_mchid'),
             'nonce_str'     => $rand,
-            'transaction_id'=> '123'
+            'out_trade_no'  => $pay_id
         );
         $params['sign'] = $this->util->wx_pay_sign($params);
         $xml = '<xml>';
@@ -116,11 +126,16 @@ class Order extends MY_API_Controller
         $xml .= '</xml>';
         if ($this->fetch_pay_state($xml))
         {
-            // todo: 支付成功。
+            if ( ! $this->coachModel->valid_pay_id($pay_id))
+            {
+                $this->result->msg = '支付成功';
+                $this->coachModel->add_student($pay_id);
+                $this->orderModel->update_paid($pay_id);
+            }
         }
         else
         {
-            // todo: 支付失败。
+            $this->result->msg = '支付失败';
         }
         $this->response();
     }

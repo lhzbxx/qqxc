@@ -18,7 +18,8 @@ class CouponModel extends MY_Model {
      *
      * 添加优惠券
      *
-     * @param $params
+     * @param $uid
+     * @return string
      * @author: LuHao
      */
     public function add_coupon($uid)
@@ -39,25 +40,34 @@ class CouponModel extends MY_Model {
      *
      * 使用优惠券
      *
-     * @param $params
+     * @param $code
      * @return bool
      * @author: LuHao
      */
-    public function use_coupon($params)
+    public function use_coupon($code)
     {
-        if ($this->valid_user())
-        {
-            $this->util->response_custom(301, '已经使用过邀请码');
-        }
-        $row = $this->valid_coupon($params);
-        if (isset($row))
-        {
-            // todo: 现金流记录
-            $this->db->insert('user_coupon', $params);
-            return true;
-        }
-        else
-            return false;
+        $row = $this->select_one_result('coupon', array('coupon_code' => $code));
+        $params = array(
+            'user_id' => $this->id,
+            'coupon_id' => $row->id
+        );
+        // todo: 现金流记录 & 验证优惠额度.
+        $this->db->insert('user_coupon', $params);
+        $this->db->update('account', 'balance+200', array('cid' => $this->id));
+    }
+
+    /**
+     *
+     * 查看是否是自己的优惠码
+     *
+     * @param $code
+     * @return bool
+     * @author: LuHao
+     */
+    public function is_self_code($code)
+    {
+        $row = $this->select_one_result('coupon', array('coupon_code' => $code));
+        return ($this->id == $row->user_id);
     }
 
     /**
@@ -80,17 +90,17 @@ class CouponModel extends MY_Model {
      *
      * 检查优惠券是否有效
      *
-     * @param $params
+     * @param $code
      * @return mixed
      * @author: LuHao
      */
-    public function valid_coupon($params)
+    public function valid_coupon($code)
     {
         $array = array(
-            'state' => 1,
-            'coupon_code' => $params['code'],
+            'coupon_code' => $code,
         );
-        return $this->select_one_result('coupon', $array);
+        $row = $this->select_one_result('coupon', $array);
+        return (isset($row) && $row->user_id != $this->id);
     }
 
     private function generate_code()

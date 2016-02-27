@@ -94,8 +94,8 @@ class MY_API_Controller extends CI_Controller {
 
     public function responseWithCustom($code, $msg)
     {
-        $this->code = $code;
-        $this->msg = $msg;
+        $this->result->code = $code;
+        $this->result->msg = $msg;
         $this->response();
     }
 

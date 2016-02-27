@@ -10,5 +10,6 @@ CREATE TABLE coach_user (
     price VARCHAR(10) COMMENT '交易价格',
     car_type char(2) COMMENT '教车类型, C1/C2...',
     `comment` varchar(128) COMMENT '备注, 给管理员看.',
+    pay_id varchar(32) COMMENT '流水号' UNIQUE NOT NULL ,
     create_time int(32) not null
 );

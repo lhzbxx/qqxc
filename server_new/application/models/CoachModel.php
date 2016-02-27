@@ -161,6 +161,32 @@ class CoachModel extends MY_Model {
         return $row;
     }
 
+    public function check_price($car_type, $coach_id)
+    {
+        $row  = $this->select_one_result('coach_price', array('car_type' => $car_type, 'coach_id' => $coach_id));
+        return $row->price;
+    }
+
+    public function add_student($pay_id)
+    {
+        $row  = $this->select_one_result('order', array('pay_id' => $pay_id));
+        $params = array(
+            'car_type'  => $row->car_type,
+            'user_id'   => $this->id,
+            'coach_id'  => $row->coach_id,
+            'price'     => $row->price,
+            'pay_id'    => $pay_id,
+            'create_time'   => time()
+        );
+        $this->insert_whole_params('coach_user', $params);
+    }
+
+    public function valid_pay_id($pay_id)
+    {
+        $row = $this->select_one_result('coach_user', array('pay_id' => $pay_id));
+        return isset($row);
+    }
+
     /**
      *
      * 确认用户的城市

@@ -594,6 +594,7 @@ $config['version'] = array(
     'coach/detail' => 1,
     'order/prepay' => 1,
     'order/pay_notify' => 1,
+    'order/check_pay' => 1,
 );
 
 $config['param_rule'] = array(
@@ -706,5 +707,8 @@ $config['param_rule'] = array(
         'url'
     ),
     'order/pay_notify' => array(
+    ),
+    'order/check_pay' => array(
+        'pay_id'
     ),
 );

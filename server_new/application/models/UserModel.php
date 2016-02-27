@@ -94,6 +94,11 @@ class UserModel extends MY_Model {
         $this->db->where('wx_openid', $openid);
         $this->db->update('user_info', $params);
         $this->api_key->set_key('api_key:' . $openid, $uid, 60*60*24*30*12);
+        $params = array(
+            'cid'   => $uid,
+            'type'  => 'U'
+        );
+        $this->db->insert('account', $params);
     }
 
     /**
