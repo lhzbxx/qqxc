@@ -29,6 +29,14 @@ class Coach extends MY_API_Controller
         $this->response();
     }
 
+    public function detail()
+    {
+        $this->result->data =
+            $this->coachModel->detail($this->params['coach_id'], $this->params['type'],
+                $this->params['lat'], $this->params['lng']);
+        $this->response();
+    }
+
     public function list_coach()
     {
         $page = $this->params['page'];

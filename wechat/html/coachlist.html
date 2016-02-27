@@ -52,7 +52,7 @@
 
                     })
                     .done(function (data) {
-                        console.log(data.data);
+                        console.log(data.msg);
                         var tmpl = $.templates("#tmpl");
                         var op = tmpl.render(data.data);
                         $("#content").html(op);
@@ -76,12 +76,10 @@
                             }
                         })
                         .done(function (data) {
-                            console.log(data.code);
                             console.log(data.msg);
-                            console.log(data.data);
-                            var datalist = data;
-                            var html = template('test', data);
-                            document.getElementById('content').innerHTML = html;
+                            var tmpl = $.templates("#tmpl");
+                            var op = tmpl.render(data.data);
+                            $("#content").html(op);
                         });
             };
             //点击距离排序
@@ -103,12 +101,10 @@
                             }
                         })
                         .done(function (data) {
-                            console.log(data.code);
                             console.log(data.msg);
-                            console.log(data.data);
-                            var datalist = data;
-                            var html = template('test', data);
-                            document.getElementById('content').innerHTML = html;
+                            var tmpl = $.templates("#tmpl");
+                            var op = tmpl.render(data.data);
+                            $("#content").html(op);
                         });
             };
             //点击价格排序
@@ -130,12 +126,10 @@
                             }
                         })
                         .done(function (data) {
-                            console.log(data.code);
                             console.log(data.msg);
-                            console.log(data.data);
-                            var datalist = data;
-                            var html = template('test', data);
-                            document.getElementById('content').innerHTML = html;
+                            var tmpl = $.templates("#tmpl");
+                            var op = tmpl.render(data.data);
+                            $("#content").html(op);
                         });
             };
         }
@@ -158,54 +152,30 @@
 <div class="coach">
     <div class="content"></div>
     <div id="content"></div>
-    <!--<script type="text/html" id="test">-->
-    <!--<ul class="coachlist">-->
-    <!--{{each datalist as value}}-->
-    <!--<li class="inList ">-->
-    <!--<p style="display:none;" class="coachId"></p>-->
-    <!--<a href="coachindetails.html" class="clearfix">-->
-    <!--<em>-->
-    <!--<img src="{{data.avatar}}" alt="">-->
-    <!--</em>-->
-    <!--<div class="coachInfo">-->
-    <!--<div class="name clearfix">-->
-    <!--<p class="inName">{{data.name}}</p>-->
-    <!--<i class="testType">{{data.type}}</i>-->
-    <!--</div>-->
-    <!--<p class="coachAge"> 教龄: {{data.exp}}</p>-->
-    <!--<p class="address">{{data.addr}}</p>-->
-    <!--</div>-->
-    <!--<p class="price">-->
-    <!--<b>￥{{data.price}}</b><br>-->
-    <!--<i>{{data.dist}}</i>-->
-    <!--</p>-->
-    <!--</a>-->
-    <!--<p class="coachId" style="display:none;">{{data.coach_id}}</p>-->
-    <!--</li>-->
-    <!--{{/each}}-->
-    <!--</ul>-->
-    <!--</script>-->
     <script id="tmpl" type="text/x-jsrender">
         <ul class="coachlist">
+            {{for}}
             <li class="inList ">
-                <a href="coachindetails.html" class="clearfix">
+                <a href="coachindetails.html?id={{:coach_id}}&type={{:car_type}}" class="clearfix">
                     <em>
-                        <img src="../wx/images/image/coachpic/coachpic-1.png" alt="">
+                        <img src="{{:avatar_url}}" alt="">
                     </em>
                     <div class="coachInfo">
                         <div class="name clearfix">
                             <p class="inName">{{:name}}</p>
                             <i class="testType">{{:car_type}}</i>
                         </div>
-                        <p class="coachAge">教龄: 3年</p>
-                        <p class="address">闵行莘建东路58弄练车场</p>
+                        <p class="coachAge">教龄: {{:exp}}年</p>
+                        <p class="address">{{:address}}</p>
                     </div>
                     <p class="price">
-                        <b>￥6800</b><br>
-                        <i>158 Km</i>
+                        <b>￥{{:price}}</b><br>
+                        <i>{{:distance}} km</i>
                     </p>
                 </a>
             </li>
+            {{else}}
+            {{/for}}
         </ul>
     </script>
 </div>

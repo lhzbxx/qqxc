@@ -158,6 +158,7 @@ class MY_API_Controller extends CI_Controller {
  * @property AdminModel         $adminModel
  * @property CoachModel         $coachModel
  * @property FeedbackModel      $feedbackModel
+ * @property OrderModel         $orderModel
  *
  */
 class MY_CLI_Controller extends CI_Controller {

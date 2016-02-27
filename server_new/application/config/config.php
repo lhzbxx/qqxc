@@ -514,6 +514,8 @@ $config['proxy_ips'] = '';
 
 $config['wx_appid'] = 'wx96e6b1df252e6b82';
 $config['wx_secret'] = 'f7743dfba6a883de8b6434858a078b81';
+$config['wx_mchid'] = '1292642501';
+$config['wx_key'] = '199111057258daiwenboqianguwanglu';
 $config['access_token'] = 'pQ1hwcm-q9nuK7YYN6HEF5SFMPSCZ35fF5qY7AJ-jSO43xVCrhOKmzGfMzjDr6ds-dRIKCoY7jGcMB8CqEfnrNuckAPOLz9q23SQBfyTxscWUOgAGASQK';
 $config['jsapi_ticket'] = 'sM4AOVdWfPE4DxkXGEs8VAXE1lxtb6kA1cxS9Fk96v86K0hUyN1i1YuCPnRlXCjSZMmLWgzEdGFdBVr87rmL2Q';
 $config['baidu_ak'] = 'mGU507GCCZWPEp36krDAgVM7';
@@ -561,6 +563,7 @@ $config['exception'] = array(
     'wechat/city',
     'wechat/config',
     'user/bind_wx',
+    'coach/detail',
 );
 
 $config['version'] = array(
@@ -587,6 +590,8 @@ $config['version'] = array(
     'user/avatar' => 1,
     'user/check_balance' => 1,
     'coach/list' => 1,
+    'coach/detail' => 1,
+    'order/prepay' => 1,
 );
 
 $config['param_rule'] = array(
@@ -686,5 +691,16 @@ $config['param_rule'] = array(
         'page',
         'lat',
         'lng'
-    )
+    ),
+    'coach/detail' => array(
+        'lat',
+        'lng',
+        'coach_id',
+        'type'
+    ),
+    'order/prepay' => array(
+        'car_type',
+        'coach_id',
+        'url'
+    ),
 );

@@ -79,16 +79,35 @@ class Util {
      * @return string
      * @author: LuHao
      */
-    public function wx_sign($params)
+    public function wx_sign($params, $type='sha1')
     {
         $str = '';
         ksort($params);
         foreach ($params as $k => $v) {
             $str .= "&$k=$v";
         }
-        return sha1(substr($str, 1));
+        if ($type == 'sha1')
+            return sha1(substr($str, 1));
+        return md5(substr($str, 1));
     }
 
+    /**
+     *
+     * 微信支付签名
+     *
+     * @param $params
+     * @return string
+     * @author: LuHao
+     */
+    public function wx_pay_sign($params)
+    {
+        $str = '';
+        ksort($params);
+        foreach ($params as $k => $v) {
+            $str .= "&$k=$v";
+        }
+        return strtoupper(md5(substr($str, 1) . '&key=' . $this->CI->config->item('wx_key')));
+    }
 
     /**
      *
@@ -103,6 +122,23 @@ class Util {
         $str = '';
         for ($i = 0; $i < $length; $i++)
             $str .= chr(mt_rand(33, 126));
+        return $str;
+    }
+
+    /**
+     *
+     * 生成随机字符串
+     *
+     * @param int $length
+     * @return string
+     * @author: LuHao
+     */
+    function random_str_safe($length = 6)
+    {
+        $k = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890';
+        $str = '';
+        for ($i = 0; $i < $length; $i++)
+            $str .= substr($k, mt_rand(0, 61), 1);
         return $str;
     }
 

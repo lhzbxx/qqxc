@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../wx/css/tenroll.css">
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="../wx/js/enroll.js"></script>
+    <script type="text/javascript" src="../wx/js/cookie.js"></script>
+    <script type="text/javascript" src="../wx/js/jsrender.min.js"></script>
     <script type="text/javascript">
 
         window.onload = function () {
@@ -23,30 +24,117 @@
             window.onresize = function () {
                 getfont();
             }
+
+        };
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+        $.ajax({
+                    type: 'GET',
+                    url: 'http://120.27.194.121:8877/index.php/api/wx/1/wechat/is_binded',
+                    data: {
+                        'openid': getCookie('openid')
+                    }
+                })
+                .done(function (data) {
+                    console.log(data.msg);
+                    if (data.data)
+                        $(".payInformatiom").hide();
+                });
+        $.ajax({
+                    type: 'GET',
+                    url: 'http://120.27.194.121:8877/index.php/api/wx/1/coach/detail',
+                    data: {
+                        'coach_id': getUrlParam('id'),
+                        'type': getUrlParam('type'),
+                        'lat': getCookie('lat'),
+                        'lng': getCookie('lng')
+                    }
+                })
+                .done(function (data) {
+                    console.log(data.msg);
+                    var tmpl = $.templates("#tmpl");
+                    var op = tmpl.render(data.data);
+                    $("#content").html(op);
+                });
+        $.ajax({
+                    type: 'GET',
+                    url: 'http://120.27.194.121:8877/index.php/api/wx/1/wechat/config',
+                    data: {
+                        'url': window.location.href
+                    }
+                })
+                .done(function (r) {
+                    console.log(window.location.href);
+                    wx.config({
+                        debug: false, // 开启调试模式
+                        appId: 'wx96e6b1df252e6b82', // 必填，公众号的唯一标识
+                        timestamp: r.data.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: r.data.noncestr, // 必填，生成签名的随机串
+                        signature: r.data.signature, // 必填，签名，见附录1
+                        jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                });
+        function pay() {
+            $.ajax({
+                        type: 'GET',
+                        url: 'http://120.27.194.121:8877/index.php/api/wx/1/order/prepay',
+                        data: {
+                            'coach_id': getUrlParam('id'),
+                            'car_type': getUrlParam('type'),
+                            'url': window.location.href
+                        },
+                        headers: {
+                            'api_key': getCookie('openid')
+                        }
+                    })
+                    .done(function (r) {
+                        console.log(window.location.href);
+                        wx.chooseWXPay({
+                            timestamp: r.data.timestamp, // 支付签名时间戳
+                            nonceStr: r.data.noncestr, // 支付签名随机串
+                            package: "prepay_id=" + r.data.prepay_id, // 统一支付接口返回的prepay_id参数值
+                            signType: 'MD5', // 签名方式
+                            paySign: r.data.paySign, // 支付签名
+                            success: function (res) {
+                                window.location.href = 'home.html';
+                            },
+                            fail: function (res) {
+//                                alert(res.errMsg);
+                            }
+                        });
+                    });
         }
     </script>
 </head>
 <body>
 <div class="basicInformation">
     <p class="coachId" style="display:none;"></p>
+
+    <div id="content"></div>
+    <script id="tmpl" type="text/x-jsrender">
     <ul class="coachInformatin clearfix">
-        <li class="pic"><img src="../wx/images/image/coachBasicinfo/coachpic.png"></li>
+        <li class="pic"><img src="{{:avatar_url}}"></li>
         <li class="name">
             <p class="type">
-                <span>黄建军</span>
-                <i>C1</i>
+                <span>{{:name}}</span>
+                <i>{{:car_type}}</i>
             </p>
-            <p class="coachAge">教龄：<span>3年</span></p>
-            <p class="address">闵行莘建东路58弄练车场</p>
+            <p class="coachAge">教龄：<span>{{:exp}}年</span></p>
+            <p class="address">{{:address}}</p>
         </li>
         <li class="distance">
             <p>
-                <b>￥6800</b><br>
-                <i>158 Km　</i>
+                <b>￥{{:price}}</b><br>
+                <i>{{:distance}} Km　</i>
             </p>
 
         </li>
     </ul>
+    </script>
     <ul class="characteristic">
         <li>
             <i></i>
@@ -100,7 +188,7 @@
 
             </div>
         </div>
-        <button class="submit">提交</button>
+        <button onclick="pay()" class="submit">提交</button>
     </div>
 </div>
 </body>
