@@ -63,6 +63,52 @@ class CoachModel extends MY_Model {
 
     /**
      *
+     * 添加评论
+     *
+     * @param $content
+     * @author: LuHao
+     */
+    public function add_comment($content)
+    {
+        $row = $this->select_one_result('coach_user', array('user_id' => $this->id));
+        $coach_id = $row->coach_id;
+        $params = array(
+            'user_id'   => $this->id,
+            'coach_id'  => $coach_id,
+            'create_time' => time(),
+            'content'   => $content
+        );
+        $this->insert_whole_params('coach_comment', $params);
+    }
+
+    /**
+     *
+     * 我的教练的详情
+     *
+     * @return mixed
+     * @author: LuHao
+     */
+    public function mine()
+    {
+        $row = $this->select_one_result('coach_user', array('user_id' => $this->id));
+        if ( ! isset($row))
+            $this->util->response_custom(301, '没有绑定教练');
+        $coach_id = $row->coach_id;
+        $result['price'] = $row->price;
+        $result['car_type'] = $row->car_type;
+        $row = $this->select_one_result('coach_info', array('coach_id' => $coach_id));
+        $result['name'] = $row->name;
+        $result['avatar_url'] = $row->avatar_url;
+        $result['exp'] = $row->exp;
+        $result['coach_id'] = $coach_id;
+        $row = $this->select_one_result('coach_site', array('coach_id' => $coach_id));
+        $result['address'] = $row->address;
+        $result['photos'] = $this->photos($coach_id);
+        return $result;
+    }
+
+    /**
+     *
      * 教练的照片
      *
      * @param $coach_id

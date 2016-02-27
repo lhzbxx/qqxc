@@ -37,6 +37,13 @@ class Coach extends MY_API_Controller
         $this->response();
     }
 
+    public function mine_detail()
+    {
+        $this->result->data =
+            $this->coachModel->mine();
+        $this->response();
+    }
+
     public function list_coach()
     {
         $page = $this->params['page'];
@@ -55,6 +62,13 @@ class Coach extends MY_API_Controller
                 $page, $this->params['lat'], $this->params['lng']);
         else
             $this->responseWithCustom(301, '未知排序方式');
+        $this->response();
+    }
+
+    public function comment()
+    {
+        $content = $this->params['content'];
+        $this->coachModel->add_comment($content);
         $this->response();
     }
 

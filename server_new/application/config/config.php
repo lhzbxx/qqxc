@@ -516,8 +516,8 @@ $config['wx_appid'] = 'wx96e6b1df252e6b82';
 $config['wx_secret'] = 'f7743dfba6a883de8b6434858a078b81';
 $config['wx_mchid'] = '1292642501';
 $config['wx_key'] = '199111057258daiwenboqianguwanglu';
-$config['access_token'] = 'pQ1hwcm-q9nuK7YYN6HEF5SFMPSCZ35fF5qY7AJ-jSO43xVCrhOKmzGfMzjDr6ds-dRIKCoY7jGcMB8CqEfnrNuckAPOLz9q23SQBfyTxscWUOgAGASQK';
-$config['jsapi_ticket'] = 'sM4AOVdWfPE4DxkXGEs8VAXE1lxtb6kA1cxS9Fk96v86K0hUyN1i1YuCPnRlXCjSZMmLWgzEdGFdBVr87rmL2Q';
+$config['access_token'] = 'WVtvHgQ_ztoES8oBeQBHLepxPLBkYipXM_fx5RWT522wsdrsiBgBoALqL8i4Svb4HqztqG0IpF_Fytt4GW6rPsxsUzpp2XD1Z5vXtcSmuCkJ_DaDcXpVjbABAkXFM_XiKJZbAHAFEU';
+$config['jsapi_ticket'] = 'sM4AOVdWfPE4DxkXGEs8VAXE1lxtb6kA1cxS9Fk96v8hE-e56Cq670pswN6Hzx1e2jUID2BNbMrPJsO1G94i9w';
 $config['baidu_ak'] = 'mGU507GCCZWPEp36krDAgVM7';
 
 $config['status_code'] = array(
@@ -592,6 +592,8 @@ $config['version'] = array(
     'user/check_balance' => 1,
     'coach/list' => 1,
     'coach/detail' => 1,
+    'coach/mine' => 1,
+    'coach/comment' => 1,
     'order/prepay' => 1,
     'order/pay_notify' => 1,
     'order/check_pay' => 1,
@@ -700,6 +702,11 @@ $config['param_rule'] = array(
         'lng',
         'coach_id',
         'type'
+    ),
+    'coach/mine' => array(
+    ),
+    'coach/comment' => array(
+        'content'
     ),
     'order/prepay' => array(
         'car_type',

@@ -34,7 +34,7 @@ $(function () {
             .done(function (data) {
                 console.log(data.msg);
                 if (data.code == 100) {
-                    //验证成功，提示提交成功
+                    // 验证成功，提示提交成功
                     $(".tip p").html("提交成功");
                     $(".clicktext").addClass('current2');
                     $(".inputBg").removeClass('current');

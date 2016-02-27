@@ -1,75 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
-        <link rel="stylesheet" type="text/css" href="../wx/css/coachinformation.css">
-        <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="../wx/js/coachinformation.js"></script>
-        <script type="text/javascript">
-			 window.onload = function(){
-			 	function getfont(){
-			 		var html1 = document.documentElement;
-			 		var screen = html1.clientWidth;
-			 			html1.style.fontSize = 0.106667*screen+'px';
-			 	}
-			 	getfont();
-			 	window.onresize = function(){
-			 		getfont();
-			 	}
-			 }
-        </script>
-    </head>
-    <body>
-    <!-- 提交成功 -->
-    <div class="clickbg">
-        <div class="clicktext">
-            <div class="tip">
-                <p>提交成功</p>
-                <i></i>
-                 <a href="myaccounted.html"><em class="close"></em></a>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../wx/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../wx/css/coachinformation.css">
+    <script type="text/javascript" src="../wx/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../wx/js/jsrender.min.js"></script>
+    <script type="text/javascript" src="../wx/js/cookie.js"></script>
+    <script type="text/javascript" src="../wx/js/coachinformation.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            function getfont() {
+                var html1 = document.documentElement;
+                var screen = html1.clientWidth;
+                html1.style.fontSize = 0.106667 * screen + 'px';
+            }
+
+            getfont();
+            window.onresize = function () {
+                getfont();
+            }
+        };
+        var h = $(window).height();
+        var scrollTop = $(window).scrollTop();
+        h = h + scrollTop;
+        //点击提交评论
+        function comment() {
+
+            if ($("textarea").val() == "") {
+                //评论为空时，弹出内容不能为空
+                $(".clicktext1").css('height', h);
+                $(".clicktext1").addClass('current');
+                $("body,html").css({"overflow": "hidden"});
+                //点击关闭按钮，回到评论页面
+                $(".tip1 .close").click(function (event) {
+                    $(".clicktext1").removeClass('current');
+                    $("body,html").css({"overflow": "auto"});
+                });
+            } else {
+                $.ajax({
+                            type: 'POST',
+                            url: 'http://120.27.194.121:8877/index.php/api/wx/1/coach/comment',
+                            data: {
+                                'content': $("textarea").text()
+                            },
+                            headers: {
+                                'api_key': getCookie('openid')
+                            }
+                        })
+                        .done(function (data) {
+                            console.log(data.msg);
+
+                        });
+                $(".clicktext").css('height', h);
+                $(".clicktext").addClass('current');
+                //点击关闭按钮，跳转至首页
+                $(".tip em").click(function (event) {
+                    $(".clicktext").removeClass('current');
+
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- 提交成功 -->
+<div class="clickbg">
+    <div class="clicktext">
+        <div class="tip">
+            <p>提交成功</p>
+            <i></i>
+            <a href="myaccounted.html"><em class="close"></em></a>
         </div>
     </div>
-    <!-- 提交失败 -->
-    <div class="clickbg1">
-            <div class="clicktext1">
-                <div class="tip1">
-                    <p>内容不能为空</p>
-                    <em class="close"></em>
-                </div>
-            </div>
+</div>
+<!-- 提交失败 -->
+<div class="clickbg1">
+    <div class="clicktext1">
+        <div class="tip1">
+            <p>内容不能为空</p>
+            <em class="close"></em>
         </div>
-    	<div class="all">
-    		<p class="topline"></p>
-    		<div class="main">
-    			<div class="pic">
-    				<p class="coachPic">
-						<i class="inPic"><img src="../wx/images/image/coachpic/coachpic-1.png"  alt=""></i>
-						<i class="coachName">黄建军</i>
-    				<p/>
-    			</div>
-                <div class="bottom">
-                    <p>驾龄：<span class="coachage">5年</span></p>
-                    <p class="distance">距离：<span class="inDistance">1.5km</span></p>
-                </div>
-                <div class="specific">
-                    <p class="type">教练车型<span>C1</span></p>
-                    <p class="schoolName">所属驾校<span>上海荣安驾校</span></p>
-                    <p class="address">练车场所<span>闵行莘建东路58弄练车场</span></p>
-                </div>
-                <ul class="picList">
-                        <li><img src="../wx/images/image/coachpic/specificpic1.png"  alt=""></li>
-                        <li><img src="../wx/images/image/coachpic/specificpic2.png" alt=""></li>
-                    </ul>
-                    <div class="text clearfix">
-                        <textarea name="" action="" placeholder="请输入你队教练的评价..."></textarea>
-                        
-                        <input type="submit" class="commnetBtn">
-                    </div>
-    		</div>
-    	</div>
-        
-    </body>
+    </div>
+</div>
+<div class="all">
+    <p class="topline"></p>
+    <div id="content"></div>
+    <script id="tmpl" type="text/x-jsrender">
+    <div class="main">
+        <div class="pic">
+            <p class="coachPic">
+                <i class="inPic"><img src="{{:avatar_url}}" alt=""></i>
+                <i class="coachName">{{:name}}</i>
+            <p/>
+        </div>
+        <div class="bottom">
+            <p>驾龄：<span class="coachage">{{:exp}}年</span></p>
+            <p class="distance">距离：<span class="inDistance">{{:distance}}km</span></p>
+        </div>
+        <div class="specific">
+            <p class="type">教练车型<span>{{:car_type}}</span></p>
+            <!--<p class="schoolName">所属驾校<span>上海荣安驾校</span></p>-->
+            <p class="address">练车场所<span>{{:address}}</span></p>
+        </div>
+        <ul class="picList">
+            {{for photos}}
+            <li><img src="{{:url}}" alt=""></li>
+            {{/for}}
+        </ul>
+        <div class="text clearfix">
+            <textarea name="" action="" placeholder="请输入你队教练的评价..."></textarea>
+            <input type="submit" onclick="comment()" class="commnetBtn">
+        </div>
+    </div>
+
+    </script>
+</div>
+
+</body>
 </html>

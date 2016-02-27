@@ -53,7 +53,9 @@ class CouponModel extends MY_Model {
         );
         // todo: 现金流记录 & 验证优惠额度.
         $this->db->insert('user_coupon', $params);
-        $this->db->update('account', 'balance+200', array('cid' => $this->id));
+        $this->db->set('balance', 'balance+200', false);
+        $this->db->where('cid', $this->id);
+        $this->db->update('account');
     }
 
     /**

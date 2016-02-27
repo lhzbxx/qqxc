@@ -81,5 +81,7 @@ $route['api/wx/(\d+)/order/check_pay']['post'] = 'order/check_pay_state';
 
 $route['api/([a-z]+)/(\d+)/coach/list']['get'] = 'coach/list_coach';
 $route['api/([a-z]+)/(\d+)/coach/detail']['get'] = 'coach/detail';
+$route['api/([a-z]+)/(\d+)/coach/mine']['get'] = 'coach/mine_detail';
+$route['api/([a-z]+)/(\d+)/coach/comment']['post'] = 'coach/comment';
 
 $route['api/([a-z]+)/(\d+)/order/prepay']['get'] = 'order/prepay';
