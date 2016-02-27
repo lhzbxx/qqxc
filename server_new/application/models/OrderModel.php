@@ -13,13 +13,9 @@ class OrderModel extends MY_Model {
         parent::__construct();
     }
 
-    public function prepay($coach_id)
+    public function add_order($user_id, $coach_id)
     {
 
-        $params['signature'] = $this->util->wx_sign($params);
-        $params['jsapi_ticket'] = '';
-        $this->result->data = $params;
-        $this->response();
     }
 
 }

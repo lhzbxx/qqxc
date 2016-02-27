@@ -564,6 +564,7 @@ $config['exception'] = array(
     'wechat/config',
     'user/bind_wx',
     'coach/detail',
+    'order/pay_notify',
 );
 
 $config['version'] = array(
@@ -592,6 +593,7 @@ $config['version'] = array(
     'coach/list' => 1,
     'coach/detail' => 1,
     'order/prepay' => 1,
+    'order/pay_notify' => 1,
 );
 
 $config['param_rule'] = array(
@@ -702,5 +704,7 @@ $config['param_rule'] = array(
         'car_type',
         'coach_id',
         'url'
+    ),
+    'order/pay_notify' => array(
     ),
 );

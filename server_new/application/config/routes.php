@@ -76,6 +76,8 @@ $route['api/wx/(\d+)/wechat/login']['post'] = 'wechat/login';
 $route['api/wx/(\d+)/wechat/city']['get'] = 'wechat/city';
 $route['api/wx/(\d+)/wechat/config']['get'] = 'wechat/config';
 
+$route['api/wx/(\d+)/order/pay_notify']['get'] = 'order/pay_notify';
+
 $route['api/([a-z]+)/(\d+)/coach/list']['get'] = 'coach/list_coach';
 $route['api/([a-z]+)/(\d+)/coach/detail']['get'] = 'coach/detail';
 
