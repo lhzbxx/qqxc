@@ -146,7 +146,7 @@ AdminApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider
         .state('dashboard', {
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",            
-            data: {pageTitle: 'Admin Dashboard Template'},
+            data: {pageTitle: '控制台'},
             controller: "DashboardController",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -417,6 +417,154 @@ AdminApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider
                             'js/controllers/GeneralPageController.js'
                         ]
                     });
+                }]
+            }
+        })
+
+        .state("coach_add", {
+            url: "/coach/add",
+            templateUrl: "views/coach/add.html",
+            data: {pageTitle: "添加教练"},
+            controller: "CoachController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'AdminApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.css',
+                            '../../../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../../../assets/global/plugins/typeahead/typeahead.css',
+
+                            '../../../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../../../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../../../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../../../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js',
+                            '../../../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../../../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../../../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../../../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../../../assets/admin/pages/scripts/components-form-tools.js',
+
+                            'js/controllers/CoachController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state("coach_list", {
+            url: "/coach/list",
+            templateUrl: "views/coach/list.html",
+            data: {pageTitle: "教练列表"},
+            controller: "CoachController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'AdminApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.css',
+                            '../../../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../../../assets/global/plugins/typeahead/typeahead.css',
+
+                            '../../../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../../../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../../../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../../../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js',
+                            '../../../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../../../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../../../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../../../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../../../assets/admin/pages/scripts/components-form-tools.js',
+
+                            'js/controllers/CoachController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state("student_enroll", {
+            url: "/student/enroll",
+            templateUrl: "views/student/enroll.html",
+            data: {pageTitle: "报名情况"},
+            controller: "StudentController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'AdminApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.css',
+                            '../../../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../../../assets/global/plugins/typeahead/typeahead.css',
+
+                            '../../../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../../../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../../../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../../../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js',
+                            '../../../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../../../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../../../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../../../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../../../assets/admin/pages/scripts/components-form-tools.js',
+
+                            'js/controllers/StudentController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state("student_list", {
+            url: "/student/list",
+            templateUrl: "views/student/list.html",
+            data: {pageTitle: "学员列表"},
+            controller: "StudentController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'AdminApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.css',
+                            '../../../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../../../assets/global/plugins/typeahead/typeahead.css',
+
+                            '../../../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../../../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../../../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../../../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../../../assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js',
+                            '../../../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../../../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../../../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../../../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../../../assets/admin/pages/scripts/components-form-tools.js',
+
+                            'js/controllers/StudentController.js'
+                        ]
+                    }]);
                 }]
             }
         })

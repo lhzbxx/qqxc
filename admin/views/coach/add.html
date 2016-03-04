@@ -1,0 +1,353 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">
+    教练管理 <small>添加教练</small>
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">首页</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a>教练管理</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#/coach/add">添加教练</a>
+        </li>
+    </ul>
+    <!--<div class="page-toolbar">-->
+        <!--<div class="btn-group pull-right">-->
+            <!--<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">-->
+                <!--Actions <i class="fa fa-angle-down"></i>-->
+            <!--</button>-->
+            <!--<ul class="dropdown-menu pull-right" role="menu">-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="icon-user"></i> New User </a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="icon-present"></i> New Event <span class="badge badge-success">4</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="icon-basket"></i> New order </a>-->
+                <!--</li>-->
+                <!--<li class="divider">-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <p>
+        请尽量提供标准、合理和准确的数据。
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>教练资料
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form action="#" id="form-username" class="form-horizontal form-bordered">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+								<span class="input-group-addon">
+								<i class="fa fa-user"></i>
+								</span>
+                                <input type="text" id="typeahead_example_1" name="typeahead_example_1" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+								<span class="input-group-addon">
+								<i class="fa fa-search"></i>
+								</span>
+                                <input type="text" id="typeahead_example_2" name="typeahead_example_2" class="form-control"/>
+                            </div>
+                            <p class="help-block">
+								<span class="label label-success label-sm">
+								注意</span>
+                                手机号会默认为教练账号的用户名。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">教龄</label>
+                        <div class="col-md-9">
+                            <div id="spinner3">
+                                <div class="input-group" style="width:150px;">
+                                    <input type="text" class="spinner-input form-control" maxlength="3" readonly>
+                                    <div class="spinner-buttons input-group-btn">
+                                        <button type="button" class="btn spinner-up default">
+                                            <i class="fa fa-angle-up"></i>
+                                        </button>
+                                        <button type="button" class="btn spinner-down default">
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+								<span class="help-block">
+								仅支持整数。 </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">头像</label>
+                        <div class="col-md-9">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                </div>
+                                <div>
+										<span class="btn default btn-file">
+										<span class="fileinput-new">
+										Select image </span>
+										<span class="fileinput-exists">
+										Change </span>
+										<input type="file" name="...">
+										</span>
+                                    <a href="#" class="btn red fileinput-exists" data-dismiss="fileinput">
+                                        Remove </a>
+                                </div>
+                            </div>
+                            <div class="clearfix margin-top-10">
+									<span class="label label-danger">
+									注意</span>
+                                头像图片尽量选择正方形。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证号</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+								<span class="input-group-addon">
+								<i class="fa fa-cogs"></i>
+								</span>
+                                <input type="text" id="typeahead_example_3" name="typeahead_example_3" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">标签</label>
+                        <div class="col-md-6">
+                            <input id="tags_2" type="text" class="form-control tags medium" value=""/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">所在驾校</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+								<span class="input-group-addon">
+								<i class="fa fa-cogs"></i>
+								</span>
+                                <input type="text" id="typeahead_example_3" name="typeahead_example_3" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">服务费</label>
+                        <div class="col-md-9">
+                            <div class="input-inline input-medium">
+                                <input id="touchspin_demo2" type="text" value="10" name="demo1" class="form-control">
+                            </div>
+								<span class="help-block">
+								统一默认为10%。 </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">练车地点</label>
+                        <div class="col-md-4">
+                            <div class="input-group" style="text-align:left">
+                                <input type="text" class="form-control" name="username1" id="username1_input">
+									<span class="input-group-btn">
+									<a href="javascript:;" class="btn green" id="username1_checker">
+                                        <i class="fa fa-check"></i> 核对 </a>
+									</span>
+                            </div>
+                            <div class="clearfix margin-top-10">
+									<span class="label label-danger">
+									注意</span>
+                                填写完成后务必点击【核对】以确认定位位置是否正确。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">备注</label>
+                        <div class="col-md-9">
+                            <textarea id="maxlength_textarea" class="form-control" maxlength="255" rows="2" placeholder="备注信息，仅管理员可见。"></textarea>
+								<span class="help-block">
+								不超过255字。</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">状态</label>
+                        <div class="col-md-9">
+                            <input type="checkbox" class="make-switch" data-on-text="通过" data-off-text="待审核">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">C1资料</label>
+                        <div class="col-md-4">
+                            <a href="#" data-target="#myModal_autocomplete" role="button" class="btn red" data-toggle="modal">
+                                详细情况 </a>
+                            <p class="help-block">
+								<span class="label label-success label-sm">
+								注意</span>
+                                默认为空则说明不教授该车型。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <label class="control-label col-md-3">C2资料</label>
+                        <div class="col-md-4">
+                            <a href="#" data-target="#myModal_autocomplete" role="button" class="btn red" data-toggle="modal">
+                                详细情况 </a>
+                            <p class="help-block">
+								<span class="label label-success label-sm">
+								注意</span>
+                                默认为空则说明不教授该车型。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn purple"><i class="fa fa-check"></i> 提交</button>
+                                <button type="button" class="btn default"> 取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="myModal_autocomplete" class="modal fade" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Radio Switch in Modal</h4>
+                            </div>
+                            <div class="modal-body form">
+                                <form action="#" class="form-horizontal form-row-seperated">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Basic Auto Complete</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+												<span class="input-group-addon">
+												<i class="fa fa-user"></i>
+												</span>
+                                                <input type="text" id="typeahead_example_modal_1" name="typeahead_example_modal_1" class="form-control"/>
+                                            </div>
+                                            <p class="help-block">
+                                                E.g: metronic, keenthemes.<br>
+												<span class="label label-success label-sm">
+												Learn more: </span>
+                                                <a target="_blank" href="http://twitter.github.io/typeahead.js/">
+                                                    http://twitter.github.io/typeahead.js/ </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Country Auto Complete</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+												<span class="input-group-addon">
+												<i class="fa fa-search"></i>
+												</span>
+                                                <input type="text" id="typeahead_example_modal_2" name="typeahead_example_modal_2" class="form-control"/>
+                                            </div>
+                                            <p class="help-block">
+                                                E.g: USA, Malaysia. Prefetch from JSON source</code>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Custom Template</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+												<span class="input-group-addon">
+												<i class="fa fa-cogs"></i>
+												</span>
+                                                <input type="text" id="typeahead_example_modal_3" name="typeahead_example_modal_3" class="form-control"/>
+                                            </div>
+                                            <p class="help-block">
+                                                Uses a precompiled template to customize look of suggestion.</code>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">价格</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" id="mask_currency2" type="text"/>
+								            <span class="help-block">最后两位为小数！</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group last">
+                                        <label class="col-sm-4 control-label">Multiple Sections with Headers</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+												<span class="input-group-addon">
+												<i class="fa fa-check"></i>
+												</span>
+                                                <input type="text" id="typeahead_example_modal_4" name="typeahead_example_modal_4" class="form-control"/>
+                                            </div>
+                                            <p class="help-block">
+                                                Two datasets that are prefetched, stored, and searched on the client. Highlighting is enabled.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<script>
+    ComponentsFormTools.init(); // init todo page
+</script>
